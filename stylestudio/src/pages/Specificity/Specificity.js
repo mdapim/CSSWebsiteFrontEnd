@@ -1,26 +1,49 @@
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
+import Alert from 'react-bootstrap/Alert';
 import {useState,useEffect} from 'react'
 import './Specificity.css'
 import { specificityCalculator } from '../../Utilities/SpecificityCalculator';
 export function Specificity() {
     const [cssInput,setCSSInput] = useState('')
     const [cssSpec,setCSSSpec] = useState([])
+    const [invalidInput,setInvalidInput] = useState(true)
+    const ranking = {1:'st',2:'nd',3:'rd',4:'th'}
     const handleCSSChange = (e) => {
         setCSSInput(e.target.value)
     }
     const handleButtonPress=()=> {
-        setCSSSpec(specificityCalculator(cssInput))
+        if (cssInput!=='') {
+            setInvalidInput(false)
+            setCSSSpec(specificityCalculator(cssInput))
+        } else {
+            setCSSSpec('')
+            setInvalidInput(true)
+        }
+    }
+    const generateLeaderboard = (cssSpec,type)=> {
+        let rankAppend = ''
+        if (!invalidInput) {
+        const leaderboard = cssSpec.map((el,i)=> {
+            if (i<=2) {
+                rankAppend = ranking[i+1]
+            } else {
+                rankAppend = ranking[4]
+            }
+            return (
+                <div className='rank-card'>
+                <span >
+                    {type==='leaderboard'? i+1 + rankAppend+' :'+el :el}
+                </span>
+  
+                </div>)
+        })
+        return leaderboard
+    }
     }
     useEffect(()=> {
         generateLeaderboard(cssSpec)
     },[cssSpec])
-    const generateLeaderboard = cssSpec=> {
-        const leaderboard = cssSpec.map(el=> {
-            return <div className='rank-card'>{el}</div>
-        })
-        return leaderboard
-    }
     return (
         <>
         <h1>Specificity Leaderboard</h1>
@@ -33,7 +56,11 @@ export function Specificity() {
         </Form>
         <Button variant='primary' className='go-button' onClick={handleButtonPress}>Go!</Button>
         <div className='leaderboard'>
-            {cssSpec.length===0?'':generateLeaderboard(cssSpec)}
+            {cssSpec.length===0?'':generateLeaderboard(cssSpec[0],'leaderboard')}
+            {invalidInput? <Alert variant='danger'>Please input some CSS code</Alert>:''}
+        </div>
+        <div className='scoring'>
+            {cssSpec.length===0?'':generateLeaderboard(cssSpec[1],'score')}
         </div>
         </div>
         </>
