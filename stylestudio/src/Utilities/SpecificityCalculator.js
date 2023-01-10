@@ -49,8 +49,6 @@ function findSpecificity(cssObject) {
     })
     return [cssOrdered,sortedSpec]
 }
-const cssObject = filterCSSCommands(cssInput)
-findSpecificity(cssObject)
 
 export function specificityCalculator(cssInput) {
     const cssObject = filterCSSCommands(cssInput)
