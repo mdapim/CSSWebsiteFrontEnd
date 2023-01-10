@@ -17,19 +17,23 @@ div p {
     background-color:white;
 }`
 
-function filterCSSCommands(cssInput) {
+function filterCSSCommands(cssInput,indents) {
     const seperatedCSS = cssInput.split(/[{}\n]/g)
     const filteredCSS = seperatedCSS.filter(el=>el!=='')
     const cssObject = {}
     let storedKey=''
+    let indentStr = ''
+    for (let space=0;space<indents;space++) {
+        indentStr+=' '
+    }
     for (let i =0;i<filteredCSS.length;i++) {
         const line = filteredCSS[i]
-        if (!line.startsWith('    ')) {
+        if (!line.startsWith(indentStr)) {
             cssObject[line]=[]
             storedKey = line
         }
         else {
-            cssObject[storedKey].push(line.replace('    ',''))
+            cssObject[storedKey].push(line.replace(indentStr,''))
         }
     }
     return cssObject
@@ -50,8 +54,8 @@ function findSpecificity(cssObject) {
     return [cssOrdered,sortedSpec]
 }
 
-export function specificityCalculator(cssInput) {
-    const cssObject = filterCSSCommands(cssInput)
+export function specificityCalculator(cssInput,indents) {
+    const cssObject = filterCSSCommands(cssInput,indents)
     const [cssOrdered,specificityOrdered] = findSpecificity(cssObject)
     return [cssOrdered,specificityOrdered]
 }
