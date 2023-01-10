@@ -6,12 +6,16 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import "./Forums.css";
 
-export function Forum_box() {
+export function ForumBox() {
   return (
     <div className="forum-box-container">
       <div className="card-container">
         <div className="card-content">
           <Card.Body>
+            <p>
+              <span>Callum Hall </span>
+              <span>Jan, 29, 2023</span>
+            </p>
             <Card.Title style={{ marginBottom: "2rem" }}>
               Simplify your JavaScript – Use .map(), .reduce(), and .filter()
             </Card.Title>

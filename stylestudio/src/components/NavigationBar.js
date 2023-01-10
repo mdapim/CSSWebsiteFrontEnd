@@ -12,7 +12,7 @@ export function NavigationBar() {
           </Nav.Link>
           <Nav.Link>Specificity Leaderboard</Nav.Link>
           <Nav.Link>
-            <Link to="forums">Forums</Link>
+            <Link to="forums">Forum</Link>
           </Nav.Link>
           <Nav.Link href="#guides">Guides</Nav.Link>
           <Nav.Link>
