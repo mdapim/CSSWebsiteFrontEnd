@@ -1,21 +1,21 @@
 const { calculate } = require('specificity');
 
 
-// const cssInput = `ul#nav li.active a {
-//     background-color:green;
-// }
+const cssInput = `ul#nav li.active a {
+    background-color:green;
+}
 
-// body {
-//     width:auto;
-// }
+body {
+    width:auto;
+}
 
-// div p {
-//     color:green;
-// }
+div p {
+    color:green;
+}
 
-// #mylist:first-child {
-//     background-color:white;
-// }`
+#mylist:first-child {
+    background-color:white;
+}`
 
 function filterCSSCommands(cssInput) {
     const seperatedCSS = cssInput.split(/[{}\n]/g)
@@ -53,5 +53,5 @@ function findSpecificity(cssObject) {
 export function specificityCalculator(cssInput) {
     const cssObject = filterCSSCommands(cssInput)
     const [cssOrdered,specificityOrdered] = findSpecificity(cssObject)
-    return cssOrdered
+    return [cssOrdered,specificityOrdered]
 }

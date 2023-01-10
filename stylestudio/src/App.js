@@ -3,6 +3,7 @@ import {Route, Routes} from 'react-router-dom'
 import { HomePage } from './pages/HomePage/HomePage.js';
 import {LoginPage} from './pages/LoginPage/LoginPage.js'
 import {Signup} from './pages/Signup/Signup.js'
+import { Specificity } from './pages/Specificity/Specificity.js';
 import {useState} from 'react'
 import 'bootstrap/dist/css/bootstrap.css';
 import './App.css';
@@ -24,6 +25,7 @@ function App() {
         <Route path="/home" element={<HomePage/>} />
         <Route path="/login" element={<LoginPage handleSignInChange={handleSignInChange} signInCredentials={signInCredentials}/>}/>
         <Route path='/sign-up' element={<Signup handleSignInChange={handleSignInChange} signInCredentials={signInCredentials}/>}/>
+        <Route path='/leaderboard' element={<Specificity/>}/>
       </Routes>
     </div>
   );
