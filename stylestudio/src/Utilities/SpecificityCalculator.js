@@ -44,8 +44,6 @@ function findSpecificity(cssObject) {
         return Object.keys(cssSpecObj).filter(el=>cssSpecObj[el]===spec)
     })
     console.log(order)
-
 }
-
 const cssObject = findCSSCommands(cssInput)
 findSpecificity(cssObject)
