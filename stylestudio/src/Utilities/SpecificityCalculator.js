@@ -1,19 +1,23 @@
 const { calculate } = require('specificity');
 
 
-const cssInput = `ul#nav li.active a {
-    background-color:green;
-}
+// const cssInput = `ul#nav li.active a {
+//     background-color:green;
+// }
 
-body {
-    width:auto;
-}
+// body {
+//     width:auto;
+// }
 
-div p {
-    color:green;
-}`
+// div p {
+//     color:green;
+// }
 
-function findCSSCommands(cssInput) {
+// #mylist:first-child {
+//     background-color:white;
+// }`
+
+function filterCSSCommands(cssInput) {
     const seperatedCSS = cssInput.split(/[{}\n]/g)
     const filteredCSS = seperatedCSS.filter(el=>el!=='')
     const cssObject = {}
@@ -40,10 +44,16 @@ function findSpecificity(cssObject) {
         cssSpecObj[key]=cssSpec
     }
     const sortedSpec = cssSpecArr.sort().reverse()
-    const order = sortedSpec.map(spec=> {
+    const cssOrdered = sortedSpec.map(spec=> {
         return Object.keys(cssSpecObj).filter(el=>cssSpecObj[el]===spec)
     })
-    console.log(order)
+    return [cssOrdered,sortedSpec]
 }
-const cssObject = findCSSCommands(cssInput)
+const cssObject = filterCSSCommands(cssInput)
 findSpecificity(cssObject)
+
+export function specificityCalculator(cssInput) {
+    const cssObject = filterCSSCommands(cssInput)
+    const [cssOrdered,specificityOrdered] = findSpecificity(cssObject)
+    return cssOrdered
+}
