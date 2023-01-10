@@ -24,12 +24,12 @@ function filterCSSCommands(cssInput) {
     let storedKey=''
     for (let i =0;i<filteredCSS.length;i++) {
         const line = filteredCSS[i]
-        if (!line.startsWith('    ')) {
+        if (!line.startsWith('  ')) {
             cssObject[line]=[]
             storedKey = line
         }
         else {
-            cssObject[storedKey].push(line.replace('    ',''))
+            cssObject[storedKey].push(line.replace('  ',''))
         }
     }
     return cssObject
