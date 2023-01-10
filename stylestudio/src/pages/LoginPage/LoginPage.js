@@ -26,7 +26,6 @@ export function LoginPage({handleSignInChange,signInCredentials}) {
       }
     );
     const data = await res.json();
-    console.log(data);
   };
   return (
     <MDBContainer fluid>

@@ -26,7 +26,6 @@ export function Signup({handleSignInChange, signInCredentials}) {
       }
     );
     const data = await res.json();
-    console.log(data)
   };
   return (
     <MDBContainer
