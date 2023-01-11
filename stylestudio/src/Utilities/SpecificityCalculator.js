@@ -4,12 +4,6 @@ const cssInput = `ul#nav li.active a {
     background-color:green;
 }
 
-
-
-const cssInput = `ul#nav li.active a {
-    background-color:green;
-}
-
 body {
     width:auto;
 }
