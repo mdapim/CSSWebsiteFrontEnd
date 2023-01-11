@@ -10,7 +10,7 @@ export function NavigationBar() {
           <Nav.Link>
             <Link to="/home">Home</Link>
           </Nav.Link>
-          <Nav.Link>Specificity Leaderboard</Nav.Link>
+          <Nav.Link><Link to ="/leaderboard" >Specificity Leaderboard</Link></Nav.Link>
           <Nav.Link>
             <Link to="forums">Forum</Link>
           </Nav.Link>
