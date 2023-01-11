@@ -14,7 +14,7 @@ export function NavigationBar() {
           <Nav.Link>
             <Link to="forums">Forum</Link>
           </Nav.Link>
-          <Nav.Link href="#guides">Guides</Nav.Link>
+          <Nav.Link ><Link to="/guides">Guides</Link></Nav.Link>
           <Nav.Link>
             <Link to="/login">Login</Link>
           </Nav.Link>
