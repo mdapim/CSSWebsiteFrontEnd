@@ -1,15 +1,22 @@
 export function Resource({title,links}) {
-    return (
+    
 
+    const mapLinks=resources=> {
+        const resourceJSX = resources.map(resource=> {
+            return <li><a href={resource.resource_link}>{resource.resource_description}</a></li>
+        })
+        return resourceJSX
+    }
+
+    return (
+        
         <div className='content'>
         <h3>
-            Some text for a title
+            {title}
         </h3>
         <hr/>
         <ul>
-            <li>Link 1</li>
-            <li>Link 2</li>
-            <li>Link 3</li>
+            {mapLinks(links)}
         </ul>
     </div>
     )
