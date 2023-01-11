@@ -4,7 +4,7 @@ import Button from "react-bootstrap/Button";
 import React, { useState } from "react";
 import FormAdd from "./Form_add.js";
 
-export function ForumNav() {
+export function ForumNav({ currentUserDetails }) {
   const [staticModal, setStaticModal] = useState(false);
 
   const toggleShow = () => setStaticModal(!staticModal);
@@ -31,6 +31,7 @@ export function ForumNav() {
       </Nav.Item>
       <Nav.Item></Nav.Item>
       <FormAdd
+        currentUserDetails={currentUserDetails}
         staticModal={staticModal}
         setStaticModal={setStaticModal}
         toggleShow={toggleShow}
