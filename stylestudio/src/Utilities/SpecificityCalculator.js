@@ -1,4 +1,5 @@
-const { calculate } = require("specificity");
+const { calculate } = require('specificity');
+
 
 const cssInput = `ul#nav li.active a {
     background-color:green;
@@ -34,27 +35,24 @@ function filterCSSCommands(cssInput,indents) {
         else {
             cssObject[storedKey].push(line.replace(indentStr,''))
         }
-
     }
-  }
-  return cssObject;
+    return cssObject
 }
 function findSpecificity(cssObject) {
-  const cssSpecObj = {};
-  const cssSpecArr = [];
-  let i = 0;
-  for (let key of Object.keys(cssObject)) {
-    const cssSpec = calculate(key)[0].specificityArray;
-    cssSpecArr.push(cssSpec);
-    cssSpecObj[key] = cssSpec;
-  }
-  const sortedSpec = cssSpecArr.sort().reverse();
-  const cssOrdered = sortedSpec.map((spec) => {
-    return Object.keys(cssSpecObj).filter((el) => cssSpecObj[el] === spec);
-  });
-  return [cssOrdered, sortedSpec];
+    const cssSpecObj = {}
+    const cssSpecArr = []
+    let i=0
+    for (let key of Object.keys(cssObject)) {
+        const cssSpec = calculate(key)[0].specificityArray
+        cssSpecArr.push(cssSpec)
+        cssSpecObj[key]=cssSpec
+    }
+    const sortedSpec = cssSpecArr.sort().reverse()
+    const cssOrdered = sortedSpec.map(spec=> {
+        return Object.keys(cssSpecObj).filter(el=>cssSpecObj[el]===spec)
+    })
+    return [cssOrdered,sortedSpec]
 }
-
 
 export function specificityCalculator(cssInput,indents) {
     const cssObject = filterCSSCommands(cssInput,indents)
