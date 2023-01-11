@@ -4,6 +4,12 @@ const cssInput = `ul#nav li.active a {
     background-color:green;
 }
 
+
+
+const cssInput = `ul#nav li.active a {
+    background-color:green;
+}
+
 body {
     width:auto;
 }
@@ -14,20 +20,27 @@ div p {
 
 #mylist:first-child {
     background-color:white;
-}`;
+}`
 
-function filterCSSCommands(cssInput) {
-  const seperatedCSS = cssInput.split(/[{}\n]/g);
-  const filteredCSS = seperatedCSS.filter((el) => el !== "");
-  const cssObject = {};
-  let storedKey = "";
-  for (let i = 0; i < filteredCSS.length; i++) {
-    const line = filteredCSS[i];
-    if (!line.startsWith("    ")) {
-      cssObject[line] = [];
-      storedKey = line;
-    } else {
-      cssObject[storedKey].push(line.replace("    ", ""));
+function filterCSSCommands(cssInput,indents) {
+    const seperatedCSS = cssInput.split(/[{}\n]/g)
+    const filteredCSS = seperatedCSS.filter(el=>el!=='')
+    const cssObject = {}
+    let storedKey=''
+    let indentStr = ''
+    for (let space=0;space<indents;space++) {
+        indentStr+=' '
+    }
+    for (let i =0;i<filteredCSS.length;i++) {
+        const line = filteredCSS[i]
+        if (!line.startsWith(indentStr)) {
+            cssObject[line]=[]
+            storedKey = line
+        }
+        else {
+            cssObject[storedKey].push(line.replace(indentStr,''))
+        }
+
     }
   }
   return cssObject;
@@ -47,11 +60,10 @@ function findSpecificity(cssObject) {
   });
   return [cssOrdered, sortedSpec];
 }
-const cssObject = filterCSSCommands(cssInput);
-findSpecificity(cssObject);
 
-export function specificityCalculator(cssInput) {
-  const cssObject = filterCSSCommands(cssInput);
-  const [cssOrdered, specificityOrdered] = findSpecificity(cssObject);
-  return cssOrdered;
+
+export function specificityCalculator(cssInput,indents) {
+    const cssObject = filterCSSCommands(cssInput,indents)
+    const [cssOrdered,specificityOrdered] = findSpecificity(cssObject)
+    return [cssOrdered,specificityOrdered]
 }

@@ -1,3 +1,4 @@
+
 import { NavigationBar } from "./components/NavigationBar.js";
 import { Route, Routes } from "react-router-dom";
 import { HomePage } from "./pages/HomePage/HomePage.js";
@@ -7,6 +8,7 @@ import { Forums } from "./pages/Forums/Forums.js";
 import { useState } from "react";
 import "bootstrap/dist/css/bootstrap.css";
 import "./App.css";
+
 
 function App() {
   const [signInCredentials, setSignInCredentials] = useState({
@@ -46,6 +48,8 @@ function App() {
         />
 
         <Route path="/forums" element={<Forums />}></Route>
+        <Route path='/leaderboard' element={<Specificity/>}/>
+
       </Routes>
     </div>
   );
