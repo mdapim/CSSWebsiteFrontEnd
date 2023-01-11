@@ -17,7 +17,6 @@ export function Forums() {
 
     const data = await res.json();
     setForumData(data);
-    console.log(forumData);
   };
 
   useEffect(() => {
@@ -27,9 +26,20 @@ export function Forums() {
   return (
     <div className="forum-container">
       <ForumNav />
-      <ForumBox />
-      <ForumBox />
-      <ForumBox />
+      {forumData.map((item) => {
+        return (
+          <ForumBox
+            key={item["id"]}
+            username={item["username"]}
+            date={item["date_created"]}
+            Title={item["title"]}
+            description={item["description"]}
+            comments={item["comments"]}
+            upvotes={item["likes"]}
+            downvotes={item["dislikes"]}
+          />
+        );
+      })}
     </div>
   );
 }

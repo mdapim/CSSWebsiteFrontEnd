@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import { faArrowUp, faArrowDown } from "@fortawesome/free-solid-svg-icons";
@@ -6,34 +6,56 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import "./Forums.css";
 
-export function ForumBox() {
+export function ForumBox({
+  username,
+  date,
+  Title,
+  description,
+  comments,
+  upvotes,
+  downvotes,
+}) {
+  // voting
+  const handleVote = async () => {
+    const res = await fetch(
+      "https://csswebsitebackend-production.up.railway.app/forum_vote",
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: {},
+      }
+    );
+  };
   return (
     <div className="forum-box-container">
       <div className="card-container">
         <div className="card-content">
           <Card.Body>
             <p>
-              <span>Callum Hall </span>
-              <span>Jan, 29, 2023</span>
+              <span>{username}</span> <br />
+              <span>{date}</span>
             </p>
-            <Card.Title style={{ marginBottom: "2rem" }}>
-              Simplify your JavaScript – Use .map(), .reduce(), and .filter()
-            </Card.Title>
+            <Card.Title style={{ marginBottom: "2rem" }}>{Title}</Card.Title>
             <Card.Text style={{ marginBottom: "2rem" }}>
-              If you’re starting in JavaScript, maybe you haven’t heard of
-              .map(), .reduce(), and .filter(). For me, it took a while as I had
-              to support Internet Explorer 8 until a couple years ago. But if
-              you don’t need to be compatible with this very old browser, you
-              have to become familiar with those methods....
+              {description}
             </Card.Text>
             <div className="user-interaction">
-              <p>502 comments</p>
-
-              <FontAwesomeIcon className="thumb-down" icon={faArrowUp} />
-              <FontAwesomeIcon className="thumb-up" icon={faArrowDown} />
+              <p>{comments} comments</p>
+              <p>{upvotes}</p>
+              <p>{downvotes}</p>
             </div>
 
-            <Button variant="primary">View Post</Button>
+            <div>
+              <button>
+                <FontAwesomeIcon className="thumb-down" icon={faArrowUp} />
+              </button>
+            </div>
+            <br />
+            <button>
+              <FontAwesomeIcon className="thumb-up" icon={faArrowDown} />
+            </button>
+
+            {/* <Button variant="primary">View Post</Button> */}
           </Card.Body>
         </div>
       </div>
