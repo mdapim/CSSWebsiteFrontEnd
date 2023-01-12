@@ -17,7 +17,6 @@ export function ForumBox({
   id,
   handleVote,
   commentsForIndivPost,
-
   setComments,
   commentCount,
   fetchComments,

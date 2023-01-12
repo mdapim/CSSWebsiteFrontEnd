@@ -7,7 +7,9 @@ export function Forums({ currentUserDetails }) {
   const [forumData, setForumData] = useState([]);
   const [allComments, setAllComments] = useState([]);
   const [votes, setVotes] = useState([]);
+  const [searchedString, setSearchedstring] = useState("");
 
+  //Managing votes & re-rendering
   const manageVotes = (vote, id) => {
     const copyVotes = [...votes];
     const thisPost = copyVotes.filter((post) => post.id === id)[0];
@@ -19,7 +21,6 @@ export function Forums({ currentUserDetails }) {
 
     setVotes(copyVotes);
   };
-
   const handleVote = async (vote, id) => {
     const res = await fetch(
       "https://csswebsitebackend-production.up.railway.app/forum_vote",
@@ -32,13 +33,16 @@ export function Forums({ currentUserDetails }) {
     manageVotes(vote, id);
   };
 
+  //firstload - call both functions
   useEffect(() => {
     fetchForumData();
     fetchComments();
   }, []);
 
+  // effect for re-rendering when votes update
   useEffect(() => {}, [votes]);
 
+  //all forum data
   const fetchForumData = async () => {
     const res = await fetch(
       "https://csswebsitebackend-production.up.railway.app/forum_post",
@@ -47,9 +51,9 @@ export function Forums({ currentUserDetails }) {
         headers: { "Content-Type": "application/json" },
       }
     );
-
     const data = await res.json();
     setForumData(data);
+
     const voteList = data.map((el) => {
       return { id: el.id, likes: el.likes, dislikes: el.dislikes };
     });
@@ -57,6 +61,7 @@ export function Forums({ currentUserDetails }) {
     setVotes(voteList);
   };
 
+  //fetching all comments in forums
   const fetchComments = async () => {
     const res = await fetch(
       "https://csswebsitebackend-production.up.railway.app/get_all"
@@ -65,10 +70,30 @@ export function Forums({ currentUserDetails }) {
     setAllComments(data);
   };
 
+  const filterDataSearch = (e) => {
+    const searchString = e.target.value;
+    console.log(searchString);
+    setSearchedstring(searchString);
+    const searchedStringLowerCase = searchedString.toLowerCase();
+    let filtering = forumData.filter((el) => {
+      return el.title.toLowerCase().includes(searchedStringLowerCase);
+    });
+
+    if (searchString.length > 0) {
+      setForumData(filtering);
+    } else {
+      console.log("No matches found");
+      fetchForumData();
+    }
+  };
+
   return (
     <div className="forum-container">
-      <ForumNav currentUserDetails={currentUserDetails} />
-
+      <ForumNav
+        currentUserDetails={currentUserDetails}
+        filterDataSearch={filterDataSearch}
+        fetchForumData={fetchForumData}
+      />
       {forumData.map((item, i) => {
         return (
           <ForumBox

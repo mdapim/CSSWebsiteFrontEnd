@@ -4,7 +4,12 @@ import Button from "react-bootstrap/Button";
 import React, { useState } from "react";
 import FormAdd from "./Form_add.js";
 
-export function ForumNav({ currentUserDetails }) {
+export function ForumNav({
+  currentUserDetails,
+  searchInput,
+  filterDataSearch,
+  fetchForumData,
+}) {
   const [staticModal, setStaticModal] = useState(false);
 
   const toggleShow = () => setStaticModal(!staticModal);
@@ -12,6 +17,7 @@ export function ForumNav({ currentUserDetails }) {
     <Nav fill variant="tabs" defaultActiveKey="">
       <Nav.Item>
         <Button
+          onClick={fetchForumData}
           style={{ color: "black", border: "none", backgroundColor: "white" }}
         >
           Posts
@@ -26,7 +32,12 @@ export function ForumNav({ currentUserDetails }) {
         </Button>
       </Nav.Item>
       <Nav.Item>
-        <input className="search" type="text" eventKey="link-2"></input>
+        <input
+          onChange={filterDataSearch}
+          className="search"
+          type="text"
+          eventKey="link-2"
+        ></input>
         <Button className="ok-button">OK</Button>
       </Nav.Item>
       <Nav.Item></Nav.Item>
