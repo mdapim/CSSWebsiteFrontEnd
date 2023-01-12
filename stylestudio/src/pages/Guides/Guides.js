@@ -15,7 +15,7 @@ export function Guides({userType}) {
         resource_description:"",
         resource_link:"",
         category_name:"",
-        user_type:"1"
+        user_type:userType
     })
     const [confirmedResource,setConfirmedResource] = useState(addedResource)
     const [categoriesList,setCategoriesList] = useState([])
@@ -62,7 +62,7 @@ export function Guides({userType}) {
     const addResource=()=> {
         return (<AddResource handleAddedResource={handleAddedResource} 
             addedResource={addedResource} confirmAddedResource={confirmAddedResource}
-        categoriesList={categoriesList}/>)
+        categoriesList={categoriesList} userType={userType}/>)
     }
     const generateResources=()=> {
         const inCategories = {}
