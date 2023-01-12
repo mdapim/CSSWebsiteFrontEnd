@@ -102,6 +102,7 @@ function FormAdd({
                       className="description"
                       type="text"
                       name="description"
+                      rows="10"
                     />
                   </div>
                   <br />
