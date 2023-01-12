@@ -11,11 +11,16 @@ import {
 } from "mdb-react-ui-kit";
 import Button from "react-bootstrap/Button";
 
-function FormAdd({ staticModal, setStaticModal, toggleShow }) {
+function FormAdd({
+  staticModal,
+  setStaticModal,
+  toggleShow,
+  currentUserDetails,
+}) {
   const [currentForumInput, setCurrentForumInput] = useState({
     title: "",
     description: "",
-    user_id: 3,
+    user_id: currentUserDetails["id"],
   });
   const [handleValidation, setHandleValidation] = useState({
     EMPTY_INPUT: false,
@@ -97,6 +102,7 @@ function FormAdd({ staticModal, setStaticModal, toggleShow }) {
                       className="description"
                       type="text"
                       name="description"
+                      rows="10"
                     />
                   </div>
                   <br />

@@ -12,8 +12,11 @@ import {
   MDBInput,
   MDBIcon,
 } from "mdb-react-ui-kit";
-export function LoginPage({handleSignInChange,signInCredentials}) {
-
+export function LoginPage({
+  handleSignInChange,
+  signInCredentials,
+  setCurrentUserDetails,
+}) {
   const fetchSignIn = async () => {
     const res = await fetch(
       "https://csswebsitebackend-production.up.railway.app/find_user",
@@ -26,7 +29,9 @@ export function LoginPage({handleSignInChange,signInCredentials}) {
       }
     );
     const data = await res.json();
-    console.log(data)
+
+    console.log(data);
+    setCurrentUserDetails(data[0]);
   };
   return (
     <MDBContainer fluid>
@@ -102,8 +107,7 @@ export function LoginPage({handleSignInChange,signInCredentials}) {
                 </MDBBtn>
               </div>
               <div>
-                  Don't have an account?{" "}
-                  <Link to='/sign-up'>Sign up</Link>
+                Don't have an account? <Link to="/sign-up">Sign up</Link>
               </div>
             </MDBCardBody>
           </MDBCard>
@@ -111,4 +115,4 @@ export function LoginPage({handleSignInChange,signInCredentials}) {
       </MDBRow>
     </MDBContainer>
   );
-};
+}

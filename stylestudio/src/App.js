@@ -1,22 +1,24 @@
-
 import { NavigationBar } from "./components/NavigationBar.js";
 import { Route, Routes } from "react-router-dom";
 import { HomePage } from "./pages/HomePage/HomePage.js";
 import { LoginPage } from "./pages/LoginPage/LoginPage.js";
 import { Signup } from "./pages/Signup/Signup.js";
 import { Forums } from "./pages/Forums/Forums.js";
+
 import { Guides } from "./pages/Guides/Guides.js";
 import { Specificity } from './pages/Specificity/Specificity.js';
+
 import { useState } from "react";
 import "bootstrap/dist/css/bootstrap.css";
 import "./App.css";
-
 
 function App() {
   const [signInCredentials, setSignInCredentials] = useState({
     name: "",
     password: "",
   });
+  const [currentUserDetails, setCurrentUserDetails] = useState([]);
+
   const handleSignInChange = (e) => {
     const name = e.target.name;
     const value = e.target.value;
@@ -27,7 +29,7 @@ function App() {
   };
   return (
     <div className="App">
-      <NavigationBar />
+      <NavigationBar currentUserDetails={currentUserDetails} />
       <Routes>
         <Route path="/home" element={<HomePage />} />
         <Route
@@ -36,6 +38,7 @@ function App() {
             <LoginPage
               handleSignInChange={handleSignInChange}
               signInCredentials={signInCredentials}
+              setCurrentUserDetails={setCurrentUserDetails}
             />
           }
         />
@@ -49,10 +52,13 @@ function App() {
           }
         />
 
-        <Route path="/forums" element={<Forums />}></Route>
-        <Route path='/leaderboard' element={<Specificity/>}/>
-        <Route path='/guides' element = {<Guides userType={1}/>}/>
 
+        <Route
+          path="/forums"
+          element={<Forums currentUserDetails={currentUserDetails} />}
+        ></Route>
+        <Route path="/leaderboard" element={<Specificity />} />
+        <Route path='/guides' element = {<Guides userType={1}/>}/>
       </Routes>
     </div>
   );
