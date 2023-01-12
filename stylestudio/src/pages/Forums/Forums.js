@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { ForumBox } from "./Forum_box";
 import "./Forums.css";
 import { ForumNav } from "./Forum_nav.js";
-import ForumComments from "./Forum_comments.js";
 
 export function Forums({ currentUserDetails }) {
   const [forumData, setForumData] = useState([]);
@@ -50,14 +49,12 @@ export function Forums({ currentUserDetails }) {
     );
 
     const data = await res.json();
-    console.log(data);
     setForumData(data);
     const voteList = data.map((el) => {
       return { id: el.id, likes: el.likes, dislikes: el.dislikes };
     });
 
     setVotes(voteList);
-    console.log(forumData);
   };
 
   const fetchComments = async () => {
@@ -71,11 +68,14 @@ export function Forums({ currentUserDetails }) {
   return (
     <div className="forum-container">
       <ForumNav currentUserDetails={currentUserDetails} />
+
       {forumData.map((item, i) => {
         return (
           <ForumBox
             key={item["id"]}
             username={item["username"]}
+            user_id={item["user_id"]}
+            currentUserDetails={currentUserDetails}
             date={item["date_created"]}
             Title={item["title"]}
             description={item["description"]}
@@ -85,8 +85,11 @@ export function Forums({ currentUserDetails }) {
             votes={votes}
             setVotes={setVotes}
             handleVote={handleVote}
-            comments={item["comment"]}
-            allComments={allComments}
+            commentCount={item["comment"]}
+            commentsForIndivPost={allComments.filter(
+              (el) => el.post_id === item["id"]
+            )}
+            fetchComments={fetchComments}
           />
         );
       })}
