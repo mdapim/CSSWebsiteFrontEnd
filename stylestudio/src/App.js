@@ -4,7 +4,10 @@ import { HomePage } from "./pages/HomePage/HomePage.js";
 import { LoginPage } from "./pages/LoginPage/LoginPage.js";
 import { Signup } from "./pages/Signup/Signup.js";
 import { Forums } from "./pages/Forums/Forums.js";
-import { Specificity } from "./pages/Specificity/Specificity.js";
+
+import { Guides } from "./pages/Guides/Guides.js";
+import { Specificity } from './pages/Specificity/Specificity.js';
+
 import { useState } from "react";
 import "bootstrap/dist/css/bootstrap.css";
 import "./App.css";
@@ -49,11 +52,13 @@ function App() {
           }
         />
 
+
         <Route
           path="/forums"
           element={<Forums currentUserDetails={currentUserDetails} />}
         ></Route>
         <Route path="/leaderboard" element={<Specificity />} />
+        <Route path='/guides' element = {<Guides userType={1}/>}/>
       </Routes>
     </div>
   );

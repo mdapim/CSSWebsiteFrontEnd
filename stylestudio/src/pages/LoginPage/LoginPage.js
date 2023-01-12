@@ -29,6 +29,7 @@ export function LoginPage({
       }
     );
     const data = await res.json();
+
     console.log(data);
     setCurrentUserDetails(data[0]);
   };
