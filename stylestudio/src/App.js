@@ -18,7 +18,7 @@ function App() {
     password: "",
   });
   const [currentUserDetails, setCurrentUserDetails] = useState([]);
-
+  
   const handleSignInChange = (e) => {
     const name = e.target.name;
     const value = e.target.value;
@@ -58,7 +58,7 @@ function App() {
           element={<Forums currentUserDetails={currentUserDetails} />}
         ></Route>
         <Route path="/leaderboard" element={<Specificity />} />
-        <Route path='/guides' element = {<Guides userType={1}/>}/>
+        <Route path='/guides' element = {<Guides userType={currentUserDetails.type_id}/>}/>
       </Routes>
     </div>
   );
