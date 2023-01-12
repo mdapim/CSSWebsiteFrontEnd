@@ -15,22 +15,20 @@ export function Guides({userType}) {
         resource_description:"",
         resource_link:"",
         category_name:"",
-        user_type:1
+        user_type:"1"
     })
     const [confirmedResource,setConfirmedResource] = useState(addedResource)
-    const testResources = [[{0:'flexbox',1:'Bootstrap',2:'CSS basics'}],
-    [{resource_id:0,resource_category:0,resource_link:"https://css-tricks.com/snippets/css/a-guide-to-flexbox/",resource_description:"Guide to Flexbox"},
-    {resource_id:1,resource_category:1,resource_link:"https://react-bootstrap.github.io/",resource_description:"Getting started with Bootstrap"}]]
-    
     const [categoriesList,setCategoriesList] = useState([])
+
     const fetchResources = async ()=> {
         const res = await fetch('https://csswebsitebackend-production.up.railway.app/guides_links')
         const responseData = await res.json()
         setResources(responseData)
-        setCategoriesList(responseData[0][0])
-
+        setCategoriesList(responseData[0])
     }
     const sendNewResource = async () => {
+        console.log(JSON.stringify([confirmedResource]))
+        console.log('now sending')
         const res = await fetch('https://csswebsitebackend-production.up.railway.app/guides_links',{
             method:'POST',
             headers: {
@@ -68,18 +66,15 @@ export function Guides({userType}) {
     }
     const generateResources=()=> {
         const inCategories = {}
-        console.log(resources[0])
         Object.keys(resources[0]).forEach(category_id=>{
-            console.log(category_id)
             inCategories[category_id]=[]})
-        console.log(inCategories)
         resources[1].forEach((resource)=> {
             inCategories[resource.resource_category_id].push(resource)})
         const categoryJSX = []
         for (const category_id of Object.keys(inCategories)) {
             categoryJSX.push(
                 <div>
-                <Resource title={resources[0][0][category_id]} links={inCategories[category_id]}/>
+                <Resource title={resources[0][category_id]} links={inCategories[category_id]}/>
                 </div>
             )
         }

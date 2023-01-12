@@ -11,14 +11,10 @@ export function AddResource({handleAddedResource,addedResource,confirmAddedResou
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
     const handleCategoryInput = (e)=> {
+      console.log(newCategory)
       setNewCategory(e.target.value)
     }
-    const handleSetAddedResource=()=> {
-      console.log(newCategory)
-      handleAddedResource(newCategory,'category_name')
-    }
     const categoriesNames = () => {
-      console.log(categoriesList)
       return Object.keys(categoriesList).map(key=>categoriesList[key])
     }
     const handleAddCategory = () => {
@@ -28,7 +24,7 @@ export function AddResource({handleAddedResource,addedResource,confirmAddedResou
       const presets = {resource_description:"",
       resource_link:"",
       category_name:"",
-      user_type:1}
+      user_type:"1"}
       Object.keys(presets).forEach(key=> handleAddedResource(presets[key],key))
     }
     
@@ -73,7 +69,7 @@ export function AddResource({handleAddedResource,addedResource,confirmAddedResou
             {showAddCategory?<Form.Group className="mb-3"
                 controlId="exampleForm.ControlTextarea1">
                   <Form.Label>Add a category</Form.Label>
-                  <Form.Control as='textarea' onChange={e=>handleCategoryInput(e)}></Form.Control>
+                  <Form.Control as='textarea' onChange={e=>handleAddedResource(e.target.value,'category_name')}></Form.Control>
             </Form.Group>:''}
               </Form.Group>
             </Form>
@@ -84,10 +80,8 @@ export function AddResource({handleAddedResource,addedResource,confirmAddedResou
             </Button>
             <Button variant="primary" onClick={()=>{
               handleClose()
-              if (newCategory!=='') {
-                handleSetAddedResource(newCategory,'category_name')
-              }
               confirmAddedResource()
+              handleAddCategory()
               }}>
               Save Changes
             </Button>
