@@ -51,7 +51,7 @@ function App() {
 
         <Route path="/forums" element={<Forums />}></Route>
         <Route path='/leaderboard' element={<Specificity/>}/>
-        <Route path='/guides' element = {<Guides userType={2}/>}/>
+        <Route path='/guides' element = {<Guides userType={1}/>}/>
 
       </Routes>
     </div>

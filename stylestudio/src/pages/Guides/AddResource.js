@@ -4,18 +4,40 @@ import Form from 'react-bootstrap/Form';
 import Modal from 'react-bootstrap/Modal';
 import Dropdown from 'react-bootstrap/Dropdown';
 import DropdownButton from 'react-bootstrap/DropdownButton';
-export function AddResource({handleAddedResource,addedResource,confirmAddedResource, catagoriesList}) {
+export function AddResource({handleAddedResource,addedResource,confirmAddedResource, categoriesList}) {
     const [show, setShow] = useState(false);
+    const [showAddCategory,setShowAddCategory] = useState(false)
+    const [newCategory,setNewCategory] = useState('')
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
-    const catagoryNames = () => {
-      return Object.keys(catagoriesList).map(key=>catagoriesList[key])
+    const handleCategoryInput = (e)=> {
+      setNewCategory(e.target.value)
+    }
+    const handleSetAddedResource=()=> {
+      console.log(newCategory)
+      handleAddedResource(newCategory,'category_name')
+    }
+    const categoriesNames = () => {
+      console.log(categoriesList)
+      return Object.keys(categoriesList).map(key=>categoriesList[key])
+    }
+    const handleAddCategory = () => {
+      setShowAddCategory(!showAddCategory)
+    }
+    const refreshAddResource=()=> {
+      const presets = {resource_description:"",
+      resource_link:"",
+      category_name:"",
+      user_type:1}
+      Object.keys(presets).forEach(key=> handleAddedResource(presets[key],key))
     }
     
   
     return (
       <>
-        <Button variant="primary" onClick={handleShow}>
+        <Button variant="primary" onClick={()=> {
+          handleShow()
+          refreshAddResource()}}>
           Upload a new resource!
         </Button>
         <Modal show={show} onHide={handleClose}>
@@ -30,7 +52,7 @@ export function AddResource({handleAddedResource,addedResource,confirmAddedResou
                   type="email"
                   placeholder="Resource Name"
                   autoFocus
-                  onChange={e=>handleAddedResource(e,'resource_description')}
+                  onChange={e=>handleAddedResource(e.target.value,'resource_description')}
                 />
               </Form.Group>
               <Form.Group
@@ -38,18 +60,21 @@ export function AddResource({handleAddedResource,addedResource,confirmAddedResou
                 controlId="exampleForm.ControlTextarea1"
               >
                 <Form.Label>Resource Link</Form.Label>
-                <Form.Control as="textarea" rows={3} onChange={e=>handleAddedResource(e,'resource_link')}/>
+                <Form.Control as="textarea" rows={3} onChange={e=>handleAddedResource(e.target.value,'resource_link')}/>
               </Form.Group>
               <Form.Group className='mb-3'>
-                    <Form.Label>Catagories</Form.Label>
-                    <DropdownButton title={addedResource['resource_catagory']}>
-            <Dropdown.Item title='2' onClick={e=>handleAddedResource(e,'resource_catagory')} >2</Dropdown.Item>
-            <Dropdown.Item title='3' onClick={e=>handleAddedResource(e,'resource_catagory')}>3</Dropdown.Item>
-            <Dropdown.Item title='4' onClick={e=>handleAddedResource(e,'resource_catagory')}>4</Dropdown.Item>
-            {catagoryNames().map(catagory => {
-              return <Dropdown.Item title={catagory} onClick={e=>handleAddedResource(e,'resource_catagory')}>{catagory}</Dropdown.Item>
+                    <Form.Label>categories</Form.Label>
+                    <DropdownButton title={addedResource['category_name']}>
+            {categoriesNames().map(category => {
+              return <Dropdown.Item title={category} onClick={e=>handleAddedResource(e.target.title,'category_name')}>{category}</Dropdown.Item>
             })}
+            <Dropdown.Item title='Add a category' onClick={handleAddCategory}>Add a category</Dropdown.Item>
         </DropdownButton>
+            {showAddCategory?<Form.Group className="mb-3"
+                controlId="exampleForm.ControlTextarea1">
+                  <Form.Label>Add a category</Form.Label>
+                  <Form.Control as='textarea' onChange={e=>handleCategoryInput(e)}></Form.Control>
+            </Form.Group>:''}
               </Form.Group>
             </Form>
           </Modal.Body>
@@ -59,6 +84,9 @@ export function AddResource({handleAddedResource,addedResource,confirmAddedResou
             </Button>
             <Button variant="primary" onClick={()=>{
               handleClose()
+              if (newCategory!=='') {
+                handleSetAddedResource(newCategory,'category_name')
+              }
               confirmAddedResource()
               }}>
               Save Changes
