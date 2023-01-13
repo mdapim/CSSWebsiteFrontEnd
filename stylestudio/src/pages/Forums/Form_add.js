@@ -27,6 +27,29 @@ function FormAdd({
     SUCCESSFUL_INPUT: false,
   });
 
+  // const generateForums = async () => {
+  //   for (let i = 0; i <= 10; i++) {
+  //     const res = await fetch(
+  //       "https://csswebsitebackend-production.up.railway.app/forum_post",
+  //       {
+  //         method: "POST",
+  //         headers: { "Content-Type": "application/json" },
+  //         body: JSON.stringify([
+  //           {
+  //             title: "We Punched an Asteroid, and the Science Results are In",
+  //             description:
+  //               "OSeptember 26, 2022, NASA completed its DART (Double Asteroid Redirection Test) mission, a groundbreaking effort to study the feasibility of deflecting asteroids that could potentially impact Earth. NASAs DART spacecraft collided with Dimorphos, a small moonlet that orbited a larger Near-Earth Asteroid Didymos, to test kinetic impact. Kinetic impact is a planetary defense technique that involves steering a spacecraft to intentionally collide with an asteroid in hopes of deflecting its trajectory. You can read more about what happened during the mission here.",
+  //             user_id: i,
+  //           },
+  //         ]),
+  //       }
+  //     );
+  //     console.log(await res.json());
+  //   }
+  // };
+
+  // generateForums();
+
   const handleNewFormInput = (e) => {
     const name = e.target.name;
     const value = e.target.value;
@@ -48,7 +71,6 @@ function FormAdd({
     );
 
     const data = await res.json([]);
-    console.log(data[0]["message"]);
     if (data[0]["message"] === "One or more of the input fields are invalid") {
       setHandleValidation((prevState) => ({
         ...prevState,

@@ -4,7 +4,7 @@
   border-top: solid 1px black;
   padding: 10px;
   height: 300px;
-  min-width: 1000px;
+  min-width: 1150px;
   min-height: 250px;
   overflow: hidden;
 }
@@ -22,8 +22,8 @@
 
 .forum-container {
   padding: 50px;
-  margin-left: 5%;
-  margin-right: 5%;
+  margin-left: 10%;
+  margin-right: 15%;
 }
 .forum-box-container {
   padding: 1%;
@@ -81,4 +81,17 @@
 .votebutton {
   margin-left: 1rem;
   height: 2rem;
+}
+
+.title-description {
+  cursor: pointer;
+}
+
+div.modal-content {
+  height: auto;
+}
+
+.comments-section {
+  max-height: 800px;
+  overflow-y: scroll;
 }

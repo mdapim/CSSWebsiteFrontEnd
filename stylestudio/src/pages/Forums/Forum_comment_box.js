@@ -33,7 +33,10 @@ export default function Comments({
       show={staticModal}
       setShow={setStaticModal}
     >
-      <MDBContainer className="mt-5" style={{ maxWidth: "1000px" }}>
+      <MDBContainer
+        className="mt-5"
+        style={{ maxWidth: "1000px", minWidth: "1000px" }}
+      >
         <MDBRow className="justify-content-center">
           <MDBCol md="8" lg="6">
             <MDBCard
@@ -48,7 +51,6 @@ export default function Comments({
                   name="description"
                 />
                 <Button onClick={addComments}>Add new comments...</Button>
-                {/* <button onClick={add_comments}>rerender</button> */}
 
                 {commentsForIndivPost.length > 0 ? (
                   commentsForIndivPost.map((e) => {

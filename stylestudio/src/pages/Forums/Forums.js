@@ -7,7 +7,7 @@ export function Forums({ currentUserDetails }) {
   const [forumData, setForumData] = useState([]);
   const [allComments, setAllComments] = useState([]);
   const [votes, setVotes] = useState([]);
-  const [searchedString, setSearchedstring] = useState("");
+  const [searchedString, setSearchedString] = useState("");
 
   //Managing votes & re-rendering
   const manageVotes = (vote, id) => {
@@ -73,7 +73,7 @@ export function Forums({ currentUserDetails }) {
   const filterDataSearch = (e) => {
     const searchString = e.target.value;
     console.log(searchString);
-    setSearchedstring(searchString);
+    setSearchedString(searchString);
     const searchedStringLowerCase = searchedString.toLowerCase();
     let filtering = forumData.filter((el) => {
       return el.title.toLowerCase().includes(searchedStringLowerCase);

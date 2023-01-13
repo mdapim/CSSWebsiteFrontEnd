@@ -38,7 +38,6 @@ export function ForumNav({
           type="text"
           eventKey="link-2"
         ></input>
-        <Button className="ok-button">OK</Button>
       </Nav.Item>
       <Nav.Item></Nav.Item>
       <FormAdd
