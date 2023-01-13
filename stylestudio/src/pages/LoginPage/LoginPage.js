@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link,useNavigate } from "react-router-dom";
 import Button from "react-bootstrap/Button";
 
 import {
@@ -16,7 +16,13 @@ export function LoginPage({
   handleSignInChange,
   signInCredentials,
   setCurrentUserDetails,
+  handleLogIn
 }) {
+  const navigate = useNavigate()
+  const routeChange=()=> {
+    navigate('/home')
+  }
+
   const fetchSignIn = async () => {
     const res = await fetch(
       "https://csswebsitebackend-production.up.railway.app/find_user",
@@ -32,6 +38,7 @@ export function LoginPage({
 
     console.log(data);
     setCurrentUserDetails(data[0]);
+    handleLogIn()
   };
   return (
     <MDBContainer fluid>
@@ -72,7 +79,11 @@ export function LoginPage({
                 </a>
               </p>
               <Button
-                onClick={() => fetchSignIn()}
+                onClick={() => {
+                  fetchSignIn()
+                  routeChange()
+
+                }}
                 outline
                 className="mx-2 px-5"
                 color="black"
@@ -86,6 +97,7 @@ export function LoginPage({
                   color="none"
                   className="m-3"
                   style={{ color: "white" }}
+                  
                 >
                   <MDBIcon fab icon="facebook-f" size="lg" />
                 </MDBBtn>
