@@ -1,8 +1,9 @@
-import TagCloud from "TagCloud";
 import React, { useEffect } from "react";
 import "./Sphere.css";
+const TagCloud = require("TagCloud");
 
 export function HomePage() {
+  console.log(TagCloud);
   useEffect(() => {
     return () => {
       const container = ".tagcloud";
