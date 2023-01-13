@@ -36,6 +36,19 @@ export default function RecentComments({
             <p className="fw-light mb-4 pb-2">
               Latest Comments section by users
             </p>
+            <input
+              onChange={handleNewComment}
+              style={{
+                marginBottom: "15px",
+                width: "90%",
+                height: "50px",
+                borderRadius: "8px",
+                border: "solid 1px grey",
+              }}
+              placeholder="New comment..."
+              name="description"
+            />
+            <Button onClick={addComments}>OK</Button>
             <div
               style={{
                 // maxWidth: "800px",
@@ -81,7 +94,7 @@ export default function RecentComments({
                 );
               })}
             </div>
-            <input
+            {/* <input
               onChange={handleNewComment}
               style={{
                 marginTop: "15px",
@@ -92,8 +105,8 @@ export default function RecentComments({
               }}
               placeholder="New comment..."
               name="description"
-            />
-            <Button onClick={addComments}>OK</Button>
+            /> */}
+            {/* <Button onClick={addComments}>OK</Button> */}
           </MDBCol>
         </MDBRow>
       </MDBContainer>
