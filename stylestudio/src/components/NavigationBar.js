@@ -1,7 +1,8 @@
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
 import { Link } from "react-router-dom";
-export function NavigationBar({ currentUserDetails }) {
+import Button from 'react-bootstrap/Button';
+export function NavigationBar({ currentUserDetails,handleLogOut,loggedIn }) {
   return (
     <div>
       <Navbar bg="dark" variant="dark">
@@ -18,7 +19,8 @@ export function NavigationBar({ currentUserDetails }) {
           </Nav.Link>
           <Nav.Link ><Link to="/guides">Guides</Link></Nav.Link>
           <Nav.Link>
-            <Link to="/login">Login</Link>
+
+            {loggedIn?<Button onClick={handleLogOut}>Log out</Button>:<Link to="/login">Login</Link>}
           </Nav.Link>
         </Nav>
         <p style={{ color: "white", marginRight: "30px" }}>
