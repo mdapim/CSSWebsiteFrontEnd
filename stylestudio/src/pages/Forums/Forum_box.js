@@ -21,6 +21,7 @@ export function ForumBox({
   commentCount,
   fetchComments,
   currentUserDetails,
+  fetchForumData,
 }) {
   const [staticModal, setStaticModal] = useState(false);
   const toggleShow = () => setStaticModal(!staticModal);
@@ -60,10 +61,6 @@ export function ForumBox({
   const handleDescriptionLength = (des) => {
     let description = des.length > 300 ? des.substring(0, 300) + "..." : des;
     return description;
-  };
-
-  const handleEditPost = () => {
-    // currentUserDetails["id"] ===
   };
 
   return (
@@ -153,6 +150,9 @@ export function ForumBox({
           addComments={addComments}
           handleVote={handleVote}
           id={id}
+          user_id={currentUserDetails["id"]}
+          fetchComments={fetchComments}
+          fetchForumData={fetchForumData}
         />
       </div>
     </div>

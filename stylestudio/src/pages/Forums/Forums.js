@@ -115,6 +115,7 @@ export function Forums({ currentUserDetails }) {
               (el) => el.post_id === item["id"]
             )}
             fetchComments={fetchComments}
+            fetchForumData={fetchForumData}
           />
         );
       })}
