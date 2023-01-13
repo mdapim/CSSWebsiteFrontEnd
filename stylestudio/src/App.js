@@ -32,7 +32,6 @@ function App() {
     setLoggedIn(true)
   }
   const handleLogOut=()=> {
-    console.log('before ', currentUserDetails)
     setSignInCredentials({
       name: "",
       password: "",
