@@ -4,9 +4,9 @@ import { HomePage } from "./pages/HomePage/HomePage.js";
 import { LoginPage } from "./pages/LoginPage/LoginPage.js";
 import { Signup } from "./pages/Signup/Signup.js";
 import { Forums } from "./pages/Forums/Forums.js";
-
+import ForumFullPost from "./pages/Forums/Forum_full_post.js";
 import { Guides } from "./pages/Guides/Guides.js";
-import { Specificity } from './pages/Specificity/Specificity.js';
+import { Specificity } from "./pages/Specificity/Specificity.js";
 
 import { useState } from "react";
 import "bootstrap/dist/css/bootstrap.css";
@@ -18,7 +18,7 @@ function App() {
     password: "",
   });
   const [currentUserDetails, setCurrentUserDetails] = useState([]);
-  
+
   const handleSignInChange = (e) => {
     const name = e.target.name;
     const value = e.target.value;
@@ -52,13 +52,15 @@ function App() {
           }
         />
 
-
         <Route
-          path="/forums"
+          path="/forums/*"
           element={<Forums currentUserDetails={currentUserDetails} />}
         ></Route>
         <Route path="/leaderboard" element={<Specificity />} />
-        <Route path='/guides' element = {<Guides userType={currentUserDetails.type_id}/>}/>
+        <Route
+          path="/guides"
+          element={<Guides userType={currentUserDetails.type_id} />}
+        />
       </Routes>
     </div>
   );

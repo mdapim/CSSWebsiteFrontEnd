@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
-import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import { faArrowUp, faArrowDown } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import ForumFullPost from "./Forum_full_post";
 
 import "./Forums.css";
 import Comments from "./Forum_comment_box.js";
@@ -24,6 +24,9 @@ export function ForumBox({
 }) {
   const [staticModal, setStaticModal] = useState(false);
   const toggleShow = () => setStaticModal(!staticModal);
+  const [show, setShow] = useState(false);
+  const [editPostAvailable, setEditPostAvailable] = useState(false);
+
   const [commentsCopy, setCommentsCopy] = useState([]);
   const [newComment, setNewComment] = useState({
     description: "",
@@ -37,6 +40,7 @@ export function ForumBox({
     setNewComment((prev) => {
       return { ...prev, [name]: value };
     });
+    console.log(newComment);
   };
 
   const addComments = async () => {
@@ -51,6 +55,15 @@ export function ForumBox({
     const data = await res.json();
     const copyComment = { description: commentsForIndivPost };
     setCommentsCopy([...commentsCopy, copyComment]);
+  };
+
+  const handleDescriptionLength = (des) => {
+    let description = des.length > 300 ? des.substring(0, 300) + "..." : des;
+    return description;
+  };
+
+  const handleEditPost = () => {
+    // currentUserDetails["id"] ===
   };
 
   return (
@@ -84,15 +97,28 @@ export function ForumBox({
               </button>
             </div>
 
-            <Card.Title style={{ marginBottom: "2rem" }}>{Title}</Card.Title>
-            <Card.Text style={{ marginBottom: "2rem" }}>
-              {description}
-            </Card.Text>
+            <div onClick={setShow} className="title-description">
+              <Card.Title style={{ marginBottom: "2rem", color: "black" }}>
+                {Title}
+              </Card.Title>
+              <Card.Text
+                style={{
+                  marginBottom: "2rem",
+                  color: "black",
+                }}
+              >
+                {handleDescriptionLength(description)}
+              </Card.Text>
+            </div>
 
             <div className="user-interaction">
-              <button onClick={toggleShow}>
-                <p>Comments{commentCount}</p>
-              </button>
+              <p
+                style={{ cursor: "pointer", textDecoration: "underline" }}
+                onClick={toggleShow}
+              >
+                Comments{commentCount}
+              </p>
+
               <p>|</p>
               <p>Upvotes:{upvotes}</p>
               <p>|</p>
@@ -110,9 +136,24 @@ export function ForumBox({
               fetchComments={fetchComments}
               commentsCopy={commentsCopy}
             />
-            <Button variant="primary">View Post</Button>
           </Card.Body>
         </div>
+        <ForumFullPost
+          description={description}
+          Title={Title}
+          show={show}
+          setShow={setShow}
+          username={username}
+          date={date}
+          downvotes={downvotes}
+          upvotes={upvotes}
+          commentCount={commentCount}
+          commentsForIndivPost={commentsForIndivPost}
+          handleNewComment={handleNewComment}
+          addComments={addComments}
+          handleVote={handleVote}
+          id={id}
+        />
       </div>
     </div>
   );
