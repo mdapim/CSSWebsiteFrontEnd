@@ -1,5 +1,10 @@
+import TextShpere from "./components/Sphere.js";
+import React from "react";
+
 export function HomePage() {
-    return (
-        <h2>Welcome</h2>
-    )
+  return (
+    <div>
+      <TextShpere />
+    </div>
+  );
 }
