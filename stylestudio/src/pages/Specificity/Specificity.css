@@ -1,0 +1,29 @@
+
+
+.main {
+    display:flex;
+    width:100%;
+    justify-content: center;
+}
+.go-button {
+    height:50px;
+    align-self:center;
+    margin:20px;
+}
+.main-right {
+    margin-top:35px;
+}
+.leaderboard {
+    display:flex;
+    flex-direction:column;
+    margin-top:35px;
+}
+.scoring {
+    margin-top:35px;
+}
+.rank-card {
+    border:1px solid grey;
+    background-color:beige;
+    text-align:left;
+    padding-right:10px;
+}

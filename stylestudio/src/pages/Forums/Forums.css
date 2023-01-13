@@ -1,0 +1,97 @@
+.card-container {
+  display: flex;
+  flex-direction: column;
+  border-top: solid 1px black;
+  padding: 10px;
+  height: 300px;
+  min-width: 1150px;
+  min-height: 250px;
+  overflow: hidden;
+}
+
+.card-title,
+.h5 {
+  display: flex;
+}
+
+.card-header,
+.card-title,
+.card-body {
+  text-align: left;
+}
+
+.forum-container {
+  padding: 50px;
+  margin-left: 10%;
+  margin-right: 15%;
+}
+.forum-box-container {
+  padding: 1%;
+  display: flex;
+  flex-direction: row;
+}
+
+.thumb-up,
+.thumb-down {
+  height: 1rem;
+  margin: 0.5px;
+  padding: 0.5px;
+  width: 1rem;
+}
+
+.card-content {
+  display: flex;
+  flex-direction: row;
+}
+
+.card-text {
+  margin-right: 20%;
+}
+
+.votes {
+  margin-left: 5%;
+}
+
+.user-interaction {
+  height: 20%;
+  display: flex;
+  flex-direction: row;
+}
+
+.search {
+  border: solid 1px;
+  border-radius: 10px;
+  width: 50%;
+  border-color: rgb(27, 94, 181);
+  margin-top: 5px;
+}
+
+.ok-button,
+.btn,
+.btn-primary {
+  border-radius: 100%;
+  margin-left: 10px;
+  height: min-content;
+}
+
+.header {
+  display: flex;
+}
+
+.votebutton {
+  margin-left: 1rem;
+  height: 2rem;
+}
+
+.title-description {
+  cursor: pointer;
+}
+
+div.modal-content {
+  height: auto;
+}
+
+.comments-section {
+  max-height: 800px;
+  overflow-y: scroll;
+}
