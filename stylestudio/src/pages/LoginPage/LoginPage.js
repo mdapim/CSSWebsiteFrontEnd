@@ -3,6 +3,7 @@ import { Link,useNavigate } from "react-router-dom";
 import Button from "react-bootstrap/Button";
 import Alert from 'react-bootstrap/Alert'
 import './LoginPage.css'
+import '../Styling.css'
 import {
   MDBBtn,
   MDBContainer,
@@ -102,7 +103,6 @@ export function LoginPage({
                 Login
               </Button>}
               {errorLogin? <Alert className={'mt-1 shake-horizontal'}>Your login credentials did not work. Please try again</Alert>:''}
-
               <div className="d-flex flex-row mt-3 mb-5">
                 <MDBBtn
                   tag="a"
