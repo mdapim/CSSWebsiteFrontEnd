@@ -4,8 +4,9 @@ import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import RecentComments from "./Forum_full_post_comments";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCheck } from "@fortawesome/free-solid-svg-icons";
+import { faCheck, faTrash } from "@fortawesome/free-solid-svg-icons";
 import ForumVoting from "./Forum_voting.js";
+import DeletePopUp from "./Forum_delete_popup.js";
 
 function ForumFullPost({
   show,
@@ -28,6 +29,7 @@ function ForumFullPost({
   const [editPost, setEditPost] = useState(false);
   const [displayEditButton, setDisplayEditButton] = useState(false);
   const [updatedPost, setUpdatedPost] = useState({ description });
+  const [deletePostPopUp, setDeletePostPopUp] = useState(false);
 
   useEffect(() => {}, [updatedPost]);
   useEffect(() => {
@@ -80,6 +82,25 @@ function ForumFullPost({
     }
   };
 
+  const fetchDeletePost = async () => {
+    const res = await fetch(
+      "https://csswebsitebackend-production.up.railway.app/forum_post",
+      {
+        method: "DELETE",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify([
+          { post_id: post_id, user_id: user_id, user_type: 2 },
+        ]),
+      }
+    );
+    const data = await res.json();
+    console.log(data);
+
+    if (data[0]["?column?"] === "post has been deleted successfully") {
+      fetchForumData();
+    }
+  };
+
   return (
     <>
       <Modal
@@ -100,6 +121,7 @@ function ForumFullPost({
           <br />
           {date}
         </div>
+
         <Modal.Body>
           <div className="description">
             {!editPost ? (
@@ -114,12 +136,22 @@ function ForumFullPost({
             )}
           </div>
           {displayEditButton && (
-            <p
-              onClick={editPostToggle}
-              style={{ fontSize: "smaller", cursor: "pointer" }}
-            >
-              Edit post
-            </p>
+            <div>
+              <p
+                onClick={editPostToggle}
+                style={{ fontSize: "smaller", cursor: "pointer" }}
+              >
+                Edit post
+              </p>
+              <FontAwesomeIcon
+                onClick={() => {
+                  fetchDeletePost();
+                }}
+                className="bin"
+                icon={faTrash}
+                style={{ cursor: "pointer" }}
+              />
+            </div>
           )}
           {editPost && (
             <FontAwesomeIcon
