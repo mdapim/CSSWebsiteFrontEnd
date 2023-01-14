@@ -1,6 +1,10 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import Spinner from "react-bootstrap/Spinner";
 import Button from "react-bootstrap/Button";
+import Alert from 'react-bootstrap/Alert'
+import './Signup.css'
+import '../Styling.css'
 import {
   MDBContainer,
   MDBRow,
@@ -8,13 +12,18 @@ import {
   MDBCard,
   MDBCardBody,
   MDBInput,
+  MDBSpinner
 } from "mdb-react-ui-kit";
 export function Signup({handleSignInChange, signInCredentials}) {
+  const navigate = useNavigate()
   const [successfulSignUp, setSuccessfulSignUp] = useState(false);
   const [invalidInput, setInvalidInput] = useState(false);
-
+  const [loading,setLoading] = useState(false)
+  const routeChange=()=> {
+    navigate('/login')
+  }
   const fetchSignUp = async () => {
-    console.log([signInCredentials])
+    setLoading(true)
     const res = await fetch(
       "https://csswebsitebackend-production.up.railway.app/create_user",
       {
@@ -26,6 +35,15 @@ export function Signup({handleSignInChange, signInCredentials}) {
       }
     );
     const data = await res.json();
+    setLoading(false)
+    if (data[0].status===200) {
+      setInvalidInput(false)
+      setSuccessfulSignUp(true)
+      routeChange()
+    } else {
+      setInvalidInput(true)
+    }
+    console.log(data)
   };
   return (
     <MDBContainer
@@ -72,20 +90,23 @@ export function Signup({handleSignInChange, signInCredentials}) {
                 name="password"
                 onChange={handleSignInChange}
               />
-              <Button onClick={fetchSignUp} size="lg">
+              <div className='options'>
+              <div className='center'>
+              {!loading &&<Button onClick={fetchSignUp} size="lg">
                 sign up
-              </Button>
-              {successfulSignUp && (
-                <div>
-                  <h3>Success.. Loading....</h3>
-                  <Spinner animation="border" role="status">
-                    <span className="visually-hidden">Loading...</span>
-                  </Spinner>
-                </div>
+              </Button> }
+              </div>
+              <div className='center'>
+              {loading && (
+                  <MDBSpinner role="status"></MDBSpinner>
               )}
+              </div>
+              
               {invalidInput && (
-                <h3>Please sign up with an account name and a password</h3>
+                <Alert className='m-1 shake-horizontal'>That username is already taken</Alert>
               )}
+              
+              </div>
  
             </MDBCardBody>
           </MDBCard>
