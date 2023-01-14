@@ -1,12 +1,24 @@
+.forum_nav {
+  min-width: 600px;
+  border: none;
+}
+
 .card-container {
   display: flex;
   flex-direction: column;
-  border-top: solid 1px black;
   padding: 10px;
-  height: 300px;
-  min-width: 1150px;
+  height: 270px;
+  min-width: 1040px;
   min-height: 250px;
   overflow: hidden;
+  justify-content: center;
+  border-top: 1px solid rgb(0, 0, 0);
+  /* background-color: rgb(148, 146, 146); */
+}
+
+.card-container:hover {
+  filter: drop-shadow(0 0 0.75rem rgb(0, 0, 0));
+  transition: 0.5s ease-out;
 }
 
 .card-title,
@@ -21,14 +33,17 @@
 }
 
 .forum-container {
-  padding: 50px;
   margin-left: 10%;
   margin-right: 15%;
+  background-color: rgb(215, 215, 215);
+  border-radius: 10px;
+  filter: drop-shadow(0 0 0.75rem rgb(149, 148, 148));
 }
 .forum-box-container {
   padding: 1%;
   display: flex;
   flex-direction: row;
+  justify-content: center;
 }
 
 .thumb-up,
@@ -105,4 +120,9 @@ div.modal-content {
   border: none;
   width: 100%;
   box-sizing: border-box;
+}
+
+.test {
+  max-height: 1200px;
+  overflow-y: scroll;
 }

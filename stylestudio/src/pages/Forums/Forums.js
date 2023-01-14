@@ -89,37 +89,38 @@ export function Forums({ currentUserDetails }) {
 
   return (
     <div className="forum-container">
-      <ForumNav
+      {/* <ForumNav
         currentUserDetails={currentUserDetails}
         filterDataSearch={filterDataSearch}
         fetchForumData={fetchForumData}
-      />
-
-      {forumData.map((item, i) => {
-        return (
-          <ForumBox
-            key={item["id"]}
-            username={item["username"]}
-            user_id={item["user_id"]}
-            currentUserDetails={currentUserDetails}
-            date={item["date_created"]}
-            Title={item["title"]}
-            description={item["description"]}
-            upvotes={votes[i]["likes"]}
-            downvotes={votes[i]["dislikes"]}
-            post_id={item["id"]}
-            votes={votes}
-            setVotes={setVotes}
-            handleVote={handleVote}
-            commentCount={item["comment"]}
-            commentsForIndivPost={allComments.filter(
-              (el) => el.post_id === item["id"]
-            )}
-            fetchComments={fetchComments}
-            fetchForumData={fetchForumData}
-          />
-        );
-      })}
+      /> */}
+      <div className="test">
+        {forumData.map((item, i) => {
+          return (
+            <ForumBox
+              key={item["id"]}
+              username={item["username"]}
+              user_id={item["user_id"]}
+              currentUserDetails={currentUserDetails}
+              date={item["date_created"]}
+              Title={item["title"]}
+              description={item["description"]}
+              upvotes={votes[i]["likes"]}
+              downvotes={votes[i]["dislikes"]}
+              post_id={item["id"]}
+              votes={votes}
+              setVotes={setVotes}
+              handleVote={handleVote}
+              commentCount={item["comment"]}
+              commentsForIndivPost={allComments.filter(
+                (el) => el.post_id === item["id"]
+              )}
+              fetchComments={fetchComments}
+              fetchForumData={fetchForumData}
+            />
+          );
+        })}
+      </div>
     </div>
   );
 }

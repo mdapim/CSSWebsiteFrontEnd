@@ -15,22 +15,12 @@ export function ForumNav({
 
   const toggleShow = () => setStaticModal(!staticModal);
   return (
-    <Nav fill variant="tabs" defaultActiveKey="">
+    <Nav className="forum_nav" fill variant="tabs" defaultActiveKey="">
       <Nav.Item>
-        <Button
-          onClick={fetchForumData}
-          style={{ color: "black", border: "none", backgroundColor: "white" }}
-        >
-          Posts
-        </Button>
+        <Button onClick={fetchForumData}>Posts</Button>
       </Nav.Item>
       <Nav.Item>
-        <Button
-          onClick={() => toggleShow()}
-          style={{ color: "black", border: "none", backgroundColor: "white" }}
-        >
-          Add Forum Post
-        </Button>
+        <Button onClick={() => toggleShow()}>Add Forum Post</Button>
       </Nav.Item>
       <Nav.Item>
         <input
@@ -38,6 +28,7 @@ export function ForumNav({
           className="search"
           type="text"
           eventKey="link-2"
+          placeholder="Search posts.."
         ></input>
       </Nav.Item>
       <Nav.Item></Nav.Item>

@@ -4,9 +4,11 @@ import { HomePage } from "./pages/HomePage/HomePage.js";
 import { LoginPage } from "./pages/LoginPage/LoginPage.js";
 import { Signup } from "./pages/Signup/Signup.js";
 import { Forums } from "./pages/Forums/Forums.js";
-import ForumFullPost from "./pages/Forums/Forum_full_post.js";
 import { Guides } from "./pages/Guides/Guides.js";
 import { Specificity } from "./pages/Specificity/Specificity.js";
+import Particles from "react-tsparticles";
+import { loadFull } from "tsparticles";
+import particlesConfig from "./components/config/particles-config";
 
 import { useState, useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.css";
@@ -41,6 +43,11 @@ function App() {
     setLoggedIn(false);
   };
   useEffect(() => {}, [loggedIn]);
+
+  const particlesInit = async (main) => {
+    console.log(main);
+    await loadFull(main);
+  };
   return (
     <div className="App">
       <NavigationBar
@@ -48,6 +55,11 @@ function App() {
         loggedIn={loggedIn}
         handleLogOut={handleLogOut}
       />
+      <Particles
+        id="tsparticles"
+        init={particlesInit}
+        options={particlesConfig}
+      ></Particles>
       <Routes>
         <Route path="/home" element={<HomePage />} />
         <Route
