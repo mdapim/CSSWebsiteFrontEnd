@@ -46,6 +46,11 @@ export function LoginPage({ setCurrentUserDetails, handleLogIn }) {
         body: JSON.stringify([signInCredentials]),
       }
     );
+    const data = await res.json();
+
+    console.log(data);
+    setCurrentUserDetails(data[0]);
+    handleLogIn();
     if (res.status === 200) {
       const data = await res.json();
       setCurrentUserDetails(data[0]);

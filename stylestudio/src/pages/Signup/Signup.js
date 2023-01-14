@@ -14,8 +14,7 @@ import {
   MDBInput,
   MDBSpinner,
 } from "mdb-react-ui-kit";
-export function Signup() {
-  const navigate = useNavigate();
+export function Signup({ handleSignInChange, signInCredentials }) {
   const [successfulSignUp, setSuccessfulSignUp] = useState(false);
   const [signInCredentials, setSignInCredentials] = useState({
     name: "",
@@ -29,12 +28,12 @@ export function Signup() {
     setSignInCredentials((prev) => {
       return { ...prev, [name]: value };
     });
-  }
+  };
   const routeChange = () => {
     navigate("/login");
   };
   const fetchSignUp = async () => {
-    setLoading(true);
+    console.log([signInCredentials]);
     const res = await fetch(
       "https://csswebsitebackend-production.up.railway.app/create_user",
       {
