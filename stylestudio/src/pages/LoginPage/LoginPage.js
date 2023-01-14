@@ -18,7 +18,7 @@ import {
 export function LoginPage({ setCurrentUserDetails, handleLogIn }) {
   const navigate = useNavigate();
   const routeChange = () => {
-    navigate("/");
+    navigate("/home");
   };
   const [signInCredentials, setSignInCredentials] = useState({
     name: "",
@@ -121,6 +121,7 @@ export function LoginPage({ setCurrentUserDetails, handleLogIn }) {
               ) : (
                 ""
               )}
+
               <div className="d-flex flex-row mt-3 mb-5">
                 <MDBBtn
                   tag="a"
