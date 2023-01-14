@@ -94,6 +94,7 @@ export function Forums({ currentUserDetails }) {
         filterDataSearch={filterDataSearch}
         fetchForumData={fetchForumData}
       />
+
       {forumData.map((item, i) => {
         return (
           <ForumBox
