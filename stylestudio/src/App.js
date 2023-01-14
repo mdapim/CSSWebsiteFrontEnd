@@ -8,7 +8,7 @@ import ForumFullPost from "./pages/Forums/Forum_full_post.js";
 import { Guides } from "./pages/Guides/Guides.js";
 import { Specificity } from "./pages/Specificity/Specificity.js";
 
-import { useState,useEffect } from "react";
+import { useState, useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.css";
 import "./App.css";
 
@@ -18,32 +18,36 @@ function App() {
     password: "",
   });
   const [currentUserDetails, setCurrentUserDetails] = useState([]);
-  const [loggedIn,setLoggedIn] = useState(false)
+  console.log(currentUserDetails);
+  const [loggedIn, setLoggedIn] = useState(false);
   const handleSignInChange = (e) => {
     const name = e.target.name;
     const value = e.target.value;
     setSignInCredentials((prev) => {
       return { ...prev, [name]: value };
     });
-    
+
     console.log(signInCredentials);
   };
-  const handleLogIn = ()=> {
-    setLoggedIn(true)
-  }
-  const handleLogOut=()=> {
+  const handleLogIn = () => {
+    setLoggedIn(true);
+  };
+  const handleLogOut = () => {
     setSignInCredentials({
       name: "",
       password: "",
-    })
-    setCurrentUserDetails([])
-    setLoggedIn(false)
-  }
-  useEffect(()=> {
-  },[loggedIn])
+    });
+    setCurrentUserDetails([]);
+    setLoggedIn(false);
+  };
+  useEffect(() => {}, [loggedIn]);
   return (
     <div className="App">
-      <NavigationBar currentUserDetails={currentUserDetails} loggedIn={loggedIn} handleLogOut={handleLogOut} />
+      <NavigationBar
+        currentUserDetails={currentUserDetails}
+        loggedIn={loggedIn}
+        handleLogOut={handleLogOut}
+      />
       <Routes>
         <Route path="/home" element={<HomePage />} />
         <Route

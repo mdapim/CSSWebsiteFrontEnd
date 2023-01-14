@@ -1,6 +1,6 @@
+import "./Forums.css";
 import React, { useState, useEffect } from "react";
 import { ForumBox } from "./Forum_box";
-import "./Forums.css";
 import { ForumNav } from "./Forum_nav.js";
 
 export function Forums({ currentUserDetails }) {
@@ -106,7 +106,7 @@ export function Forums({ currentUserDetails }) {
             description={item["description"]}
             upvotes={votes[i]["likes"]}
             downvotes={votes[i]["dislikes"]}
-            id={item["id"]}
+            post_id={item["id"]}
             votes={votes}
             setVotes={setVotes}
             handleVote={handleVote}
@@ -115,6 +115,7 @@ export function Forums({ currentUserDetails }) {
               (el) => el.post_id === item["id"]
             )}
             fetchComments={fetchComments}
+            fetchForumData={fetchForumData}
           />
         );
       })}

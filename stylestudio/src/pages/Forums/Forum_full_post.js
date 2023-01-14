@@ -1,11 +1,11 @@
-import React, { useState } from "react";
+import "./Forums.css";
+import React, { useState, useEffect } from "react";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import RecentComments from "./Forum_full_post_comments";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowUp, faArrowDown } from "@fortawesome/free-solid-svg-icons";
-
-import "./Forums.css";
+import { faCheck } from "@fortawesome/free-solid-svg-icons";
+import ForumVoting from "./Forum_voting.js";
 
 function ForumFullPost({
   show,
@@ -14,15 +14,72 @@ function ForumFullPost({
   description,
   username,
   date,
-  commentCount,
   upvotes,
   downvotes,
   commentsForIndivPost,
   handleNewComment,
   addComments,
   handleVote,
-  id,
+  post_id,
+  user_id,
+  fetchForumData,
+  currentUserDetails,
 }) {
+  const [editPost, setEditPost] = useState(false);
+  const [displayEditButton, setDisplayEditButton] = useState(false);
+  const [updatedPost, setUpdatedPost] = useState({ description });
+
+  useEffect(() => {}, [updatedPost]);
+  useEffect(() => {
+    handleDisplayEditButton();
+  }, []);
+
+  const editPostToggle = () => {
+    setEditPost(!editPost);
+    console.log(editPost);
+  };
+
+  const handleDisplayEditButton = () => {
+    user_id === currentUserDetails["id"]
+      ? setDisplayEditButton(true)
+      : setDisplayEditButton(false);
+  };
+
+  const handleEditPost = (e) => {
+    const value = e.target.value;
+    setUpdatedPost(value);
+  };
+
+  const fetchUpdatePost = async () => {
+    const res = await fetch(
+      "https://csswebsitebackend-production.up.railway.app/forum_post",
+      {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify([
+          {
+            title: Title,
+            description: updatedPost,
+            post_id: post_id,
+            user_id: user_id,
+          },
+        ]),
+      }
+    );
+    const data = await res.json();
+    console.log(data);
+
+    if (
+      data[0]["message"] ===
+      "item could not be found in database, or user has no access to item"
+    ) {
+      console.log("not correct user");
+    } else {
+      setEditPost(false);
+      fetchForumData();
+    }
+  };
+
   return (
     <>
       <Modal
@@ -36,25 +93,7 @@ function ForumFullPost({
           <Modal.Title id="example-custom-modal-styling-title">
             {Title}
           </Modal.Title>
-          <button
-            onClick={() => {
-              handleVote("upvote", id);
-            }}
-            name="upvote"
-            className="votebutton"
-          >
-            <FontAwesomeIcon className="thumb-up" icon={faArrowUp} />
-          </button>
-
-          <button
-            onClick={() => {
-              handleVote("downvote", id);
-            }}
-            name="downvote"
-            className="votebutton"
-          >
-            <FontAwesomeIcon className="thumb-down" icon={faArrowDown} />
-          </button>
+          <ForumVoting handleVote={handleVote} post_id={post_id} />
         </Modal.Header>
         <div style={{ marginLeft: "18px" }} className="user-date">
           {username}
@@ -62,11 +101,43 @@ function ForumFullPost({
           {date}
         </div>
         <Modal.Body>
-          <p>{description}</p>
-          <hr />
-          <p>UPVOTES:{upvotes}</p>
+          <div className="description">
+            {!editPost ? (
+              <p className="description-text">{description}</p>
+            ) : (
+              <textarea
+                style={{ border: "solid 1px black" }}
+                className="description-text"
+                value={updatedPost["description"]}
+                onChange={handleEditPost}
+              />
+            )}
+          </div>
+          {displayEditButton && (
+            <p
+              onClick={editPostToggle}
+              style={{ fontSize: "smaller", cursor: "pointer" }}
+            >
+              Edit post
+            </p>
+          )}
+          {editPost && (
+            <FontAwesomeIcon
+              onClick={() => {
+                fetchUpdatePost();
+              }}
+              className="check"
+              icon={faCheck}
+              style={{ cursor: "pointer" }}
+            />
+          )}
 
-          <p>DOWNVOTES:{downvotes}</p>
+          <hr />
+          <div className="votes">
+            <p>UPVOTES:{upvotes}</p>
+
+            <p>DOWNVOTES:{downvotes}</p>
+          </div>
           <RecentComments
             handleNewComment={handleNewComment}
             commentsForIndivPost={commentsForIndivPost}
