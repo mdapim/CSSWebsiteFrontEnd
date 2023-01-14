@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import { Link,useNavigate } from "react-router-dom";
 import Button from "react-bootstrap/Button";
-import Alert from 'react-bootstrap/Alert'
-import './LoginPage.css'
+
 import {
   MDBBtn,
   MDBContainer,
@@ -12,7 +11,6 @@ import {
   MDBCardBody,
   MDBInput,
   MDBIcon,
-  MDBSpinner
 } from "mdb-react-ui-kit";
 export function LoginPage({
   handleSignInChange,
@@ -24,8 +22,6 @@ export function LoginPage({
   const routeChange=()=> {
     navigate('/home')
   }
-  const [errorLogin,setErrorLogin] = useState(false)
-  const [loading,setLoading] = useState(false)
 
   const fetchSignIn = async () => {
     const res = await fetch(
@@ -38,16 +34,11 @@ export function LoginPage({
         body: JSON.stringify([signInCredentials]),
       }
     );
-    if (res.status===200) {
-      const data = await res.json();
-      setCurrentUserDetails(data[0])
-      handleLogIn()
-      routeChange()
-    } else {
-      setErrorLogin(true)
-    }
-    setLoading(false)
-    
+    const data = await res.json();
+
+    console.log(data);
+    setCurrentUserDetails(data[0]);
+    handleLogIn()
   };
   return (
     <MDBContainer fluid>
@@ -87,12 +78,11 @@ export function LoginPage({
                   Forgot password?
                 </a>
               </p>
-              {loading?
-              <MDBSpinner role='status'></MDBSpinner>
-              :<Button
+              <Button
                 onClick={() => {
-                  setLoading(true)
                   fetchSignIn()
+                  routeChange()
+
                 }}
                 outline
                 className="mx-2 px-5"
@@ -100,9 +90,7 @@ export function LoginPage({
                 size="lg"
               >
                 Login
-              </Button>}
-              {errorLogin? <Alert className={'mt-1 shake-horizontal'}>Your login credentials did not work. Please try again</Alert>:''}
-
+              </Button>
               <div className="d-flex flex-row mt-3 mb-5">
                 <MDBBtn
                   tag="a"
