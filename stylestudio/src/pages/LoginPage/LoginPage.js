@@ -19,7 +19,7 @@ import {
 export function LoginPage({ setCurrentUserDetails, handleLogIn }) {
   const navigate = useNavigate();
   const routeChange = () => {
-    navigate("/");
+    navigate("/home");
   };
   const [signInCredentials, setSignInCredentials] = useState({
     name: "",
