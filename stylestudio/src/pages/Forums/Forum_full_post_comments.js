@@ -1,3 +1,4 @@
+import "./Forums.css";
 import React from "react";
 import {
   MDBCard,
@@ -10,7 +11,6 @@ import {
   MDBTypography,
 } from "mdb-react-ui-kit";
 import Button from "react-bootstrap/Button";
-import "./Forums.css";
 
 export default function RecentComments({
   commentsForIndivPost,
@@ -24,8 +24,6 @@ export default function RecentComments({
         style={{
           maxWidth: "800px",
           marginLeft: "-70px",
-          // maxHeight: "800px",
-          // overflowY: "scroll",
         }}
       >
         <MDBRow className="justify-content-center">
@@ -51,8 +49,6 @@ export default function RecentComments({
             <Button onClick={addComments}>OK</Button>
             <div
               style={{
-                // maxWidth: "800px",
-                // marginLeft: "-70px",
                 maxHeight: "400px",
                 overflowY: "scroll",
               }}

@@ -3,7 +3,6 @@ import "./Sphere.css";
 const TagCloud = require("TagCloud");
 
 export function HomePage() {
-  console.log(TagCloud);
   useEffect(() => {
     const container = ".tagcloud";
     let radii;

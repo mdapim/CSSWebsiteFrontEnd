@@ -1,11 +1,9 @@
+import "./Forums.css";
 import React, { useState, useEffect } from "react";
 import Card from "react-bootstrap/Card";
-import { faArrowUp, faArrowDown } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import ForumFullPost from "./Forum_full_post";
-
-import "./Forums.css";
 import Comments from "./Forum_comment_box.js";
+import ForumVoting from "./Forum_voting.js";
 
 export function ForumBox({
   username,
@@ -14,7 +12,7 @@ export function ForumBox({
   description,
   upvotes,
   downvotes,
-  id,
+  post_id,
   handleVote,
   commentsForIndivPost,
   setComments,
@@ -22,6 +20,7 @@ export function ForumBox({
   fetchComments,
   currentUserDetails,
   fetchForumData,
+  user_id,
 }) {
   const [staticModal, setStaticModal] = useState(false);
   const toggleShow = () => setStaticModal(!staticModal);
@@ -31,7 +30,7 @@ export function ForumBox({
   const [commentsCopy, setCommentsCopy] = useState([]);
   const [newComment, setNewComment] = useState({
     description: "",
-    post_id: id,
+    post_id: post_id,
     user_id: currentUserDetails["id"],
   });
 
@@ -73,25 +72,7 @@ export function ForumBox({
                 <span>{username}</span> <br />
                 <span>{date}</span>
               </p>
-              <button
-                onClick={() => {
-                  handleVote("upvote", id);
-                }}
-                name="upvote"
-                className="votebutton"
-              >
-                <FontAwesomeIcon className="thumb-up" icon={faArrowUp} />
-              </button>
-              <br />
-              <button
-                onClick={() => {
-                  handleVote("downvote", id);
-                }}
-                name="downvote"
-                className="votebutton"
-              >
-                <FontAwesomeIcon className="thumb-down" icon={faArrowDown} />
-              </button>
+              <ForumVoting handleVote={handleVote} post_id={post_id} />
             </div>
 
             <div onClick={setShow} className="title-description">
@@ -149,10 +130,11 @@ export function ForumBox({
           handleNewComment={handleNewComment}
           addComments={addComments}
           handleVote={handleVote}
-          id={id}
-          user_id={currentUserDetails["id"]}
+          post_id={post_id}
+          user_id={user_id}
           fetchComments={fetchComments}
           fetchForumData={fetchForumData}
+          currentUserDetails={currentUserDetails}
         />
       </div>
     </div>

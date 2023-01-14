@@ -1,15 +1,11 @@
+import "./Forums.css";
 import React, { useState, useEffect } from "react";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import RecentComments from "./Forum_full_post_comments";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faArrowUp,
-  faArrowDown,
-  faCheck,
-} from "@fortawesome/free-solid-svg-icons";
-
-import "./Forums.css";
+import { faCheck } from "@fortawesome/free-solid-svg-icons";
+import ForumVoting from "./Forum_voting.js";
 
 function ForumFullPost({
   show,
@@ -18,26 +14,35 @@ function ForumFullPost({
   description,
   username,
   date,
-  commentCount,
   upvotes,
   downvotes,
   commentsForIndivPost,
   handleNewComment,
   addComments,
   handleVote,
-  id,
+  post_id,
   user_id,
-  fetchComments,
   fetchForumData,
+  currentUserDetails,
 }) {
   const [editPost, setEditPost] = useState(false);
+  const [displayEditButton, setDisplayEditButton] = useState(false);
   const [updatedPost, setUpdatedPost] = useState({ description });
 
-  useEffect(() => {}, [description]);
+  useEffect(() => {}, [updatedPost]);
+  useEffect(() => {
+    handleDisplayEditButton();
+  }, []);
 
   const editPostToggle = () => {
     setEditPost(!editPost);
     console.log(editPost);
+  };
+
+  const handleDisplayEditButton = () => {
+    user_id === currentUserDetails["id"]
+      ? setDisplayEditButton(true)
+      : setDisplayEditButton(false);
   };
 
   const handleEditPost = (e) => {
@@ -49,22 +54,27 @@ function ForumFullPost({
     const res = await fetch(
       "https://csswebsitebackend-production.up.railway.app/forum_post",
       {
-        method: "POST",
+        method: "PATCH",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify([
           {
             title: Title,
             description: updatedPost,
-            post_id: id,
+            post_id: post_id,
             user_id: user_id,
           },
         ]),
       }
     );
     const data = await res.json();
-    console.log(res.status);
+    console.log(data);
 
-    if (res.status === 200) {
+    if (
+      data[0]["message"] ===
+      "item could not be found in database, or user has no access to item"
+    ) {
+      console.log("not correct user");
+    } else {
       setEditPost(false);
       fetchForumData();
     }
@@ -83,25 +93,7 @@ function ForumFullPost({
           <Modal.Title id="example-custom-modal-styling-title">
             {Title}
           </Modal.Title>
-          <button
-            onClick={() => {
-              handleVote("upvote", id);
-            }}
-            name="upvote"
-            className="votebutton"
-          >
-            <FontAwesomeIcon className="thumb-up" icon={faArrowUp} />
-          </button>
-
-          <button
-            onClick={() => {
-              handleVote("downvote", id);
-            }}
-            name="downvote"
-            className="votebutton"
-          >
-            <FontAwesomeIcon className="thumb-down" icon={faArrowDown} />
-          </button>
+          <ForumVoting handleVote={handleVote} post_id={post_id} />
         </Modal.Header>
         <div style={{ marginLeft: "18px" }} className="user-date">
           {username}
@@ -121,12 +113,14 @@ function ForumFullPost({
               />
             )}
           </div>
-          <p
-            onClick={editPostToggle}
-            style={{ fontSize: "smaller", cursor: "pointer" }}
-          >
-            Edit post
-          </p>
+          {displayEditButton && (
+            <p
+              onClick={editPostToggle}
+              style={{ fontSize: "smaller", cursor: "pointer" }}
+            >
+              Edit post
+            </p>
+          )}
           {editPost && (
             <FontAwesomeIcon
               onClick={() => {
