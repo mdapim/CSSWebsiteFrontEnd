@@ -15,38 +15,35 @@ export function ForumNav({
 
   const toggleShow = () => setStaticModal(!staticModal);
   return (
-    <Nav fill variant="tabs" defaultActiveKey="">
-      <Nav.Item>
-        <Button
-          onClick={fetchForumData}
-          style={{ color: "black", border: "none", backgroundColor: "white" }}
-        >
-          Posts
-        </Button>
-      </Nav.Item>
-      <Nav.Item>
-        <Button
-          onClick={() => toggleShow()}
-          style={{ color: "black", border: "none", backgroundColor: "white" }}
-        >
-          Add Forum Post
-        </Button>
-      </Nav.Item>
-      <Nav.Item>
-        <input
-          onChange={filterDataSearch}
-          className="search"
-          type="text"
-          eventKey="link-2"
-        ></input>
-      </Nav.Item>
-      <Nav.Item></Nav.Item>
-      <FormAdd
-        currentUserDetails={currentUserDetails}
-        staticModal={staticModal}
-        setStaticModal={setStaticModal}
-        toggleShow={toggleShow}
-      />
-    </Nav>
+    <div>
+      <h2 className="forum-title">Forums</h2>
+      <Nav className="forum_nav" fill variant="tabs" defaultActiveKey="">
+        <Nav.Item>
+          <h4 onClick={fetchForumData}>Posts</h4>
+        </Nav.Item>
+        <Nav.Item>
+          <h4 onClick={() => toggleShow()}>Add Forum Post + </h4>
+        </Nav.Item>
+        <Nav.Item>
+          <label>
+            Search for a post..
+            <input
+              onChange={filterDataSearch}
+              className="search"
+              type="text"
+              eventKey="link-2"
+              placeholder="Search posts.."
+            ></input>
+          </label>
+        </Nav.Item>
+        <Nav.Item></Nav.Item>
+        <FormAdd
+          currentUserDetails={currentUserDetails}
+          staticModal={staticModal}
+          setStaticModal={setStaticModal}
+          toggleShow={toggleShow}
+        />
+      </Nav>
+    </div>
   );
 }

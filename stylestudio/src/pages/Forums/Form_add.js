@@ -71,7 +71,6 @@ function FormAdd({
     );
 
     const data = await res.json([]);
-    console.log(data);
     if (data[0]["message"] === "One or more of the input fields are invalid") {
       setHandleValidation((prevState) => ({
         ...prevState,
