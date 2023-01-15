@@ -52,7 +52,7 @@ export function Specificity() {
     },[cssSpec])
     return (
         <>
-        <h1>Specificity Leaderboard</h1>
+        <h1 className='title'>Specificity Leaderboard</h1>
         <div className='main'>
         <Form>
             <Form.Group className='mb-3 css-area'>
