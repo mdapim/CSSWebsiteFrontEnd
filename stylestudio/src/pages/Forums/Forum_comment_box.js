@@ -53,9 +53,9 @@ export default function Comments({
                 <Button onClick={addComments}>Add new comments...</Button>
 
                 {commentsForIndivPost.length > 0 ? (
-                  commentsForIndivPost.map((e) => {
+                  commentsForIndivPost.map((e, i) => {
                     return (
-                      <MDBCard className="mb-4">
+                      <MDBCard key={i} className="mb-4">
                         <MDBCardBody>
                           <div className="d-flex justify-content-between">
                             <div className="d-flex flex-row align-items-center">

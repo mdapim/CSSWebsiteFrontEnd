@@ -76,7 +76,11 @@ export function ForumBox({
               <ForumVoting handleVote={handleVote} post_id={post_id} />
             </div>
 
-            <div onClick={setShow} className="title-description">
+            <div
+              data-testid="click-full-post"
+              onClick={setShow}
+              className="title-description"
+            >
               <Card.Title style={{ marginBottom: "2rem", color: "black" }}>
                 {Title}
               </Card.Title>
