@@ -50,6 +50,7 @@ function App() {
   };
   return (
     <div className="App">
+      <h1 className="brand">Style Studio.</h1>
       <NavigationBar
         currentUserDetails={currentUserDetails}
         loggedIn={loggedIn}
