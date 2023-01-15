@@ -1,3 +1,4 @@
+import './Resources.css'
 export function Resource({title,links}) {
     const mapLinks=resources=> {
         const resourceJSX = resources.map(resource=> {
@@ -7,7 +8,7 @@ export function Resource({title,links}) {
     }
     return (
         <div className='content'>
-        <h3>
+        <h3 className='title'>
             {title}
         </h3>
         <hr/>

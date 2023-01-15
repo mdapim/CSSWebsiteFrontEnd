@@ -83,7 +83,7 @@ export function Guides({userType}) {
 
     return (
         <div>
-        <header>
+        <header className='title'>
             <h1>Guides</h1>
             <p>Here you'll find a list of all the useful guides. The left panel contains a list of some categories to browse through.</p>
             <div>
