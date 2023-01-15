@@ -1,0 +1,60 @@
+@media screen and (min-width: 576px) {
+  .carousel-inner {
+    display: flex;
+  }
+
+  .carousel-item {
+    display: block;
+    margin-right: 0;
+    flex: 0 0 calc(100% / 3);
+  }
+}
+
+/* .slick-prev {
+  left: 3%;
+  z-index: 10;
+}
+
+.slick-next {
+  right: 3%;
+  z-index: 10;
+} */
+.slick-prev {
+  left: 0 !important;
+  z-index: 1000;
+}
+.slick-prev:before {
+  content: "";
+}
+.slick-next {
+  right: 0 !important;
+  z-index: 1000;
+}
+.slick-next:before {
+  content: "";
+}
+
+.center .slick-center h3 {
+  opacity: 1;
+  -ms-transform: scale(1.08);
+  transform: scale(1.08);
+}
+
+h3 {
+  background: #5f9ea0;
+  color: #fff;
+  font-size: 36px;
+  line-height: 100px;
+  margin: 10px;
+  padding: 2%;
+  position: relative;
+  text-align: center;
+}
+
+/* the slides */
+/* .slick-list {
+  margin: 0 -5px;
+} */
+.slick-slide > div {
+  margin: 10px 10px;
+}

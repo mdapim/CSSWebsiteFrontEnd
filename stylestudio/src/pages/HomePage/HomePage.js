@@ -1,50 +1,20 @@
 import React, { useEffect } from "react";
-import "./Sphere.css";
-const TagCloud = require("TagCloud");
+import { WorkingTextSphere, TextSphere } from "./components/Sphere/Sphere";
+import "./components/TitleSwitch/SwitchingTitle";
+import SwitchingText from "./components/TitleSwitch/SwitchingTitle";
+import "./Homepage.css";
+import Carousel from "./components/Carousel/Carousel";
+import SimpleSlider from "./components/Carousel/Carousel";
 
 export function HomePage() {
-  useEffect(() => {
-    const container = ".tagcloud";
-    let radii;
-    const texts = [
-      "HTML",
-      "CSS",
-      "SASS",
-      "JavaScript",
-      "React",
-      "Vue",
-      "Nuxt",
-      "NodeJS",
-      "Shopify",
-      "Jquery",
-      "ES6",
-      "GIT",
-      "GITHUB",
-    ];
-
-    function radiusValue() {
-      if (window.screen.width <= 778) {
-        radii = 150;
-      } else {
-        radii = 290;
-      }
-      return radii;
-    }
-
-    const options = {
-      radius: radiusValue(),
-      maxSpeed: "normal",
-      initSpeed: "normal",
-      keep: true,
-    };
-
-    TagCloud(container, texts, options);
-  }, []);
-
   return (
     <div>
-      <div className="text-shpere">
-        <span className="tagcloud"></span>
+      <div className="container">
+        <SwitchingText className="item1" />
+        <TextSphere className="item2" />
+      </div>
+      <div className="carousel">
+        <Carousel />
       </div>
     </div>
   );
