@@ -81,7 +81,7 @@ export function ForumBox({
               onClick={setShow}
               className="title-description"
             >
-              <Card.Title style={{ marginBottom: "2rem", color: "black" }}>
+              <Card.Title style={{ marginBottom: "2rem", color: "white" }}>
                 {Title}
               </Card.Title>
               <Card.Text
