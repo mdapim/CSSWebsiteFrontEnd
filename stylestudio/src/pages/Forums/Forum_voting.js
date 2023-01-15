@@ -3,7 +3,7 @@ import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowUp, faArrowDown } from "@fortawesome/free-solid-svg-icons";
 
-function ForumVoting({ handleVote, post_id }) {
+export function ForumVoting({ handleVote, post_id }) {
   return (
     <div>
       {" "}
@@ -13,6 +13,7 @@ function ForumVoting({ handleVote, post_id }) {
         }}
         name="upvote"
         className="votebutton"
+        data-testid="upvote"
       >
         <FontAwesomeIcon className="thumb-up" icon={faArrowUp} />
       </button>
@@ -23,6 +24,7 @@ function ForumVoting({ handleVote, post_id }) {
         }}
         name="downvote"
         className="votebutton"
+        data-testid="downvote"
       >
         <FontAwesomeIcon className="thumb-down" icon={faArrowDown} />
       </button>

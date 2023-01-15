@@ -104,6 +104,7 @@ function ForumFullPost({
   return (
     <>
       <Modal
+        data-testid="full-post-modal"
         size="xl"
         show={show}
         onHide={() => setShow(false)}
