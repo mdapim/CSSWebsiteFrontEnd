@@ -4,9 +4,9 @@
   width: 100%;
   height: 100%;
   display: flex;
-  justify-content: center;
-  align-items: center;
-  background: #ffffff;
+  justify-content: flex-start;
+  align-items: flex-start;
+  /* background: #ffffff; */
 }
 
 .tagcloud {
@@ -21,7 +21,8 @@
 
 /* Change color of each text in sphere on hover   */
 .tagcloud--item {
-  color: rgb(27, 112, 186);
+  /* color: rgb(27, 112, 186); */
+  color: rgb(255, 255, 255);
   text-transform: uppercase;
 }
 

@@ -5,12 +5,15 @@ import SwitchingText from "./components/TitleSwitch/SwitchingTitle";
 import "./Homepage.css";
 import Carousel from "./components/Carousel/Carousel";
 import SimpleSlider from "./components/Carousel/Carousel";
+import "./Background/background.css";
 
 export function HomePage() {
   return (
-    <div>
+    <div className="siteContainer">
       <div className="container">
-        <SwitchingText className="item1" />
+        <div className="item1">
+          <SwitchingText />
+        </div>
         <TextSphere className="item2" />
       </div>
       <div className="carousel">
