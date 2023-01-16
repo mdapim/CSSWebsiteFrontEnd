@@ -25,15 +25,15 @@ function ForumFullPost({
   user_id,
   fetchForumData,
   currentUserDetails,
+  fetchComments,
 }) {
   const [editPost, setEditPost] = useState(false);
   const [displayEditButton, setDisplayEditButton] = useState(false);
   const [updatedPost, setUpdatedPost] = useState({ description });
-  const [deletePostPopUp, setDeletePostPopUp] = useState(false);
 
   useEffect(() => {}, [updatedPost]);
   useEffect(() => {
-    handleDisplayEditButton();
+    handleDisplayEditButtonPosts();
   }, []);
 
   const editPostToggle = () => {
@@ -41,7 +41,7 @@ function ForumFullPost({
     console.log(editPost);
   };
 
-  const handleDisplayEditButton = () => {
+  const handleDisplayEditButtonPosts = () => {
     user_id === currentUserDetails["id"]
       ? setDisplayEditButton(true)
       : setDisplayEditButton(false);
@@ -175,6 +175,8 @@ function ForumFullPost({
             handleNewComment={handleNewComment}
             commentsForIndivPost={commentsForIndivPost}
             addComments={addComments}
+            currentUserDetails={currentUserDetails}
+            fetchComments={fetchComments}
           />
         </Modal.Body>
       </Modal>

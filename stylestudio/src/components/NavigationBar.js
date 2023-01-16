@@ -30,7 +30,7 @@ export function NavigationBar({ currentUserDetails, handleLogOut, loggedIn }) {
               <NavDropdown
                 title="Login"
                 menuVariant="dark"
-                style={{ zIndex: "2" }}
+                style={{ zIndex: "2", marginTop: "-9px" }}
                 className="nav-link"
               >
                 <NavDropdown.Item>
@@ -44,7 +44,7 @@ export function NavigationBar({ currentUserDetails, handleLogOut, loggedIn }) {
             </Nav.Link>
           ) : (
             <NavDropdown
-              style={{ zIndex: "2", marginTop: "8px" }}
+              style={{ zIndex: "2" }}
               className="nav-link"
               title="Profile"
               menuVariant="dark"

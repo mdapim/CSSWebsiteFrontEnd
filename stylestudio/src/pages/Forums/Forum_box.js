@@ -26,7 +26,8 @@ export function ForumBox({
   const [staticModal, setStaticModal] = useState(false);
   const toggleShow = () => setStaticModal(!staticModal);
   const [show, setShow] = useState(false);
-  const [editPostAvailable, setEditPostAvailable] = useState(false);
+  const [displayEditButton, setDisplayEditButton] = useState(false);
+  const [editPost, setEditPost] = useState(false);
 
   const [commentsCopy, setCommentsCopy] = useState([]);
   const [newComment, setNewComment] = useState({
@@ -140,6 +141,10 @@ export function ForumBox({
           fetchComments={fetchComments}
           fetchForumData={fetchForumData}
           currentUserDetails={currentUserDetails}
+          setDisplayEditButton={setDisplayEditButton}
+          displayEditButton={displayEditButton}
+          editPost={editPost}
+          setEditPost={setEditPost}
         />
       </div>
     </div>

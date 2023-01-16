@@ -136,3 +136,9 @@ div.modal-content {
   max-height: 1200px;
   overflow-y: scroll;
 }
+
+.modify-comments {
+  display: flex;
+  justify-content: flex-end;
+  height: 20px;
+}
