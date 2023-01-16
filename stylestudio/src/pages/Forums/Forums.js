@@ -9,8 +9,6 @@ export function Forums({ currentUserDetails }) {
   const [votes, setVotes] = useState([]);
   const [searchedString, setSearchedString] = useState("");
 
-  console.log(allComments);
-
   //Managing votes & re-rendering
   const manageVotes = (vote, id) => {
     const copyVotes = [...votes];

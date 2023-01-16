@@ -23,6 +23,8 @@ export default function Comments({
   addComments,
   fetchComments,
   commentsCopy,
+
+  displayEditButton,
 }) {
   useEffect(() => {
     fetchComments();
@@ -81,6 +83,11 @@ export default function Comments({
                                 style={{ marginTop: "-0.16rem" }}
                               />
                             </div>
+                            {displayEditButton && (
+                              <p style={{ color: "black", cursor: "submit" }}>
+                                Edit
+                              </p>
+                            )}
                           </div>
                         </MDBCardBody>
                       </MDBCard>
