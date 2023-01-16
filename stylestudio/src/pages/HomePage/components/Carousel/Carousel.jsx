@@ -1,5 +1,4 @@
 import {
-  Card,
   UpdatesCard,
   TopSearchCard,
   TopQuestionsCard,
@@ -7,11 +6,9 @@ import {
 } from "../Card/Card";
 import "./Carousel.css";
 
-import React, { Component } from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import { FiChevronsRight } from "react-icons/fi";
 import LeftArrow from "./first.png";
 import RightArrow from "./last.png";
 
@@ -33,19 +30,42 @@ export default function Carousel() {
     speed: 1000,
     dots: true,
     slidesToScroll: 1,
-    // nextArrow: <SampleNextArrow />,
-    // prevArrow: <SamplePrevArrow />,
-    prevArrow: <SlickArrowLeft />,
-    nextArrow: <SlickArrowRight />,
+    // prevArrow: <SlickArrowLeft />,
+    // nextArrow: <SlickArrowRight />,
     autoplay: true,
     autoplaySpeed: 6000,
     cssEase: "linear",
     pauseOnHover: true,
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 1,
+          infinite: true,
+          dots: true,
+        },
+      },
+      {
+        breakpoint: 600,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          initialSlide: 1,
+        },
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+        },
+      },
+    ],
   };
 
   return (
     <div className="slide-top">
-      {/* <h2> News Reel</h2> */}
       <Slider {...settings}>
         <div>
           <UpdatesCard />

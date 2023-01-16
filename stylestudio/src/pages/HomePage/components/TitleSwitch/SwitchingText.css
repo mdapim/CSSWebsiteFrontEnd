@@ -1,24 +1,12 @@
 @import url("https://fonts.googleapis.com/css?family=Roboto:700");
 @import url("https://fonts.googleapis.com/css2?family=Rowdies:wght@300;400;700&display=swap");
 
-/* body {
-  font-family: "Roboto";
-  background-color: #131417;
-}
-p {
-  text-shadow: 0 0 7px rgba(255, 255, 255, 0.3),
-    0 0 3px rgba(255, 255, 255, 0.3);
-} */
-
 #container {
   color: #e5e5e5;
   font-size: 1.5rem;
   text-transform: uppercase;
   font-family: "Rowdies", cursive;
-  /* height: 100vh; */
   display: flex;
-  /* align-items: center; */
-  /* justify-content: center; */
   text-shadow: 0 0 7px rgba(255, 255, 255, 0.3),
     0 0 3px rgba(255, 255, 255, 0.3);
 }
@@ -26,7 +14,6 @@ p {
 #animation {
   height: 50px;
   overflow: hidden;
-  /* margin-left: 0.5rem; */
 }
 
 #animation > div > div {

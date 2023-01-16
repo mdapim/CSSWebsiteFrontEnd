@@ -4,7 +4,6 @@ import "./components/TitleSwitch/SwitchingTitle";
 import SwitchingText from "./components/TitleSwitch/SwitchingTitle.jsx";
 import "./Homepage.css";
 import Carousel from "./components/Carousel/Carousel";
-import SimpleSlider from "./components/Carousel/Carousel";
 
 export function HomePage() {
   return (
@@ -19,14 +18,13 @@ export function HomePage() {
             <SwitchingText />
           </div>
           <div className="item2">
-            <TextSphere />
+            <WorkingTextSphere />
           </div>
         </div>
         <br />
         <br />
         <br />
         <div className="separator2"></div>
-        {/* <h2 className="homepage-h2"> News Reel</h2> */}
         <div className="carousel">
           <Carousel />
         </div>

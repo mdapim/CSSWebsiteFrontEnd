@@ -20,16 +20,3 @@ export default function SwitchingText() {
     </div>
   );
 }
-
-// <main class="container">
-//   <div class="slider">
-//     <div class="caption">
-//       We build
-//       <div class="text-box">
-//         <div>websites</div>
-//         <div>brands</div>
-//         <div>experiences</div>
-//       </div>
-//     </div>
-//   </div>
-// </main>;
