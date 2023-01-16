@@ -6,8 +6,8 @@ import { SideBar } from './Sidebar.js';
 import {AddResource} from './AddResource.js'
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
-
 import './Guides.css'
+import '../Styling.css'
 export function Guides({userType}) {
     const [resources,setResources] = useState([])
     const [resourceSent,setResourceSent] = useState(0)
@@ -96,7 +96,7 @@ export function Guides({userType}) {
             <div className='side-bar'>
                 <SideBar/>
             </div>
-            <div className='resources'>
+            <div className='resources container'>
                 {resources.length===0?'':generateResources()}
             </div>
         </div>
