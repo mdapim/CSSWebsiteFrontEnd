@@ -10,6 +10,8 @@ import {
   MDBRow,
   MDBTypography,
 } from "mdb-react-ui-kit";
+import { MDBSpinner } from "mdb-react-ui-kit";
+
 import Button from "react-bootstrap/Button";
 import { faCheck, faTrash } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -23,15 +25,16 @@ export default function RecentComments({
 }) {
   const [updatedComment, setUpdatedComment] = useState("");
   const [editComment, setEditComment] = useState(false);
-  const [target, setTarget] = useState("");
+  const [commentTarget, setCommentTarget] = useState("");
 
   useEffect(() => {
     fetchComments();
-  }, [updatedComment]);
+  }, [editComment]);
+
   const handleEditButtonClick = (e) => {
-    const target1 = e.target.name;
+    const currentCommentTarget = e.target.name;
     setEditComment(!editComment);
-    setTarget(target1);
+    setCommentTarget(currentCommentTarget);
   };
 
   const handleEditPost = (e) => {
@@ -153,7 +156,8 @@ export default function RecentComments({
                               <MDBIcon fas icon="heart ms-2" />
                             </a>
                           </div>
-                          {editComment && comment["id"] === parseInt(target) ? (
+                          {editComment &&
+                          comment["id"] === parseInt(commentTarget) ? (
                             <div className="comment-section">
                               <textarea
                                 style={{ border: "solid 1px black" }}
@@ -205,19 +209,6 @@ export default function RecentComments({
                 );
               })}
             </div>
-            {/* <input
-              onChange={handleNewComment}
-              style={{
-                marginTop: "15px",
-                width: "90%",
-                height: "50px",
-                borderRadius: "8px",
-                border: "solid 1px grey",
-              }}
-              placeholder="New comment..."
-              name="description"
-            /> */}
-            {/* <Button onClick={addComments}>OK</Button> */}
           </MDBCol>
         </MDBRow>
       </MDBContainer>
