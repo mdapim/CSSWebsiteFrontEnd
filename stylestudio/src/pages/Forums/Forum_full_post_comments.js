@@ -20,7 +20,7 @@ export default function RecentComments({
   return (
     <section style={{ backgroundColor: "white" }}>
       <MDBContainer
-        className="py-3"
+        className="py-4"
         style={{
           maxWidth: "800px",
           marginLeft: "-70px",
@@ -56,11 +56,11 @@ export default function RecentComments({
               {commentsForIndivPost.map((comment) => {
                 return (
                   <MDBCard className="text-dark">
-                    <MDBCardBody className="p-4">
+                    <MDBCardBody className="p-2">
                       <div className="d-flex flex-start">
                         <MDBCardImage
-                          className="rounded-circle shadow-1-strong me-3"
-                          src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(23).webp"
+                          className="rounded-circle shadow-2-strong me-3"
+                          src={comment["profile_picture"]}
                           alt="avatar"
                           width="60"
                           height="60"

@@ -8,6 +8,7 @@ import {
   MDBInput,
   MDBRow,
   MDBModal,
+  MDBCardImage,
 } from "mdb-react-ui-kit";
 import Button from "react-bootstrap/Button";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -60,11 +61,18 @@ export default function Comments({
                         <MDBCardBody>
                           <div className="d-flex justify-content-between">
                             <div className="d-flex flex-row align-items-center">
-                              <p>{e["username"]}</p>
+                              <MDBCardImage
+                                className="rounded-circle shadow-2-strong me-3"
+                                src={e["profile_picture"]}
+                                alt="avatar"
+                                width="60"
+                                height="60"
+                              />
+                              <p style={{ color: "black" }}>{e["username"]}</p>
 
                               <p className="small mb-0 ms-2"></p>
                             </div>
-                            <p>{e["description"]}</p>
+                            <p style={{ color: "black" }}>{e["description"]}</p>
 
                             <div className="d-flex flex-row align-items-center">
                               <MDBIcon
