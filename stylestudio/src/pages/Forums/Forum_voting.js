@@ -1,13 +1,13 @@
 import "./Forums.css";
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowUp, faArrowDown } from "@fortawesome/free-solid-svg-icons";
+import { faFaceGrin, faFaceFrown } from "@fortawesome/free-solid-svg-icons";
 
 export function ForumVoting({ handleVote, post_id }) {
   return (
-    <div>
+    <div className="voting">
       {" "}
-      <button
+      <p
         onClick={() => {
           handleVote("upvote", post_id);
         }}
@@ -15,10 +15,10 @@ export function ForumVoting({ handleVote, post_id }) {
         className="votebutton"
         data-testid="upvote"
       >
-        <FontAwesomeIcon className="thumb-up" icon={faArrowUp} />
-      </button>
+        <FontAwesomeIcon className="thumb-up" icon={faFaceGrin} />
+      </p>
       <br />
-      <button
+      <p
         onClick={() => {
           handleVote("downvote", post_id);
         }}
@@ -26,8 +26,8 @@ export function ForumVoting({ handleVote, post_id }) {
         className="votebutton"
         data-testid="downvote"
       >
-        <FontAwesomeIcon className="thumb-down" icon={faArrowDown} />
-      </button>
+        <FontAwesomeIcon className="thumb-down" icon={faFaceFrown} />
+      </p>
     </div>
   );
 }

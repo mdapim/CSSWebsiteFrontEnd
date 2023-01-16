@@ -1,5 +1,6 @@
 .forum-container {
   color: white;
+  min-width: 990px;
 }
 
 .forum_nav {
@@ -7,12 +8,18 @@
 }
 
 .forum-title {
-  margin-bottom: 30px;
+  margin-bottom: 32px;
+}
+
+.votebutton {
+  cursor: pointer;
+}
+
+.header {
+  margin-left: 15px;
 }
 
 .card-container {
-  display: flex;
-  flex-direction: column;
   padding: 10px;
   height: 270px;
   min-width: 960px;
@@ -23,13 +30,13 @@
   /* background-color: rgb(148, 146, 146); */
 }
 
-/* .card-container:hover {
-  filter: drop-shadow(0 0 0.75rem rgb(0, 0, 0));
-  transition: 0.5s ease-out;
-} */
-
 .card-title,
 .h5 {
+  font-size: larger;
+  margin-left: 15px;
+}
+
+.voting {
   display: flex;
 }
 
@@ -42,14 +49,15 @@
 .forum-container {
   margin-left: 10%;
   margin-right: 15%;
-  background-color: #212529da;
-  border-radius: 10px;
+  background-color: #212529f0;
+  border-radius: 30px;
 }
 .forum-box-container {
-  padding: 1%;
+  padding: 2%;
   display: flex;
   flex-direction: row;
   justify-content: center;
+  height: 16rem;
 }
 .forum-post-container {
   min-width: 160px;
@@ -69,11 +77,18 @@
 }
 
 .card-text {
-  margin-right: 20%;
+  margin-right: 10%;
+}
+.description-flex {
+  display: flex;
 }
 
-.votes {
-  margin-left: 5%;
+.description-flex-child {
+  margin-top: 27px;
+}
+
+.voting {
+  margin-top: 5px;
 }
 
 .user-interaction {
@@ -82,14 +97,24 @@
   flex-direction: row;
 }
 
+.row,
+.justify-content-center {
+  width: 35rem;
+}
+
+.comment-section-full-post {
+  width: 450px;
+}
+
 .search {
   border: solid 1px;
   border-radius: 10px;
   width: 50%;
-  border-color: rgb(27, 94, 181);
+  border-color: rgb(240, 240, 240);
   margin-top: 5px;
   width: 300px;
   margin-left: 5rem;
+  height: 2rem;
 }
 .ok-button,
 .btn,
@@ -114,13 +139,18 @@
 
 div.modal-content {
   height: auto;
+  background-color: #212529;
+  color: white;
 }
 
 .comments-section {
   max-height: 800px;
   overflow-y: scroll;
 }
-
+.comment-section-full-post {
+  background-color: #212529;
+  width: 700px;
+}
 .description-text {
   font-family: inherit;
   font-size: inherit;
@@ -137,8 +167,29 @@ div.modal-content {
   overflow-y: scroll;
 }
 
+.modal-content {
+  min-width: 800px;
+}
 .modify-comments {
   display: flex;
   justify-content: flex-end;
   height: 20px;
+}
+
+/* .code-format-container {
+  height: 330px;
+  width: 400px;
+  border-radius: 30px;
+} */
+
+.full-forum-post-bottom {
+  display: flex;
+  flex-direction: row;
+  width: 750px;
+}
+
+#my-editor {
+  border-radius: 15px;
+  background-color: azure;
+  filter: drop-shadow(0 0 0.75rem rgb(19, 36, 120));
 }

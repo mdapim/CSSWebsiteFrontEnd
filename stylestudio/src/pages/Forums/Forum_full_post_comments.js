@@ -93,7 +93,7 @@ export default function RecentComments({
   };
 
   return (
-    <section style={{ backgroundColor: "white" }}>
+    <section className="comment-section-full-post">
       <MDBContainer
         className="py-4"
         style={{
@@ -113,15 +113,26 @@ export default function RecentComments({
               onChange={handleNewComment}
               style={{
                 marginBottom: "15px",
-                width: "90%",
-                height: "50px",
+                width: "82%",
+                height: "40px",
                 borderRadius: "8px",
                 border: "solid 1px grey",
+                marginLeft: "3%",
               }}
               placeholder="New comment..."
               name="description"
             />
-            <Button onClick={addComments}>OK</Button>
+            <Button
+              style={{
+                backgroundColor: "black",
+                marginTop: "-5px",
+                height: "2.5rem",
+              }}
+              onClick={addComments}
+            >
+              OK
+            </Button>
+
             <div
               style={{
                 maxHeight: "400px",
@@ -146,15 +157,6 @@ export default function RecentComments({
                           </MDBTypography>
                           <div className="d-flex align-items-center mb-3">
                             <p className="mb-0">{comment["date_created"]}</p>
-                            <a href="#!" className="link-muted">
-                              <MDBIcon fas icon="pencil-alt ms-2" />
-                            </a>
-                            <a href="#!" className="link-muted">
-                              <MDBIcon fas icon="redo-alt ms-2" />
-                            </a>
-                            <a href="#!" className="link-muted">
-                              <MDBIcon fas icon="heart ms-2" />
-                            </a>
                           </div>
                           {editComment &&
                           comment["id"] === parseInt(commentTarget) ? (
