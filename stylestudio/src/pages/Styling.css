@@ -71,3 +71,10 @@
 	-webkit-animation: shake-horizontal 0.8s cubic-bezier(0.455, 0.030, 0.515, 0.955) both;
 	        animation: shake-horizontal 0.8s cubic-bezier(0.455, 0.030, 0.515, 0.955) both;
 }
+
+.maincontainer {
+  margin-left: 10%;
+  margin-right: 15%;
+  background-color: #212529da;
+  border-radius: 10px;
+}

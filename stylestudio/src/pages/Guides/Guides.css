@@ -6,9 +6,17 @@
     display:flex;
     justify-content: flex-start;
 }
-.resources {
-    flex-grow:3;
-}
+
 .title {
     color:white;
+    text-align:center;
+}
+.resources {
+    display:flex;
+    flex-direction:column;
+    flex-wrap:wrap;
+    height:auto;
+}
+* {
+    margin:5px;
 }
