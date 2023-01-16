@@ -10,6 +10,8 @@ import {
   MDBModal,
 } from "mdb-react-ui-kit";
 import Button from "react-bootstrap/Button";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCheck, faTrash } from "@fortawesome/free-solid-svg-icons";
 
 export default function Comments({
   staticModal,
