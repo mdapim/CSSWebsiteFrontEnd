@@ -2,10 +2,10 @@ import ListGroup from 'react-bootstrap/ListGroup';
 import { Link, animateScroll as scroll } from "react-scroll";
 import { Resource } from './Resource.js';
 import { useState,useEffect} from 'react';
-import { SideBar } from './Sidebar.js';
 import {AddResource} from './AddResource.js'
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
+import { ProSidebarProvider,Sidebar, Menu, MenuItem, SubMenu } from 'react-pro-sidebar';
 import './Guides.css'
 import '../Styling.css'
 export function Guides({userType}) {
@@ -73,16 +73,18 @@ export function Guides({userType}) {
         const categoryJSX = []
         for (const category_id of Object.keys(inCategories)) {
             categoryJSX.push(
-                <div>
+                <div id={category_id}>
                 <Resource title={resources[0][category_id]} links={inCategories[category_id]}/>
                 </div>
             )
         }
         return categoryJSX
     }
+    console.log(categoriesList)
 
     return (
         <div>
+        <ProSidebarProvider>
         <header className='title'>
             <h1>Guides</h1>
             <p>Here you'll find a list of all the useful guides. The left panel contains a list of some categories to browse through.</p>
@@ -93,14 +95,20 @@ export function Guides({userType}) {
         </header>
         <hr/>
         <div id='main'>
-            <div className='side-bar'>
-                <SideBar/>
-            </div>
+            
+            <Sidebar>
+                <Menu>
+                    
+                    {Object.keys(categoriesList).map(key=> {
+                    return <MenuItem component={<Link activeClass="active" spy to={key}></Link>}>{categoriesList[key]}</MenuItem>
+                    })}
+                </Menu>
+            </Sidebar>;
             <div className='resources container'>
                 {resources.length===0?'':generateResources()}
             </div>
         </div>
-
+        </ProSidebarProvider>
         </div>
     )
 }
