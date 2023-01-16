@@ -1,13 +1,17 @@
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
+import NavDropdown from "react-bootstrap/NavDropdown";
+import React, { useState, useEffect } from "react";
+
 import { Link } from "react-router-dom";
 import "./NavigationBar.css";
 import Button from "react-bootstrap/Button";
 export function NavigationBar({ currentUserDetails, handleLogOut, loggedIn }) {
+  const [signedIn, setSignedIn] = useState(false);
+
   return (
     <div className="main-nav">
       <Navbar>
-        {/* <Navbar.Brand className="ml-2">StyleStudio</Navbar.Brand> */}
         <Nav className="me-auto">
           <Nav.Link className="nav-child">
             <Link to="/home">Home</Link>
@@ -21,19 +25,41 @@ export function NavigationBar({ currentUserDetails, handleLogOut, loggedIn }) {
           <Nav.Link className="nav-child">
             <Link to="/guides">Guides</Link>
           </Nav.Link>
-          <Nav.Link className="nav-child">
-            {loggedIn ? (
-              <Button id="logoutbutton" size="sm" onClick={handleLogOut}>
-                Log out
-              </Button>
-            ) : (
-              <Link to="/login">Login</Link>
-            )}
-          </Nav.Link>
+          {!loggedIn ? (
+            <Nav.Link>
+              <NavDropdown
+                title="Login"
+                menuVariant="dark"
+                style={{ zIndex: "2" }}
+                className="nav-link"
+              >
+                <NavDropdown.Item>
+                  <Link to="login">Login</Link>
+                </NavDropdown.Item>
+                <NavDropdown.Divider />
+                <NavDropdown.Item>
+                  <Link to="/sign-up">Sign-up</Link>
+                </NavDropdown.Item>
+              </NavDropdown>
+            </Nav.Link>
+          ) : (
+            <NavDropdown
+              style={{ color: "white", padding: "10px" }}
+              id="nav-dropdown-light-example"
+              title="Profile"
+              menuVariant="dark"
+            >
+              <p style={{ textAlign: "center", padding: "10px" }}>
+                Signed in as {currentUserDetails["username"]}
+              </p>
+              <NavDropdown.Item href="#action/3.2">Profile</NavDropdown.Item>
+              <NavDropdown.Divider />
+              <NavDropdown.Item onClick={handleLogOut}>
+                Logout
+              </NavDropdown.Item>{" "}
+            </NavDropdown>
+          )}
         </Nav>
-        {/* <p style={{ color: "black", marginRight: "30px" }}>
-          Signed in as: {currentUserDetails["username"]}{" "}
-        </p> */}
       </Navbar>
     </div>
   );
