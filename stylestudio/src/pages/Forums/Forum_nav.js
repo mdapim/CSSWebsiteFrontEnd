@@ -31,7 +31,6 @@ export function ForumNav({
               onChange={filterDataSearch}
               className="search"
               type="text"
-              eventKey="link-2"
               placeholder="Search posts.."
             ></input>
           </label>
