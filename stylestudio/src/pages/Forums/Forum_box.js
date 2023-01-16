@@ -87,7 +87,7 @@ export function ForumBox({
               <Card.Text
                 style={{
                   marginBottom: "2rem",
-                  color: "black",
+                  color: "white",
                 }}
               >
                 {handleDescriptionLength(description)}
