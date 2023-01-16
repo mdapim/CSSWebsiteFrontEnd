@@ -3,21 +3,33 @@ import "./SwitchingText.css";
 export default function SwitchingText() {
   return (
     <div>
-      <h1>Welcome to Style Studio</h1>
-      <main className="container">
-        <p>Style Studio</p>
-        <section className="animation">
-          <div className="first">
-            <div>Carlos Córdova</div>
+      <main id="container">
+        <p>checkout the &#8658;</p>
+        <section id="animation">
+          <div id="first">
+            <div>CSS calculator</div>
           </div>
-          <div className="second">
-            <div>Web Developer</div>
+          <div id="second">
+            <div>Forums Page</div>
           </div>
-          <div className="third">
-            <div>Systems Engineer</div>
+          <div id="third">
+            <div>Guides Page</div>
           </div>
         </section>
       </main>
     </div>
   );
 }
+
+// <main class="container">
+//   <div class="slider">
+//     <div class="caption">
+//       We build
+//       <div class="text-box">
+//         <div>websites</div>
+//         <div>brands</div>
+//         <div>experiences</div>
+//       </div>
+//     </div>
+//   </div>
+// </main>;

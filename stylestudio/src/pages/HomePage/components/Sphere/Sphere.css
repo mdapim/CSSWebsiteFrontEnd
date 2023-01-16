@@ -1,4 +1,6 @@
-.text-shpere {
+@import url("https://fonts.googleapis.com/css2?family=Rowdies:wght@300;400;700&display=swap");
+
+.text-sphere {
   position: relative;
   top: 0;
   width: 100%;
@@ -14,9 +16,10 @@
   top: 0;
   left: 0;
   font-family: "Inter", sans-serif;
-  font-weight: 400;
+  font-weight: 800;
   letter-spacing: 0.0625em;
-  font-size: 0.6em;
+  font-size: 1em;
+  font-family: "Rowdies", cursive;
 }
 
 /* Change color of each text in sphere on hover   */
@@ -27,6 +30,6 @@
 }
 
 .tagcloud--item:hover {
-  color: #00cff9;
+  color: rgb(255, 229, 79);
   cursor: pointer;
 }

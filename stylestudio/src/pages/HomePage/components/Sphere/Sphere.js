@@ -8,27 +8,17 @@ export const TextSphere = () => {
       const container = ".tagcloud";
       const texts = [
         "CSS",
-        "Animations",
+        "React word cloud tutorial",
         "JavaScript",
-        "CSS3",
+        "React Bootstrap",
         "Blur",
-        "Shadow",
-        "Flex",
-        "Rolling",
-        "Sphere",
-        "6KB",
-        "v2.x",
-        "Sphere",
-        "6KB",
-        "v2.x",
-        "Sphere",
-        "6KB",
-        "adam",
-        "mike",
-        "cal",
+        "CSS Basics",
+        "How do I add a hr element",
+        "Flex box tips and tricks",
+        "We Punched an Asteroid, and the Science Results are In",
       ];
       const options = {
-        radius: 150,
+        radius: 200,
         maxSpeed: "normal",
         initSpeed: "normal",
         keep: true,
@@ -87,7 +77,7 @@ export const WorkingTextSphere = () => {
 
   return (
     <div>
-      <div className="text-shpere">
+      <div className="text-sphere">
         <span className="tagcloud"></span>
       </div>
     </div>
