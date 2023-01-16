@@ -9,7 +9,7 @@ export function HomePage() {
   return (
     <div>
       <div className="siteContainer">
-        <div className="container">
+        <div className="home-page-container">
           <div className="item1">
             <h1 className="homepage-h1">Welcome to Style Studio</h1>
             <div className="separator" style={{ width: 500 }}></div>

@@ -44,8 +44,8 @@ export function NavigationBar({ currentUserDetails, handleLogOut, loggedIn }) {
             </Nav.Link>
           ) : (
             <NavDropdown
-              style={{ color: "white", padding: "10px" }}
-              id="nav-dropdown-light-example"
+              style={{ zIndex: "2", marginTop: "8px" }}
+              className="nav-link"
               title="Profile"
               menuVariant="dark"
             >
