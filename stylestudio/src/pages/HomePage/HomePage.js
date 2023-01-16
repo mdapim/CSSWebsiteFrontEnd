@@ -1,50 +1,33 @@
 import React, { useEffect } from "react";
-import "./Sphere.css";
-const TagCloud = require("TagCloud");
+import { WorkingTextSphere, TextSphere } from "./components/Sphere/Sphere";
+import "./components/TitleSwitch/SwitchingTitle";
+import SwitchingText from "./components/TitleSwitch/SwitchingTitle.jsx";
+import "./Homepage.css";
+import Carousel from "./components/Carousel/Carousel";
 
 export function HomePage() {
-  useEffect(() => {
-    const container = ".tagcloud";
-    let radii;
-    const texts = [
-      "HTML",
-      "CSS",
-      "SASS",
-      "JavaScript",
-      "React",
-      "Vue",
-      "Nuxt",
-      "NodeJS",
-      "Shopify",
-      "Jquery",
-      "ES6",
-      "GIT",
-      "GITHUB",
-    ];
-
-    function radiusValue() {
-      if (window.screen.width <= 778) {
-        radii = 150;
-      } else {
-        radii = 290;
-      }
-      return radii;
-    }
-
-    const options = {
-      radius: radiusValue(),
-      maxSpeed: "normal",
-      initSpeed: "normal",
-      keep: true,
-    };
-
-    TagCloud(container, texts, options);
-  }, []);
-
   return (
     <div>
-      <div className="text-shpere">
-        <span className="tagcloud"></span>
+      <div className="siteContainer">
+        <div className="container">
+          <div className="item1">
+            <h1 className="homepage-h1">Welcome to Style Studio</h1>
+            <div className="separator" style={{ width: 500 }}></div>
+            <br />
+            <p className="homepage-p">For all the simple CSS tips and tricks</p>
+            <SwitchingText />
+          </div>
+          <div className="item2">
+            <WorkingTextSphere />
+          </div>
+        </div>
+        <br />
+        <br />
+        <br />
+        <div className="separator2"></div>
+        <div className="carousel">
+          <Carousel />
+        </div>
       </div>
     </div>
   );

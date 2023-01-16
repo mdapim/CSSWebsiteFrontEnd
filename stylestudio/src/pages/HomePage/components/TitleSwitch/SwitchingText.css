@@ -1,0 +1,71 @@
+@import url("https://fonts.googleapis.com/css?family=Roboto:700");
+@import url("https://fonts.googleapis.com/css2?family=Rowdies:wght@300;400;700&display=swap");
+
+#container {
+  color: #e5e5e5;
+  font-size: 1.5rem;
+  text-transform: uppercase;
+  font-family: "Rowdies", cursive;
+  display: flex;
+  text-shadow: 0 0 7px rgba(255, 255, 255, 0.3),
+    0 0 3px rgba(255, 255, 255, 0.3);
+}
+
+#animation {
+  height: 50px;
+  overflow: hidden;
+}
+
+#animation > div > div {
+  padding: 0.25rem 0.75rem;
+  height: 2.81rem;
+  margin-bottom: 2.81rem;
+  display: inline-block;
+}
+
+#animation div:first-child {
+  animation: text-animation 12s infinite;
+}
+
+#first div {
+  background-color: #20a7d8;
+}
+#second div {
+  background-color: #cd921e;
+}
+#third div {
+  background-color: #c10528;
+}
+
+@keyframes text-animation {
+  0% {
+    margin-top: -0.1rem;
+  }
+  10% {
+    margin-top: -0.1rem;
+  }
+  20% {
+    margin-top: -5.3rem;
+  }
+  30% {
+    margin-top: -5.3rem;
+  }
+  40% {
+    margin-top: -10.7rem;
+  }
+  60% {
+    margin-top: -10.7rem;
+  }
+  70% {
+    margin-top: -5.3rem;
+  }
+  80% {
+    margin-top: -5.3rem;
+  }
+  90% {
+    margin-top: -0.1rem;
+  }
+  100% {
+    margin-top: -0.1rem;
+  }
+}

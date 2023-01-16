@@ -1,0 +1,75 @@
+@import url("https://fonts.googleapis.com/css2?family=Rowdies:wght@300;400;700&display=swap");
+
+.homepage-h1 {
+  font-family: "Rowdies", cursive;
+  color: white;
+  text-align: left;
+  text-shadow: 0 0 7px rgba(255, 255, 255, 0.3),
+    0 0 3px rgba(255, 255, 255, 0.3);
+}
+
+.separator {
+  display: block;
+  background-color: white;
+  height: 2px;
+  border: 2px, solid, white;
+}
+
+.separator2 {
+  display: block;
+  background-color: black;
+  height: 10px;
+  border: 2px, solid, white;
+}
+.homepage-p {
+  color: #e5e5e5;
+  font-size: 1.5rem;
+  text-transform: uppercase;
+  font-family: "Rowdies", cursive;
+  text-shadow: 0 0 7px rgba(255, 255, 255, 0.3),
+    0 0 3px rgba(255, 255, 255, 0.3);
+  margin: 0;
+  padding: 0;
+  clear: both;
+  overflow: auto;
+  text-align: left;
+}
+
+.homepage-h2 {
+  color: #e5e5e5;
+  font-size: 1.5rem;
+  text-transform: uppercase;
+  font-family: "Rowdies", cursive;
+  text-shadow: 0 0 7px rgba(255, 255, 255, 0.3),
+    0 0 3px rgba(255, 255, 255, 0.3);
+}
+
+.siteContainer {
+  margin: 40px;
+  background-color: #212529da;
+  border-radius: 25px;
+}
+
+.container {
+  display: flex;
+  height: 45vh;
+}
+
+.item1 {
+  width: 100;
+  height: 100;
+  flex: 1;
+  align-self: center;
+}
+
+.item2 {
+  flex: 1;
+  align-self: flex-start;
+  justify-self: center;
+}
+
+.carousel {
+  border: 8px solid white;
+  margin: 10px;
+  border-radius: 25px;
+}
