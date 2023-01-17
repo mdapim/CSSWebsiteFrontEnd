@@ -8,13 +8,14 @@ import "./NavigationBar.css";
 import Button from "react-bootstrap/Button";
 export function NavigationBar({ currentUserDetails, handleLogOut, loggedIn }) {
   const [signedIn, setSignedIn] = useState(false);
+  console.log(currentUserDetails);
 
   return (
     <div className="main-nav">
       <Navbar>
         <Nav className="me-auto">
           <Nav.Link className="nav-child">
-            <Link to="/home">Home</Link>
+            <Link to="/">Home</Link>
           </Nav.Link>
           <Nav.Link className="nav-child">
             <Link to="/leaderboard">Specificity Leaderboard</Link>
@@ -50,7 +51,7 @@ export function NavigationBar({ currentUserDetails, handleLogOut, loggedIn }) {
               menuVariant="dark"
             >
               <p style={{ textAlign: "center", padding: "10px" }}>
-                Signed in as {currentUserDetails["username"]}
+                Signed in as {currentUserDetails[0]["username"]}
               </p>
               <NavDropdown.Item href="#action/3.2">Profile</NavDropdown.Item>
               <NavDropdown.Divider />

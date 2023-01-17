@@ -23,7 +23,7 @@ export function LoginPage({
 }) {
   const navigate = useNavigate();
   const routeChange = () => {
-    navigate("/home");
+    navigate("/");
   };
   const [errorLogin, setErrorLogin] = useState(false);
   const [loading, setLoading] = useState(false);

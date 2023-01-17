@@ -62,7 +62,7 @@ function App() {
         options={particlesConfig}
       ></Particles>
       <Routes>
-        <Route path="/home" element={<HomePage />} />
+        <Route path="/" element={<HomePage />} />
         <Route
           path="/login"
           element={
