@@ -55,6 +55,7 @@ export function Specificity() {
   }, [cssSpec]);
   return (
     <>
+      {console.log("input is", cssSpec)}
       <div className="spec-background">
         <h1 className="title">Specificity Leaderboard</h1>
         <div className="main">
@@ -88,18 +89,7 @@ export function Specificity() {
               </Dropdown.Item>
             </DropdownButton>
           </div>
-          {/* <p>{cssSpec[1][0]}</p> */}
-          <div className="leaderboard">
-            {cssSpec.length === 0
-              ? ""
-              : generateLeaderboard(cssSpec[0], "leaderboard")}
-            {invalidInput ? (
-              <Alert variant="danger">Please input some CSS code</Alert>
-            ) : (
-              ""
-            )}
-          </div>
-          <div className="scoring">
+          <div>
             {cssSpec.length === 0 ? (
               ""
             ) : (
@@ -107,10 +97,6 @@ export function Specificity() {
                 <CustomisedTable values={cssSpec} />
               </div>
             )}
-            {/* //: generateLeaderboard(cssSpec[1], "score")} */}
-            {/* <div>
-              <CustomisedTable values={cssSpec} />
-            </div> */}
           </div>
         </div>
       </div>
