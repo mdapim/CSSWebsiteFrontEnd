@@ -20,7 +20,6 @@ function App() {
     password: "",
   });
   const [currentUserDetails, setCurrentUserDetails] = useState([[]]);
-  console.log(currentUserDetails);
   const [loggedIn, setLoggedIn] = useState(false);
   const handleSignInChange = (e) => {
     const name = e.target.name;
@@ -45,7 +44,7 @@ function App() {
       const data = await res.json()
       setCurrentUserDetails(data)
       handleLogIn()
-      console.log({currentUserDetails})
+      console.log({data})
     }
   }
   const handleLogIn = () => {
