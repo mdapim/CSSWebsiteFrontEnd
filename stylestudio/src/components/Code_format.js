@@ -3,18 +3,15 @@ import AceEditor from "react-ace";
 import "ace-builds/src-noconflict/mode-css";
 import "ace-builds/src-noconflict/theme-xcode";
 import "../pages/Forums/Forums.css";
+import "../pages/Styling.css";
 
-const CodeFormat = () => {
-  const [code, setCode] = useState("");
-
-  const codeExample = "4t34t43t34t34t";
-
+const CodeFormat = ({ code, setCode }) => {
   return (
     <div className="code-format">
       <AceEditor
         mode="css"
         theme="github"
-        value={codeExample}
+        value={code}
         onChange={setCode}
         name="my-editor"
         editorProps={{ $blockScrolling: true }}
