@@ -102,7 +102,7 @@ export function ForumBox({
               className="title-description"
             >
               <Card.Title style={{ marginBottom: "2rem", color: "white" }}>
-                {handleDescriptionLength(description, 100)}
+                {handleDescriptionLength(Title, 100)}
               </Card.Title>
               <Card.Text
                 style={{
