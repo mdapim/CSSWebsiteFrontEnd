@@ -5,7 +5,7 @@ import "ace-builds/src-noconflict/theme-xcode";
 import "../pages/Forums/Forums.css";
 import "../pages/Styling.css";
 
-const CodeFormat = ({ code, setCode,handleNewFormInput }) => {
+const CodeFormat = ({ handleNewFormInput, inputtedCode }) => {
   return (
     <div className="code-format">
       <AceEditor

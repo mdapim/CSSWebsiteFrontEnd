@@ -5,8 +5,7 @@ import Card from "react-bootstrap/Card";
 import ForumFullPost from "./Forum_full_post";
 import Comments from "./Forum_comment_box.js";
 import ForumVoting from "./Forum_voting.js";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
+
 export function ForumBox({
   username,
   date,
@@ -23,6 +22,7 @@ export function ForumBox({
   currentUserDetails,
   fetchForumData,
   user_id,
+  inputtedCode,
 }) {
   const [staticModal, setStaticModal] = useState(false);
   const toggleShow = () => setStaticModal(!staticModal);
@@ -152,6 +152,7 @@ export function ForumBox({
           displayEditButton={displayEditButton}
           editPost={editPost}
           setEditPost={setEditPost}
+          inputtedCode={inputtedCode}
         />
       </div>
     </div>

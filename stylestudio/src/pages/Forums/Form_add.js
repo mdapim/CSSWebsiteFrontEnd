@@ -3,7 +3,6 @@ import CodeFormat from "../../components/Code_format.js";
 import {
   MDBBtn,
   MDBModal,
-  MDBModalDialog,
   MDBModalContent,
   MDBModalHeader,
   MDBModalTitle,
@@ -31,7 +30,6 @@ function FormAdd({
     EMPTY_INPUT: false,
     SUCCESSFUL_INPUT: false,
   });
-
 
   const handleAddCodeButton = () => {
     console.log("test");
@@ -64,12 +62,12 @@ function FormAdd({
   const handleNewFormInput = (e) => {
     let name;
     let value;
-    if (typeof e==='string') {
-      name='code'
-      value = e
+    if (typeof e === "string") {
+      name = "code";
+      value = e;
     } else {
-       name = e.target.name;
-       value = e.target.value;
+      name = e.target.name;
+      value = e.target.value;
     }
 
     setCurrentForumInput((prev) => {
@@ -78,7 +76,7 @@ function FormAdd({
   };
 
   const postNewForumData = async () => {
-    console.log(currentForumInput)
+    console.log(currentForumInput);
     const res = await fetch(
       "https://csswebsitebackend-production.up.railway.app/forum_post",
       {
@@ -154,7 +152,11 @@ function FormAdd({
                     </Button>
                     {addCode && (
                       <div className="code-format-add">
-                        <CodeFormat code={code} setCode={setCode} handleNewFormInput={handleNewFormInput} />
+                        <CodeFormat
+                          code={code}
+                          setCode={setCode}
+                          handleNewFormInput={handleNewFormInput}
+                        />
                         <Button>OK</Button>
                       </div>
                     )}
