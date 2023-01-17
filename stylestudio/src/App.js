@@ -19,10 +19,27 @@ function App() {
     name: "",
     password: "",
   });
+  const [cookiesFetched,setCookiesFetched] = useState(false)
   const [currentUserDetails, setCurrentUserDetails] = useState([]);
   console.log(currentUserDetails);
   const [loggedIn, setLoggedIn] = useState(false);
-  
+  const fetchCookies = async ()=> {
+    const res = await fetch(
+      "https://csswebsitebackend-production.up.railway.app/",{
+        method:"GET",
+        credentials:"include",
+        headers:{
+          "Content-Type":"application/json"
+        }
+      }
+    )
+    if (res.status===200) {
+      const data = await res.json()
+      setCurrentUserDetails(data[0])
+      handleLogIn()
+      console.log(currentUserDetails)
+    }
+  }
   const handleSignInChange = (e) => {
     const name = e.target.name;
     const value = e.target.value;
@@ -45,7 +62,7 @@ function App() {
     setLoggedIn(false);
   };
   useEffect(() => {}, [loggedIn]);
-
+  useEffect(()=> {fetchCookies()},[])
   const particlesInit = async (main) => {
     console.log(main);
     await loadFull(main);
