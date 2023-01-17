@@ -33,6 +33,7 @@ export function LoginPage({
       "https://csswebsitebackend-production.up.railway.app/find_user",
       {
         method: "POST",
+        credentials: 'include',
         headers: {
           "Content-Type": "application/json",
         },

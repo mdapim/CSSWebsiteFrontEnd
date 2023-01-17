@@ -22,9 +22,11 @@ function App() {
   const [currentUserDetails, setCurrentUserDetails] = useState([]);
   console.log(currentUserDetails);
   const [loggedIn, setLoggedIn] = useState(false);
+  
   const handleSignInChange = (e) => {
     const name = e.target.name;
     const value = e.target.value;
+
     setSignInCredentials((prev) => {
       return { ...prev, [name]: value };
     });
