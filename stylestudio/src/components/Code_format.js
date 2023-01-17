@@ -5,15 +5,14 @@ import "ace-builds/src-noconflict/theme-xcode";
 import "../pages/Forums/Forums.css";
 import "../pages/Styling.css";
 
-const CodeFormat = ({ code, setCode }) => {
+const CodeFormat = ({ code, setCode, handleNewFormInput }) => {
   return (
     <div className="code-format">
       <AceEditor
         mode="css"
-        theme="github"
-        value={code}
-        onChange={setCode}
-        name="my-editor"
+        theme="xcode"
+        onChange={handleNewFormInput}
+        name="code"
         editorProps={{ $blockScrolling: true }}
       />
     </div>

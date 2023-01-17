@@ -37,10 +37,6 @@ function FormAdd({
     setAddCode(!addCode);
   };
 
-  console.log(code);
-  console.log(currentForumInput);
-
-  const handleCodeInput = () => {};
   // const generateForums = async () => {
   //   for (let i = 0; i <= 10; i++) {
   //     const res = await fetch(
@@ -65,16 +61,23 @@ function FormAdd({
   // generateForums();
 
   const handleNewFormInput = (e) => {
-    const name = e.target.name;
-    const value = e.target.value;
+    let name;
+    let value;
+    if (typeof e === "string") {
+      name = "code";
+      value = e;
+    } else {
+      name = e.target.name;
+      value = e.target.value;
+    }
 
     setCurrentForumInput((prev) => {
       return { ...prev, [name]: value };
     });
-    console.log(currentForumInput);
   };
 
   const postNewForumData = async () => {
+    console.log(currentForumInput);
     const res = await fetch(
       "https://csswebsitebackend-production.up.railway.app/forum_post",
       {
@@ -150,7 +153,11 @@ function FormAdd({
                     </Button>
                     {addCode && (
                       <div className="code-format-add">
-                        <CodeFormat code={code} setCode={setCode} />
+                        <CodeFormat
+                          code={code}
+                          setCode={setCode}
+                          handleNewFormInput={handleNewFormInput}
+                        />
                         <Button>OK</Button>
                       </div>
                     )}

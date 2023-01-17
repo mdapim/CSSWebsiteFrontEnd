@@ -31,6 +31,22 @@ function App() {
 
     console.log(signInCredentials);
   };
+  const fetchCookies = async ()=> {
+    const res = await fetch(
+      "https://csswebsitebackend-production.up.railway.app/",{
+        method:"GET",
+        credentials:"include",
+        headers:{
+          "Content-Type":"application/json"
+        }
+      }
+    )
+    if (res.status===200) {
+      const data = await res.json()
+      setCurrentUserDetails(data)
+      handleLogIn()
+    }
+  }
   const handleLogIn = () => {
     setLoggedIn(true);
   };
@@ -43,6 +59,7 @@ function App() {
     setLoggedIn(false);
   };
   useEffect(() => {}, [loggedIn]);
+  useEffect(()=> {fetchCookies()},[])
 
   const particlesInit = async (main) => {
     console.log(main);
