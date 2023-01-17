@@ -220,6 +220,11 @@ div.modal-content {
   margin-top: 5%;
 }
 
+.cat-selector {
+  margin-right: 30%;
+  margin-left: 30%;
+}
+
 .code-format-add {
   display: flex;
   justify-content: center;
@@ -233,4 +238,10 @@ div.modal-content {
 .forum-new-input-title {
   height: 3em;
   width: 50%;
+}
+
+.nav-button:hover {
+  transition: 0.5s;
+  transform: scale(1.2);
+  color: #6e6e6e;
 }

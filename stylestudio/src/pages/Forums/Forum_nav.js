@@ -16,14 +16,26 @@ export function ForumNav({
     <div>
       <br />
       <h2 className="forum-title">Forums</h2>
+      <p className="forum-title">
+        <strong>Style Studio</strong>Forum and Community, a place to discuss the
+        latest technologies, design tools and anything else!
+      </p>
       <Nav className="forum_nav" fill variant="tabs" defaultActiveKey="">
         <Nav.Item>
-          <h4 style={{ cursor: "pointer" }} onClick={fetchForumData}>
+          <h4
+            className="nav-button"
+            style={{ cursor: "pointer" }}
+            onClick={fetchForumData}
+          >
             Posts
           </h4>
         </Nav.Item>
         <Nav.Item>
-          <h4 style={{ cursor: "pointer" }} onClick={() => toggleShow()}>
+          <h4
+            className="nav-button"
+            style={{ cursor: "pointer" }}
+            onClick={() => toggleShow()}
+          >
             New post +{" "}
           </h4>
         </Nav.Item>

@@ -7,6 +7,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheck, faTrash } from "@fortawesome/free-solid-svg-icons";
 import ForumVoting from "./Forum_voting.js";
 import ForumCodePost from "./Forum_code_post.js";
+
 function ForumFullPost({
   show,
   setShow,
@@ -112,7 +113,10 @@ function ForumFullPost({
         aria-labelledby="example-custom-modal-styling-title"
       >
         <Modal.Header closeButton>
-          <Modal.Title id="example-custom-modal-styling-title">
+          <Modal.Title
+            style={{ whiteSpace: "" }}
+            id="example-custom-modal-styling-title"
+          >
             {Title}
           </Modal.Title>
           <ForumVoting handleVote={handleVote} post_id={post_id} />

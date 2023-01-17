@@ -188,8 +188,9 @@ export default function RecentComments({
                     {commentsForIndivPost[i]["user_id"] ===
                       currentUserDetails[0]["id"] && (
                       <div className="modify-comments">
-                        <button
+                        <a
                           onClick={handleEditButtonClick}
+                          href
                           key={comment["description"]}
                           name={comment["id"]}
                           style={{
@@ -198,7 +199,7 @@ export default function RecentComments({
                           }}
                         >
                           Edit post
-                        </button>
+                        </a>
 
                         <FontAwesomeIcon
                           onClick={() => {
