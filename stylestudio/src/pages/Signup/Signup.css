@@ -1,4 +1,9 @@
 .center {
-    display:flex;
-    justify-content: center;
+  display: flex;
+  justify-content: center;
+}
+
+.sign-up-card {
+  display: flex;
+  width: 100%;
 }

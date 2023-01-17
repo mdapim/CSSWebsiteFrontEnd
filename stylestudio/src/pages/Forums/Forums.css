@@ -151,6 +151,7 @@ div.modal-content {
   background-color: #212529;
   width: 700px;
 }
+
 .description-text {
   font-family: inherit;
   font-size: inherit;
@@ -160,6 +161,11 @@ div.modal-content {
   border: none;
   width: 100%;
   box-sizing: border-box;
+  height: auto;
+}
+
+.description {
+  height: auto;
 }
 
 .forum-post-content {
@@ -186,6 +192,7 @@ div.modal-content {
   display: flex;
   flex-direction: row;
   width: 750px;
+  height: auto;
 }
 
 #my-editor {
@@ -193,3 +200,23 @@ div.modal-content {
   background-color: azure;
   filter: drop-shadow(0 0 0.75rem rgb(19, 36, 120));
 }
+
+.add-post {
+  display: flex;
+  justify-content: center;
+  background-color: #212529;
+  margin-left: 20%;
+  margin-right: 20%;
+  margin-top: 5%;
+  border-radius: 30px;
+}
+
+/* .forum-new-input-description {
+  height: 8em;
+  width: 50%;
+} */
+
+/* .forum-new-input-title {
+  height: 3em;
+  width: 50%;
+} */

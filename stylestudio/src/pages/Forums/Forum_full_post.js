@@ -6,7 +6,7 @@ import RecentComments from "./Forum_full_post_comments";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheck, faTrash } from "@fortawesome/free-solid-svg-icons";
 import ForumVoting from "./Forum_voting.js";
-import CodeFormat from "./Forum_code_format.js";
+import CodeFormat from "../../components/Code_format";
 function ForumFullPost({
   show,
   setShow,
