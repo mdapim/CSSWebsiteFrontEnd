@@ -3,7 +3,6 @@ import CodeFormat from "../../components/Code_format.js";
 import {
   MDBBtn,
   MDBModal,
-  MDBModalDialog,
   MDBModalContent,
   MDBModalHeader,
   MDBModalTitle,

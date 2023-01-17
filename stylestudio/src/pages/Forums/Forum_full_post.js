@@ -42,7 +42,7 @@ function ForumFullPost({
   };
 
   const handleDisplayEditButtonPosts = () => {
-    user_id === currentUserDetails["id"]
+    user_id === currentUserDetails[0]["id"]
       ? setDisplayEditButton(true)
       : setDisplayEditButton(false);
   };
