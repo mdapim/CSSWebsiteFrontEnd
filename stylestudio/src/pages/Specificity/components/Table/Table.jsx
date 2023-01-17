@@ -1,7 +1,7 @@
 import OverlayTrigger from "react-bootstrap/OverlayTrigger";
 import Tooltip from "react-bootstrap/Tooltip";
 
-export const CustomisedTable = (props) => {
+export const CustomizedTable = (props) => {
   const { values } = props;
   const applyColorStyling = (value) => {
     if (value.toString().includes("color")) {

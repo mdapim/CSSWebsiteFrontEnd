@@ -7,7 +7,7 @@ import { useState, useEffect } from "react";
 import "./Specificity.css";
 import { specificityCalculator } from "../../Utilities/SpecificityCalculator";
 import "./components/Table/Table";
-import { CustomisedTable } from "./components/Table/Table";
+import { CustomizedTable } from "./components/Table/Table";
 import "../Styling.css";
 export function Specificity() {
   const [cssInput, setCSSInput] = useState("");
@@ -93,7 +93,7 @@ export function Specificity() {
               ""
             ) : (
               <div>
-                <CustomisedTable values={cssSpec} />
+                <CustomizedTable values={cssSpec} />
               </div>
             )}
           </div>
