@@ -1,4 +1,4 @@
-import React, { useState,useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import CodeFormat from "../../components/Code_format.js";
 import {
   MDBBtn,
@@ -10,6 +10,7 @@ import {
   MDBModalFooter,
 } from "mdb-react-ui-kit";
 import Button from "react-bootstrap/Button";
+import Form from "react-bootstrap/Form";
 
 function FormAdd({
   staticModal,
@@ -18,6 +19,7 @@ function FormAdd({
   currentUserDetails,
 }) {
   const [code, setCode] = useState("");
+  const [category, setCategory] = useState("");
 
   const [addCode, setAddCode] = useState(false);
   const [currentForumInput, setCurrentForumInput] = useState({
@@ -25,20 +27,27 @@ function FormAdd({
     description: "",
     user_id: currentUserDetails[0]["id"],
     code: code,
+    category: category,
   });
   const [handleValidation, setHandleValidation] = useState({
     EMPTY_INPUT: false,
     SUCCESSFUL_INPUT: false,
   });
-  useEffect(()=> {
+  useEffect(() => {
     setCurrentForumInput((prev) => {
-      return { ...prev, 'user_id': currentUserDetails[0]['id'] };
+      return { ...prev, user_id: currentUserDetails[0]["id"] };
     });
-  },[currentUserDetails])
+  }, [currentUserDetails]);
 
   const handleAddCodeButton = () => {
     console.log("test");
     setAddCode(!addCode);
+  };
+
+  const handleCategory = (e) => {
+    const catChoice = e.target.value;
+    setCategory(catChoice);
+    console.log(catChoice);
   };
 
   // const generateForums = async () => {
@@ -84,8 +93,8 @@ function FormAdd({
     setCurrentForumInput((prev) => {
       return { ...prev, code: "" };
     });
-    console.log('here')
-    console.log(currentUserDetails[0]['id'])
+    console.log("here");
+    console.log(currentUserDetails[0]["id"]);
     console.log(currentForumInput);
 
     const res = await fetch(
@@ -133,6 +142,15 @@ function FormAdd({
                   onClick={toggleShow}
                 ></MDBBtn>
               </MDBModalHeader>
+              <select onChange={handleCategory} className="cat-selector">
+                <option>Select a category</option>
+                <option value="Discussions">Discussions</option>
+                <option value="Questions">Questions</option>
+                <option value="Ideas">Ideas</option>
+                <option value="ShowReel">ShowReel</option>
+                <option value="Issues">Issues</option>
+                <option value="General">General</option>
+              </select>
               <MDBModalBody>
                 <div className="input-container">
                   <div>

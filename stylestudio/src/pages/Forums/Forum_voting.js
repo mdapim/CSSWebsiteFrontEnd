@@ -16,7 +16,7 @@ export function ForumVoting({ handleVote, post_id }) {
         data-testid="upvote"
       >
         <FontAwesomeIcon
-          style={{ color: "green", height: "30px" }}
+          style={{ color: "green", height: "25px" }}
           icon={faFaceGrin}
         />
       </p>
@@ -30,7 +30,7 @@ export function ForumVoting({ handleVote, post_id }) {
       >
         <FontAwesomeIcon
           icon={faFaceFrown}
-          style={{ color: "red", height: "30px" }}
+          style={{ color: "red", height: "25px" }}
         />
       </p>
     </div>
