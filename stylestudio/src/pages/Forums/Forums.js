@@ -118,6 +118,7 @@ export function Forums({ currentUserDetails }) {
                 )}
                 fetchComments={fetchComments}
                 fetchForumData={fetchForumData}
+                inputtedCode={item["code"]}
               />
             );
           })}

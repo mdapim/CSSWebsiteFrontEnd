@@ -25,6 +25,7 @@ function ForumFullPost({
   fetchForumData,
   currentUserDetails,
   fetchComments,
+  inputtedCode,
 }) {
   const [editPost, setEditPost] = useState(false);
   const [displayEditButton, setDisplayEditButton] = useState(false);
@@ -184,7 +185,7 @@ function ForumFullPost({
             />
 
             <div className="code-format-container">
-              <CodeFormat />
+              <CodeFormat inputtedCode={inputtedCode} />
             </div>
           </div>
         </Modal.Body>

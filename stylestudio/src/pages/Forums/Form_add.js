@@ -24,7 +24,7 @@ function FormAdd({
   const [currentForumInput, setCurrentForumInput] = useState({
     title: "",
     description: "",
-    user_id: currentUserDetails["id"],
+    user_id: currentUserDetails[0]["id"],
     code: code,
   });
   const [handleValidation, setHandleValidation] = useState({
