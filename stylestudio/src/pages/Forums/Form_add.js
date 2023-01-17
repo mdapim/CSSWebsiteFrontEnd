@@ -76,7 +76,12 @@ function FormAdd({
   };
 
   const postNewForumData = async () => {
+    if (currentForumInput.code === null) {
+      currentForumInput.code = "";
+    }
+
     console.log(currentForumInput);
+
     const res = await fetch(
       "https://csswebsitebackend-production.up.railway.app/forum_post",
       {
@@ -157,7 +162,6 @@ function FormAdd({
                           setCode={setCode}
                           handleNewFormInput={handleNewFormInput}
                         />
-                        <Button>OK</Button>
                       </div>
                     )}
                   </div>
