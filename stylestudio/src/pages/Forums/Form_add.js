@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import CodeFormat from "../../components/Code_format.js";
 import {
   MDBBtn,
   MDBModal,
@@ -17,15 +18,25 @@ function FormAdd({
   toggleShow,
   currentUserDetails,
 }) {
+  const [code, setCode] = useState("");
+
+  const [addCode, setAddCode] = useState(false);
   const [currentForumInput, setCurrentForumInput] = useState({
     title: "",
     description: "",
     user_id: currentUserDetails["id"],
+    code: code,
   });
   const [handleValidation, setHandleValidation] = useState({
     EMPTY_INPUT: false,
     SUCCESSFUL_INPUT: false,
   });
+
+
+  const handleAddCodeButton = () => {
+    console.log("test");
+    setAddCode(!addCode);
+  };
 
   // const generateForums = async () => {
   //   for (let i = 0; i <= 10; i++) {
@@ -51,16 +62,23 @@ function FormAdd({
   // generateForums();
 
   const handleNewFormInput = (e) => {
-    const name = e.target.name;
-    const value = e.target.value;
+    let name;
+    let value;
+    if (typeof e==='string') {
+      name='code'
+      value = e
+    } else {
+       name = e.target.name;
+       value = e.target.value;
+    }
 
     setCurrentForumInput((prev) => {
       return { ...prev, [name]: value };
     });
-    console.log(currentForumInput);
   };
 
   const postNewForumData = async () => {
+    console.log(currentForumInput)
     const res = await fetch(
       "https://csswebsitebackend-production.up.railway.app/forum_post",
       {
@@ -85,6 +103,7 @@ function FormAdd({
       }));
     }
   };
+
   return (
     <div>
       {" "}
@@ -127,6 +146,18 @@ function FormAdd({
                       name="description"
                       rows="8"
                     />
+                  </div>
+
+                  <div>
+                    <Button onClick={() => handleAddCodeButton()}>
+                      Click here to enter your code to share..
+                    </Button>
+                    {addCode && (
+                      <div className="code-format-add">
+                        <CodeFormat code={code} setCode={setCode} handleNewFormInput={handleNewFormInput} />
+                        <Button>OK</Button>
+                      </div>
+                    )}
                   </div>
                   <br />
                   {handleValidation["EMPTY_INPUT"] && (
