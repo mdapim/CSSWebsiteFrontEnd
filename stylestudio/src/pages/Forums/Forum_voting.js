@@ -15,7 +15,10 @@ export function ForumVoting({ handleVote, post_id }) {
         className="votebutton"
         data-testid="upvote"
       >
-        <FontAwesomeIcon className="thumb-up" icon={faFaceGrin} />
+        <FontAwesomeIcon
+          style={{ color: "green", height: "30px" }}
+          icon={faFaceGrin}
+        />
       </p>
       <br />
       <p
@@ -23,10 +26,12 @@ export function ForumVoting({ handleVote, post_id }) {
           handleVote("downvote", post_id);
         }}
         name="downvote"
-        className="votebutton"
         data-testid="downvote"
       >
-        <FontAwesomeIcon className="thumb-down" icon={faFaceFrown} />
+        <FontAwesomeIcon
+          icon={faFaceFrown}
+          style={{ color: "red", height: "30px" }}
+        />
       </p>
     </div>
   );

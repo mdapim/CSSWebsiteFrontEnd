@@ -38,6 +38,7 @@
 
 .voting {
   display: flex;
+  cursor: pointer;
 }
 
 .card-header,
@@ -137,6 +138,10 @@
   cursor: pointer;
 }
 
+.description-flex {
+  background-color: #343f4a5f;
+  border-radius: 5px;
+}
 div.modal-content {
   height: auto;
   background-color: #212529;
@@ -174,7 +179,7 @@ div.modal-content {
 }
 
 .modal-content {
-  min-width: 800px;
+  min-width: 900px;
 }
 .modify-comments {
   display: flex;
@@ -204,19 +209,17 @@ div.modal-content {
 .add-post {
   display: flex;
   justify-content: center;
-  background-color: #212529;
   margin-left: 20%;
   margin-right: 20%;
   margin-top: 5%;
-  border-radius: 30px;
 }
 
-/* .forum-new-input-description {
+.forum-new-input-description {
   height: 8em;
   width: 50%;
-} */
+}
 
-/* .forum-new-input-title {
+.forum-new-input-title {
   height: 3em;
   width: 50%;
-} */
+}

@@ -132,7 +132,7 @@ function ForumFullPost({
         </div>
 
         <Modal.Body>
-          <div className="description">
+          <div className="description-full-post">
             {!editPost ? (
               <p className="description-text">{description}</p>
             ) : (
