@@ -54,7 +54,7 @@ export default function RecentComments({
           {
             description: updatedComment,
             comment_id: id,
-            user_id: currentUserDetails["id"],
+            user_id: currentUserDetails[0]["id"],
           },
         ]),
       }
@@ -74,14 +74,14 @@ export default function RecentComments({
   };
 
   const fetchDeleteComment = async (id) => {
-    console.log(id, currentUserDetails["id"]);
+    console.log(id, currentUserDetails[0]["id"]);
     const res = await fetch(
       "https://csswebsitebackend-production.up.railway.app/forum_comment",
       {
         method: "DELETE",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify([
-          { comment_id: id, user_id: currentUserDetails["id"], user_type: 2 },
+          { comment_id: id, user_id: currentUserDetails[0]["id"], user_type: 2 },
         ]),
       }
     );
@@ -182,7 +182,7 @@ export default function RecentComments({
                       </div>
                     </MDBCardBody>
                     {commentsForIndivPost[i]["user_id"] ===
-                      currentUserDetails["id"] && (
+                      currentUserDetails[0]["id"] && (
                       <div className="modify-comments">
                         <button
                           onClick={handleEditButtonClick}

@@ -34,7 +34,7 @@ export function ForumBox({
   const [newComment, setNewComment] = useState({
     description: "",
     post_id: post_id,
-    user_id: currentUserDetails["id"],
+    user_id: currentUserDetails[0]["id"],
   });
 
   const handleNewComment = (e) => {

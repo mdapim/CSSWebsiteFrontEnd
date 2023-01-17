@@ -19,7 +19,7 @@ function App() {
     name: "",
     password: "",
   });
-  const [currentUserDetails, setCurrentUserDetails] = useState([]);
+  const [currentUserDetails, setCurrentUserDetails] = useState([[]]);
   console.log(currentUserDetails);
   const [loggedIn, setLoggedIn] = useState(false);
   const handleSignInChange = (e) => {
@@ -45,6 +45,7 @@ function App() {
       const data = await res.json()
       setCurrentUserDetails(data)
       handleLogIn()
+      console.log({currentUserDetails})
     }
   }
   const handleLogIn = () => {
@@ -55,7 +56,7 @@ function App() {
       name: "",
       password: "",
     });
-    setCurrentUserDetails([]);
+    setCurrentUserDetails([[]]);
     setLoggedIn(false);
   };
   useEffect(() => {}, [loggedIn]);
