@@ -3,6 +3,23 @@ import Tooltip from "react-bootstrap/Tooltip";
 
 export const CustomisedTable = (props) => {
   const { values } = props;
+  const applyColorStyling = (value) => {
+    if (value.toString().includes("color")) {
+      return true;
+    }
+  };
+
+  const getColorFromStyling = (value) => {
+    let foundColor = "";
+    value.forEach((item) => {
+      if (item.toString().includes("color")) {
+        let indexColon = item.toString().indexOf(":");
+        let indexSemiColon = item.toString().indexOf(";");
+        foundColor = item.toString().slice(indexColon + 1, indexSemiColon);
+      }
+    });
+    return foundColor;
+  };
 
   return (
     <table className="table  table-hover table-sm table-responsive thead-dark">
@@ -19,21 +36,34 @@ export const CustomisedTable = (props) => {
           return (
             <OverlayTrigger
               key={index.toString()}
-              placement={"auto"}
+              placement={"right"}
               overlay={
                 <Tooltip id={`tooltip-${index.toString()}`}>
                   <div>
                     <strong>{values[0][index]}</strong>
-                    <p>
+                    <div>
                       {values[2][item].map((item) => {
                         return <p>{item}</p>;
                       })}
-                    </p>
+                    </div>
                   </div>
                 </Tooltip>
               }
             >
-              <tr>
+              <tr
+                style={
+                  applyColorStyling(values[2][item])
+                    ? {
+                        borderLeft: ` 1mm solid ${getColorFromStyling(
+                          values[2][item]
+                        )}`,
+                        borderRight: ` 1mm solid ${getColorFromStyling(
+                          values[2][item]
+                        )}`,
+                      }
+                    : {}
+                }
+              >
                 <th scope="row">{index + 1}</th>
                 <td>{values[0][index]}</td>
                 <td>{values[1][index]}</td>

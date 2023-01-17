@@ -55,7 +55,6 @@ export function Specificity() {
   }, [cssSpec]);
   return (
     <>
-      {console.log("input is", cssSpec)}
       <div className="spec-background">
         <h1 className="title">Specificity Leaderboard</h1>
         <div className="main">
