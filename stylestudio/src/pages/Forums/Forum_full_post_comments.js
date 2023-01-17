@@ -40,7 +40,6 @@ export default function RecentComments({
   const handleEditPost = (e) => {
     const value = e.target.value;
     const currentComment = e.target.key;
-    console.log(currentComment);
     setUpdatedComment(value);
   };
 
@@ -81,7 +80,11 @@ export default function RecentComments({
         method: "DELETE",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify([
-          { comment_id: id, user_id: currentUserDetails[0]["id"], user_type: 2 },
+          {
+            comment_id: id,
+            user_id: currentUserDetails[0]["id"],
+            user_type: 2,
+          },
         ]),
       }
     );
@@ -127,6 +130,7 @@ export default function RecentComments({
                 backgroundColor: "black",
                 marginTop: "-5px",
                 height: "2.5rem",
+                border: "none",
               }}
               onClick={addComments}
             >

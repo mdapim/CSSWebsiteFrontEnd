@@ -6,7 +6,7 @@ import RecentComments from "./Forum_full_post_comments";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheck, faTrash } from "@fortawesome/free-solid-svg-icons";
 import ForumVoting from "./Forum_voting.js";
-import CodeFormat from "../../components/Code_format";
+import ForumCodePost from "./Forum_code_post.js";
 function ForumFullPost({
   show,
   setShow,
@@ -185,7 +185,7 @@ function ForumFullPost({
             />
 
             <div className="code-format-container">
-              <CodeFormat inputtedCode={inputtedCode} />
+              <ForumCodePost inputtedCode={inputtedCode} />
             </div>
           </div>
         </Modal.Body>
