@@ -39,6 +39,8 @@ function FormAdd({
 
   console.log(code);
   console.log(currentForumInput);
+
+  const handleCodeInput = () => {};
   // const generateForums = async () => {
   //   for (let i = 0; i <= 10; i++) {
   //     const res = await fetch(
