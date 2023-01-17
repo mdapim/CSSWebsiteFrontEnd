@@ -76,9 +76,9 @@ function FormAdd({
   };
 
   const postNewForumData = async () => {
-    if (currentForumInput.code === null) {
-      currentForumInput.code = "";
-    }
+    setCurrentForumInput((prev) => {
+      return { ...prev, code: "" };
+    });
 
     console.log(currentForumInput);
 
