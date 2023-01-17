@@ -41,7 +41,7 @@ export default function Comments({
         className="mt-5"
         style={{ maxWidth: "1000px", minWidth: "1000px" }}
       >
-        <MDBRow className="justify-content-center">
+        <div className="comment-section">
           <MDBCol md="8" lg="6">
             <MDBCard
               className="shadow-0 border"
@@ -100,7 +100,7 @@ export default function Comments({
               <button onClick={toggleShow}>Exit</button>
             </MDBCard>
           </MDBCol>
-        </MDBRow>
+        </div>
       </MDBContainer>
     </MDBModal>
   );

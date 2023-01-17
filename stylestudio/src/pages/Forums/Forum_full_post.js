@@ -6,8 +6,7 @@ import RecentComments from "./Forum_full_post_comments";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheck, faTrash } from "@fortawesome/free-solid-svg-icons";
 import ForumVoting from "./Forum_voting.js";
-import DeletePopUp from "./Forum_delete_popup.js";
-
+import CodeFormat from "../../components/Code_format";
 function ForumFullPost({
   show,
   setShow,
@@ -117,14 +116,23 @@ function ForumFullPost({
           </Modal.Title>
           <ForumVoting handleVote={handleVote} post_id={post_id} />
         </Modal.Header>
-        <div style={{ marginLeft: "18px" }} className="user-date">
-          {username}
+        <div className="header">
+          <span style={{ fontWeight: "bold", textDecoration: "underline" }}>
+            {username}
+          </span>{" "}
           <br />
-          {date}
+          <span>{date}</span>
+          <div className="user-interaction">
+            <p>|</p>
+            <p>Upvotes: {upvotes}</p>
+            <p>|</p>
+            <p>Downvotes: {downvotes}</p>
+            <p>|</p>
+          </div>
         </div>
 
         <Modal.Body>
-          <div className="description">
+          <div className="description-full-post">
             {!editPost ? (
               <p className="description-text">{description}</p>
             ) : (
@@ -166,18 +174,19 @@ function ForumFullPost({
           )}
 
           <hr />
-          <div className="votes">
-            <p>UPVOTES:{upvotes}</p>
+          <div className="full-forum-post-bottom">
+            <RecentComments
+              handleNewComment={handleNewComment}
+              commentsForIndivPost={commentsForIndivPost}
+              addComments={addComments}
+              currentUserDetails={currentUserDetails}
+              fetchComments={fetchComments}
+            />
 
-            <p>DOWNVOTES:{downvotes}</p>
+            <div className="code-format-container">
+              <CodeFormat />
+            </div>
           </div>
-          <RecentComments
-            handleNewComment={handleNewComment}
-            commentsForIndivPost={commentsForIndivPost}
-            addComments={addComments}
-            currentUserDetails={currentUserDetails}
-            fetchComments={fetchComments}
-          />
         </Modal.Body>
       </Modal>
     </>

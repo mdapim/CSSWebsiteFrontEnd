@@ -1,13 +1,11 @@
 import "./Forums.css";
 
 import Nav from "react-bootstrap/Nav";
-import Button from "react-bootstrap/Button";
 import React, { useState } from "react";
 import FormAdd from "./Form_add.js";
 
 export function ForumNav({
   currentUserDetails,
-  searchInput,
   filterDataSearch,
   fetchForumData,
 }) {
@@ -16,24 +14,26 @@ export function ForumNav({
   const toggleShow = () => setStaticModal(!staticModal);
   return (
     <div>
+      <br />
       <h2 className="forum-title">Forums</h2>
       <Nav className="forum_nav" fill variant="tabs" defaultActiveKey="">
         <Nav.Item>
-          <h4 onClick={fetchForumData}>Posts</h4>
+          <h4 style={{ cursor: "pointer" }} onClick={fetchForumData}>
+            Posts
+          </h4>
         </Nav.Item>
         <Nav.Item>
-          <h4 onClick={() => toggleShow()}>Add Forum Post + </h4>
+          <h4 style={{ cursor: "pointer" }} onClick={() => toggleShow()}>
+            New post +{" "}
+          </h4>
         </Nav.Item>
         <Nav.Item>
-          <label>
-            Search for a post..
-            <input
-              onChange={filterDataSearch}
-              className="search"
-              type="text"
-              placeholder="Search posts.."
-            ></input>
-          </label>
+          <input
+            onChange={filterDataSearch}
+            className="search"
+            type="text"
+            placeholder="Search posts.."
+          ></input>
         </Nav.Item>
         <Nav.Item></Nav.Item>
         <FormAdd

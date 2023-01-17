@@ -1,11 +1,12 @@
 import "./Forums.css";
 
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Card from "react-bootstrap/Card";
 import ForumFullPost from "./Forum_full_post";
 import Comments from "./Forum_comment_box.js";
 import ForumVoting from "./Forum_voting.js";
-
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 export function ForumBox({
   username,
   date,
@@ -59,8 +60,8 @@ export function ForumBox({
     setCommentsCopy([...commentsCopy, copyComment]);
   };
 
-  const handleDescriptionLength = (des) => {
-    let description = des.length > 300 ? des.substring(0, 300) + "..." : des;
+  const handleDescriptionLength = (des, len) => {
+    let description = des.length > len ? des.substring(0, len) + "..." : des;
     return description;
   };
 
@@ -70,11 +71,29 @@ export function ForumBox({
         <div className="card-content">
           <Card.Body>
             <div className="header">
-              <p>
-                <span>{username}</span> <br />
-                <span>{date}</span>
-              </p>
-              <ForumVoting handleVote={handleVote} post_id={post_id} />
+              <span style={{ fontWeight: "bold", textDecoration: "underline" }}>
+                {username}
+              </span>{" "}
+              <br />
+              <span>{date}</span>
+              <ForumVoting
+                className="voting"
+                handleVote={handleVote}
+                post_id={post_id}
+              />
+              <div className="user-interaction">
+                <p>|</p>
+                <p>Upvotes: {upvotes}</p>
+                <p>|</p>
+                <p>Downvotes: {downvotes}</p>
+                <p>|</p>
+                <p
+                  style={{ cursor: "pointer", textDecoration: "underline" }}
+                  onClick={toggleShow}
+                >
+                  Comments ({commentCount})
+                </p>
+              </div>
             </div>
 
             <div
@@ -83,7 +102,7 @@ export function ForumBox({
               className="title-description"
             >
               <Card.Title style={{ marginBottom: "2rem", color: "white" }}>
-                {Title}
+                {handleDescriptionLength(description, 100)}
               </Card.Title>
               <Card.Text
                 style={{
@@ -91,22 +110,10 @@ export function ForumBox({
                   color: "white",
                 }}
               >
-                {handleDescriptionLength(description)}
+                <div className="description-flex">
+                  <div>{handleDescriptionLength(description, 300)}</div>
+                </div>
               </Card.Text>
-            </div>
-
-            <div className="user-interaction">
-              <p
-                style={{ cursor: "pointer", textDecoration: "underline" }}
-                onClick={toggleShow}
-              >
-                Comments{commentCount}
-              </p>
-
-              <p>|</p>
-              <p>Upvotes:{upvotes}</p>
-              <p>|</p>
-              <p>Downvotes:{downvotes}</p>
             </div>
 
             <Comments

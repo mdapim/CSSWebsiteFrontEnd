@@ -2,9 +2,9 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Spinner from "react-bootstrap/Spinner";
 import Button from "react-bootstrap/Button";
-import Alert from 'react-bootstrap/Alert'
-import './Signup.css'
-import '../Styling.css'
+import Alert from "react-bootstrap/Alert";
+import "./Signup.css";
+import "../Styling.css";
 import {
   MDBContainer,
   MDBRow,
@@ -12,18 +12,18 @@ import {
   MDBCard,
   MDBCardBody,
   MDBInput,
-  MDBSpinner
+  MDBSpinner,
 } from "mdb-react-ui-kit";
-export function Signup({handleSignInChange, signInCredentials}) {
-  const navigate = useNavigate()
+export function Signup({ handleSignInChange, signInCredentials }) {
+  const navigate = useNavigate();
   const [successfulSignUp, setSuccessfulSignUp] = useState(false);
   const [invalidInput, setInvalidInput] = useState(false);
-  const [loading,setLoading] = useState(false)
-  const routeChange=()=> {
-    navigate('/login')
-  }
+  const [loading, setLoading] = useState(false);
+  const routeChange = () => {
+    navigate("/login");
+  };
   const fetchSignUp = async () => {
-    setLoading(true)
+    setLoading(true);
     const res = await fetch(
       "https://csswebsitebackend-production.up.railway.app/create_user",
       {
@@ -35,22 +35,22 @@ export function Signup({handleSignInChange, signInCredentials}) {
       }
     );
     const data = await res.json();
-    setLoading(false)
-    if (data[0].status===200) {
-      setInvalidInput(false)
-      setSuccessfulSignUp(true)
-      routeChange()
+    setLoading(false);
+    if (data[0].status === 200) {
+      setInvalidInput(false);
+      setSuccessfulSignUp(true);
+      routeChange();
     } else {
-      setInvalidInput(true)
+      setInvalidInput(true);
     }
-    console.log(data)
+    console.log(data);
   };
   return (
     <MDBContainer
       fluid
       className="p-4 background-radial-gradient overflow-hidden"
     >
-      <MDBRow>
+      <div className="sign-up-card">
         <MDBCol
           md="7"
           className="text-center text-md-start d-flex flex-column justify-content-center"
@@ -90,28 +90,28 @@ export function Signup({handleSignInChange, signInCredentials}) {
                 name="password"
                 onChange={handleSignInChange}
               />
-              <div className='options'>
-              <div className='center'>
-              {!loading &&<Button onClick={fetchSignUp} size="lg">
-                sign up
-              </Button> }
+              <div className="options">
+                <div className="center">
+                  {!loading && (
+                    <Button onClick={fetchSignUp} size="lg">
+                      sign up
+                    </Button>
+                  )}
+                </div>
+                <div className="center">
+                  {loading && <MDBSpinner role="status"></MDBSpinner>}
+                </div>
+
+                {invalidInput && (
+                  <Alert className="m-1 shake-horizontal">
+                    That username is already taken
+                  </Alert>
+                )}
               </div>
-              <div className='center'>
-              {loading && (
-                  <MDBSpinner role="status"></MDBSpinner>
-              )}
-              </div>
-              
-              {invalidInput && (
-                <Alert className='m-1 shake-horizontal'>That username is already taken</Alert>
-              )}
-              
-              </div>
- 
             </MDBCardBody>
           </MDBCard>
         </MDBCol>
-      </MDBRow>
+      </div>
     </MDBContainer>
   );
 }

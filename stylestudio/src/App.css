@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  height: auto;
 }
 
 .App-logo {
@@ -16,6 +17,8 @@
 body {
   /* font-family: 'Dosis', sans-serif; */
   font-family: "Exo 2", sans-serif;
+  height: 100%;
+  background-color: black;
 }
 
 @media (prefers-reduced-motion: no-preference) {

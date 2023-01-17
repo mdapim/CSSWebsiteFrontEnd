@@ -95,7 +95,7 @@ function FormAdd({
           show={staticModal}
           setShow={setStaticModal}
         >
-          <MDBModalDialog>
+          <div className="add-post">
             <MDBModalContent>
               <MDBModalHeader>
                 <MDBModalTitle>Add a forum post</MDBModalTitle>
@@ -109,22 +109,23 @@ function FormAdd({
                 <div className="input-container">
                   <div>
                     <h3>Title:</h3>
-                    <input
+                    <textarea
                       onChange={handleNewFormInput}
-                      className="title"
+                      className="forum-new-input-title"
                       type="text"
                       name="title"
+                      rows="2"
                     />
                   </div>
                   <br />
                   <div>
                     <h3>Description: </h3>
-                    <input
+                    <textarea
                       onChange={handleNewFormInput}
-                      className="description"
+                      className="forum-new-input-description"
                       type="text"
                       name="description"
-                      rows="10"
+                      rows="8"
                     />
                   </div>
                   <br />
@@ -141,7 +142,7 @@ function FormAdd({
                 <Button onClick={postNewForumData}>Add</Button>
               </MDBModalFooter>
             </MDBModalContent>
-          </MDBModalDialog>
+          </div>
         </MDBModal>
       </>
     </div>

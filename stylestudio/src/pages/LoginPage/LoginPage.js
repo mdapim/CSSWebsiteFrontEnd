@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import { Link,useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Button from "react-bootstrap/Button";
-import Alert from 'react-bootstrap/Alert'
-import './LoginPage.css'
-import '../Styling.css'
+import Alert from "react-bootstrap/Alert";
+import "./LoginPage.css";
+import "../Styling.css";
 import {
   MDBBtn,
   MDBContainer,
@@ -13,20 +13,20 @@ import {
   MDBCardBody,
   MDBInput,
   MDBIcon,
-  MDBSpinner
+  MDBSpinner,
 } from "mdb-react-ui-kit";
 export function LoginPage({
   handleSignInChange,
   signInCredentials,
   setCurrentUserDetails,
-  handleLogIn
+  handleLogIn,
 }) {
-  const navigate = useNavigate()
-  const routeChange=()=> {
-    navigate('/home')
-  }
-  const [errorLogin,setErrorLogin] = useState(false)
-  const [loading,setLoading] = useState(false)
+  const navigate = useNavigate();
+  const routeChange = () => {
+    navigate("/home");
+  };
+  const [errorLogin, setErrorLogin] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const fetchSignIn = async () => {
     const res = await fetch(
@@ -39,16 +39,15 @@ export function LoginPage({
         body: JSON.stringify([signInCredentials]),
       }
     );
-    if (res.status===200) {
+    if (res.status === 200) {
       const data = await res.json();
-      setCurrentUserDetails(data[0])
-      handleLogIn()
-      routeChange()
+      setCurrentUserDetails(data[0]);
+      handleLogIn();
+      routeChange();
     } else {
-      setErrorLogin(true)
+      setErrorLogin(true);
     }
-    setLoading(false)
-    
+    setLoading(false);
   };
   return (
     <MDBContainer fluid>
@@ -56,7 +55,7 @@ export function LoginPage({
         <MDBCol col="12">
           <MDBCard
             className="bg-dark text-white my-5 mx-auto"
-            style={{ borderRadius: "1rem", maxWidth: "400px" }}
+            style={{ borderRadius: "3rem", maxWidth: "400px" }}
           >
             <MDBCardBody className="p-5 d-flex flex-column align-items-center mx-auto w-100">
               <h2 className="fw-bold mb-2 text-uppercase">Login</h2>
@@ -88,28 +87,35 @@ export function LoginPage({
                   Forgot password?
                 </a>
               </p>
-              {loading?
-              <MDBSpinner role='status'></MDBSpinner>
-              :<Button
-                onClick={() => {
-                  setLoading(true)
-                  fetchSignIn()
-                }}
-                outline
-                className="mx-2 px-5"
-                color="black"
-                size="lg"
-              >
-                Login
-              </Button>}
-              {errorLogin? <Alert className={'mt-1 shake-horizontal'}>Your login credentials did not work. Please try again</Alert>:''}
+              {loading ? (
+                <MDBSpinner role="status"></MDBSpinner>
+              ) : (
+                <Button
+                  onClick={() => {
+                    setLoading(true);
+                    fetchSignIn();
+                  }}
+                  outline
+                  className="mx-2 px-5"
+                  color="black"
+                  size="lg"
+                >
+                  Login
+                </Button>
+              )}
+              {errorLogin ? (
+                <Alert className={"mt-1 shake-horizontal"}>
+                  Your login credentials did not work. Please try again
+                </Alert>
+              ) : (
+                ""
+              )}
               <div className="d-flex flex-row mt-3 mb-5">
                 <MDBBtn
                   tag="a"
                   color="none"
                   className="m-3"
                   style={{ color: "white" }}
-                  
                 >
                   <MDBIcon fab icon="facebook-f" size="lg" />
                 </MDBBtn>
