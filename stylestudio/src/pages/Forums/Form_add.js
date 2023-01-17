@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import CodeFormat from "../../components/Code_format.js";
 import {
   MDBBtn,
@@ -30,6 +30,11 @@ function FormAdd({
     EMPTY_INPUT: false,
     SUCCESSFUL_INPUT: false,
   });
+  useEffect(()=> {
+    setCurrentForumInput((prev) => {
+      return { ...prev, 'user_id': currentUserDetails[0]['id'] };
+    });
+  },[currentUserDetails])
 
   const handleAddCodeButton = () => {
     console.log("test");
@@ -79,7 +84,8 @@ function FormAdd({
     setCurrentForumInput((prev) => {
       return { ...prev, code: "" };
     });
-
+    console.log('here')
+    console.log(currentUserDetails[0]['id'])
     console.log(currentForumInput);
 
     const res = await fetch(
@@ -91,7 +97,7 @@ function FormAdd({
       }
     );
 
-    const data = await res.json([]);
+    const data = await res.json();
     if (data[0]["message"] === "One or more of the input fields are invalid") {
       setHandleValidation((prevState) => ({
         ...prevState,
