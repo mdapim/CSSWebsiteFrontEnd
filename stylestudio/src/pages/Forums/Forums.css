@@ -220,6 +220,11 @@ div.modal-content {
   margin-top: 5%;
 }
 
+.code-format-add {
+  display: flex;
+  justify-content: center;
+}
+
 .forum-new-input-description {
   height: 8em;
   width: 50%;

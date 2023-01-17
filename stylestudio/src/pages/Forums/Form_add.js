@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import CodeFormat from "../../components/Code_format.js";
 import {
   MDBBtn,
   MDBModal,
@@ -17,16 +18,27 @@ function FormAdd({
   toggleShow,
   currentUserDetails,
 }) {
+  const [code, setCode] = useState("");
+
+  const [addCode, setAddCode] = useState(false);
   const [currentForumInput, setCurrentForumInput] = useState({
     title: "",
     description: "",
     user_id: currentUserDetails["id"],
+    code: code,
   });
   const [handleValidation, setHandleValidation] = useState({
     EMPTY_INPUT: false,
     SUCCESSFUL_INPUT: false,
   });
 
+  const handleAddCodeButton = () => {
+    console.log("test");
+    setAddCode(!addCode);
+  };
+
+  console.log(code);
+  console.log(currentForumInput);
   // const generateForums = async () => {
   //   for (let i = 0; i <= 10; i++) {
   //     const res = await fetch(
@@ -85,6 +97,7 @@ function FormAdd({
       }));
     }
   };
+
   return (
     <div>
       {" "}
@@ -127,6 +140,18 @@ function FormAdd({
                       name="description"
                       rows="8"
                     />
+                  </div>
+
+                  <div>
+                    <Button onClick={() => handleAddCodeButton()}>
+                      Click here to enter your code to share..
+                    </Button>
+                    {addCode && (
+                      <div className="code-format-add">
+                        <CodeFormat code={code} setCode={setCode} />
+                        <Button>OK</Button>
+                      </div>
+                    )}
                   </div>
                   <br />
                   {handleValidation["EMPTY_INPUT"] && (
