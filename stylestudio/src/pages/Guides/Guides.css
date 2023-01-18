@@ -20,3 +20,10 @@
 * {
     margin:5px;
 }
+
+#guide-spinner {
+    width:5rem;
+    height:5rem;
+    color:white;
+
+}

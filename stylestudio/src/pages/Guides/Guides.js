@@ -5,6 +5,7 @@ import { useState, useEffect } from "react";
 import { AddResource } from "./AddResource.js";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
+import { MDBSpinner } from "mdb-react-ui-kit";
 import {
   ProSidebarProvider,
   Sidebar,
@@ -25,14 +26,16 @@ export function Guides({ userType }) {
   });
   const [confirmedResource, setConfirmedResource] = useState(addedResource);
   const [categoriesList, setCategoriesList] = useState([]);
-
+  const [loading,setLoading] = useState(false)
   const fetchResources = async () => {
+    setLoading(true)
     const res = await fetch(
       "https://csswebsitebackend-production.up.railway.app/guides_links"
     );
     const responseData = await res.json();
     setResources(responseData);
     setCategoriesList(responseData[0]);
+    setLoading(false)
   };
   const sendNewResource = async () => {
     console.log(JSON.stringify([confirmedResource]));
@@ -135,6 +138,7 @@ export function Guides({ userType }) {
         </header>
         <hr />
         <div id="main">
+          
           <Sidebar>
             <Menu>
               {Object.keys(categoriesList).map((key) => {
@@ -150,6 +154,8 @@ export function Guides({ userType }) {
           </Sidebar>
           ;
           <div className="resources container">
+            {loading && <div class="d-flex justify-content-center">
+<MDBSpinner id="guide-spinner"role='status'></MDBSpinner></div>}  
             {resources.length === 0 ? "" : generateResources()}
           </div>
         </div>
