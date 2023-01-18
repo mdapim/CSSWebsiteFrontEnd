@@ -62,3 +62,14 @@ a:active {
 .nav-link:link {
   color: rgb(255, 255, 255);
 }
+
+
+a.dropdown-toggle.nav-link:link {
+  color:white
+}
+a.dropdown-toggle.nav-link:hover {
+  color:grey;
+}
+a.nav-child.nav-link>a:hover {
+  color:grey;
+}
