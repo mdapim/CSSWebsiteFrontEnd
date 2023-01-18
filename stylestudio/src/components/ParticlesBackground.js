@@ -5,7 +5,7 @@ import particlesConfig from "./config/particles-config";
 const ParticlesBackground = () => {
   return (
     <div>
-      <Particles params={particlesConfig} />
+      <Particles style={{ zIndex: "-1" }} params={particlesConfig} />
     </div>
   );
 };

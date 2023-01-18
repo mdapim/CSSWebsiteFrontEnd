@@ -45,6 +45,7 @@
 .voting {
   display: flex;
   cursor: pointer;
+  margin-bottom: -20px;
 }
 
 .card-header,
@@ -234,11 +235,13 @@ div.modal-content {
 .forum-new-input-description {
   height: 8em;
   width: 50%;
+  border-radius: 10px;
 }
 
 .forum-new-input-title {
   height: 3em;
   width: 50%;
+  border-radius: 10px;
 }
 
 
@@ -246,4 +249,37 @@ div.modal-content {
   transition: 0.5s;
   transform: scale(1.2);
   color: #6e6e6e;
+}
+
+.forum-code-post {
+  display: flex;
+  justify-content: row;
+}
+
+.forum-code-post-child {
+  margin-top: 10px;
+}
+
+.editing-post-icon {
+  display: flex;
+  justify-content: row;
+  height: 20px;
+  margin-left: -10px;
+  margin-top: 30px;
+}
+
+.editing-post-icon-child {
+  margin-top: 7px;
+}
+
+.cat-selector {
+  border-radius: 10px;
+  height: 2rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  width: 30%;
+}
+#code,
+.ace_layer {
+  border-radius: 10px;
 }

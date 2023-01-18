@@ -17,27 +17,37 @@ function FormAdd({
   setStaticModal,
   toggleShow,
   currentUserDetails,
+  fetchForumData,
 }) {
   const [code, setCode] = useState("");
-  const [category, setCategory] = useState("");
-
   const [addCode, setAddCode] = useState(false);
+
   const [currentForumInput, setCurrentForumInput] = useState({
     title: "",
     description: "",
     user_id: currentUserDetails[0]["id"],
     code: code,
-    category: category,
+    category: "",
   });
   const [handleValidation, setHandleValidation] = useState({
     EMPTY_INPUT: false,
     SUCCESSFUL_INPUT: false,
   });
+
   useEffect(() => {
-    setCurrentForumInput((prev) => {
-      return { ...prev, user_id: currentUserDetails[0]["id"] };
+    setCurrentForumInput({
+      title: "",
+      description: "",
+      user_id: currentUserDetails[0]["id"],
+      code: "",
+      category: "",
     });
-  }, [currentUserDetails]);
+  }, [staticModal]);
+
+  useEffect(() => {
+    console.log("test");
+    fetchForumData();
+  }, [currentUserDetails, handleValidation]);
 
   const handleAddCodeButton = () => {
     console.log("test");
@@ -46,32 +56,11 @@ function FormAdd({
 
   const handleCategory = (e) => {
     const catChoice = e.target.value;
-    setCategory(catChoice);
-    console.log(catChoice);
+
+    setCurrentForumInput((prev) => {
+      return { ...prev, category: catChoice };
+    });
   };
-
-  // const generateForums = async () => {
-  //   for (let i = 0; i <= 10; i++) {
-  //     const res = await fetch(
-  //       "https://csswebsitebackend-production.up.railway.app/forum_post",
-  //       {
-  //         method: "POST",
-  //         headers: { "Content-Type": "application/json" },
-  //         body: JSON.stringify([
-  //           {
-  //             title: "We Punched an Asteroid, and the Science Results are In",
-  //             description:
-  //               "OSeptember 26, 2022, NASA completed its DART (Double Asteroid Redirection Test) mission, a groundbreaking effort to study the feasibility of deflecting asteroids that could potentially impact Earth. NASAs DART spacecraft collided with Dimorphos, a small moonlet that orbited a larger Near-Earth Asteroid Didymos, to test kinetic impact. Kinetic impact is a planetary defense technique that involves steering a spacecraft to intentionally collide with an asteroid in hopes of deflecting its trajectory. You can read more about what happened during the mission here.",
-  //             user_id: i,
-  //           },
-  //         ]),
-  //       }
-  //     );
-  //     console.log(await res.json());
-  //   }
-  // };
-
-  // generateForums();
 
   const handleNewFormInput = (e) => {
     let name;
@@ -89,13 +78,10 @@ function FormAdd({
     });
   };
 
-  const postNewForumData = async () => {
+  const postNewForumData = async (e) => {
     setCurrentForumInput((prev) => {
       return { ...prev, code: "" };
     });
-    console.log("here");
-    console.log(currentUserDetails[0]["id"]);
-    console.log(currentForumInput);
 
     const res = await fetch(
       "https://csswebsitebackend-production.up.railway.app/forum_post",
@@ -107,6 +93,7 @@ function FormAdd({
     );
 
     const data = await res.json();
+
     if (data[0]["message"] === "One or more of the input fields are invalid") {
       setHandleValidation((prevState) => ({
         ...prevState,
@@ -114,6 +101,8 @@ function FormAdd({
         SUCCESSFUL_INPUT: false,
       }));
     } else {
+      // setStaticModal(false);
+      e.target.value = "";
       setHandleValidation((prevState) => ({
         ...prevState,
         EMPTY_INPUT: false,
@@ -142,15 +131,7 @@ function FormAdd({
                   onClick={toggleShow}
                 ></MDBBtn>
               </MDBModalHeader>
-              <select onChange={handleCategory} className="cat-selector">
-                <option>Select a category</option>
-                <option value="Discussions">Discussions</option>
-                <option value="Questions">Questions</option>
-                <option value="Ideas">Ideas</option>
-                <option value="ShowReel">ShowReel</option>
-                <option value="Issues">Issues</option>
-                <option value="General">General</option>
-              </select>
+
               <MDBModalBody>
                 <div className="input-container">
                   <div>
@@ -175,6 +156,20 @@ function FormAdd({
                       name="description"
                       rows="8"
                     />
+
+                    <select
+                      name="category"
+                      onChange={handleCategory}
+                      className="cat-selector"
+                    >
+                      <option>Select a category</option>
+                      <option value="Discussions">Discussions</option>
+                      <option value="Questions">Questions</option>
+                      <option value="Ideas">Ideas</option>
+                      <option value="ShowReel">ShowReel</option>
+                      <option value="Issues">Issues</option>
+                      <option value="General">General</option>
+                    </select>
                   </div>
 
                   <div>

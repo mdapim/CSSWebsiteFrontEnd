@@ -5,6 +5,8 @@ import "ace-builds/src-noconflict/theme-xcode";
 import Button from "react-bootstrap/Button";
 import Overlay from "react-bootstrap/Overlay";
 import Tooltip from "react-bootstrap/Tooltip";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCode } from "@fortawesome/free-solid-svg-icons";
 
 const ForumCodePost = ({ inputtedCode }) => {
   const [copied, setCopied] = useState(false);
@@ -26,29 +28,35 @@ const ForumCodePost = ({ inputtedCode }) => {
 
   return (
     <div className="forum-code-post">
-      <Button
-        style={{ backgroundColor: "black", marginLeft: "3px", border: "none" }}
-        ref={target}
-        onClick={() => {
-          handleCopy();
-        }}
-      >
-        Copy code
-      </Button>
-      <Overlay target={target.current} show={show} placement="right">
-        {(props) => (
-          <Tooltip id="overlay-example" {...props}>
-            Code copied!
-          </Tooltip>
-        )}
-      </Overlay>
-      <AceEditor
-        mode="css"
-        theme="xcode"
-        name="code"
-        value={inputtedCode}
-        editorProps={{ $blockScrolling: true }}
-      />
+      <div>
+        <AceEditor
+          mode="css"
+          theme="xcode"
+          name="code"
+          value={inputtedCode}
+          editorProps={{ $blockScrolling: true }}
+        />
+      </div>
+      <div className="forum-code-post-child">
+        <FontAwesomeIcon
+          style={{ marginLeft: "3px", height: "20px", cursor: "pointer" }}
+          ref={target}
+          onClick={() => {
+            handleCopy();
+          }}
+          icon={faCode}
+        >
+          Copy code
+        </FontAwesomeIcon>
+
+        <Overlay target={target.current} show={show} placement="left">
+          {(props) => (
+            <Tooltip id="overlay-example" {...props}>
+              Code copied!
+            </Tooltip>
+          )}
+        </Overlay>
+      </div>
     </div>
   );
 };

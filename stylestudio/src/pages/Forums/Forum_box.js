@@ -1,6 +1,6 @@
 import "./Forums.css";
 
-import React, { useState,useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import Card from "react-bootstrap/Card";
 import ForumFullPost from "./Forum_full_post";
 import Comments from "./Forum_comment_box.js";
@@ -36,11 +36,12 @@ export function ForumBox({
     post_id: post_id,
     user_id: currentUserDetails[0]["id"],
   });
-  useEffect(()=> {
+
+  useEffect(() => {
     setNewComment((prev) => {
-      return { ...prev, 'user_id': currentUserDetails[0]['id'] };
+      return { ...prev, user_id: currentUserDetails[0]["id"] };
     });
-  },[currentUserDetails])
+  }, [currentUserDetails]);
 
   const handleNewComment = (e) => {
     const name = e.target.name;
@@ -106,10 +107,9 @@ export function ForumBox({
               onClick={setShow}
               className="title-description"
             >
-              <Card.Title style={{ marginBottom: "2rem", color: "white"}}>
-                <div className='hello?'>
-                {handleDescriptionLength(Title, 100)}
-                </div>
+
+              <Card.Title style={{ marginBottom: "2rem", color: "white" }}>
+                <div>{handleDescriptionLength(Title, 100)}</div>
               </Card.Title>
               <Card.Text
                 style={{
