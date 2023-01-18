@@ -70,51 +70,70 @@ function App() {
   };
   return (
     <div className="App">
-      <h1 className="brand">Style Studio.</h1>
-      <NavigationBar
-        currentUserDetails={currentUserDetails}
-        loggedIn={loggedIn}
-        handleLogOut={handleLogOut}
-      />
-
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route
-          path="/login"
-          element={
-            <LoginPage
-              handleSignInChange={handleSignInChange}
-              signInCredentials={signInCredentials}
-              setCurrentUserDetails={setCurrentUserDetails}
-              handleLogIn={handleLogIn}
-            />
-          }
-        />
-        <Route
-          path="/sign-up"
-          element={
-            <Signup
-              handleSignInChange={handleSignInChange}
-              signInCredentials={signInCredentials}
-            />
-          }
+      <div style={{ zIndex: "-10" }}>
+        <Particles
+          id="tsparticles"
+          init={particlesInit}
+          options={particlesConfig}
+        ></Particles>
+      </div>
+      <div style={{ zIndex: "5" }}>
+        <h1 className="brand">Style Studio.</h1>
+        <NavigationBar
+          currentUserDetails={currentUserDetails}
+          loggedIn={loggedIn}
+          handleLogOut={handleLogOut}
         />
 
-        <Route
-          path="/forums/*"
-          element={<Forums currentUserDetails={currentUserDetails} />}
-        ></Route>
-        <Route path="/leaderboard" element={<Specificity />} />
-        <Route
-          path="/guides"
-          element={<Guides userType={currentUserDetails.type_id} />}
-        />
-      </Routes>
-      <Particles
-        id="tsparticles"
-        init={particlesInit}
-        options={particlesConfig}
-      ></Particles>
+        <Routes style={{ zIndex: "5" }}>
+          <Route path="/" element={<HomePage />} />
+          <Route
+            path="/login"
+            element={
+              <LoginPage
+                style={{ zIndex: "5" }}
+                handleSignInChange={handleSignInChange}
+                signInCredentials={signInCredentials}
+                setCurrentUserDetails={setCurrentUserDetails}
+                handleLogIn={handleLogIn}
+              />
+            }
+          />
+          <Route
+            path="/sign-up"
+            element={
+              <Signup
+                style={{ zIndex: "5" }}
+                handleSignInChange={handleSignInChange}
+                signInCredentials={signInCredentials}
+              />
+            }
+          />
+
+          <Route
+            path="/forums/*"
+            element={
+              <Forums
+                style={{ zIndex: "5" }}
+                currentUserDetails={currentUserDetails}
+              />
+            }
+          ></Route>
+          <Route
+            path="/leaderboard"
+            element={<Specificity style={{ zIndex: "5" }} />}
+          />
+          <Route
+            path="/guides"
+            element={
+              <Guides
+                userType={currentUserDetails.type_id}
+                style={{ zIndex: "5" }}
+              />
+            }
+          />
+        </Routes>
+      </div>
     </div>
   );
 }
