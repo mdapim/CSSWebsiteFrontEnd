@@ -19,7 +19,7 @@ function FormAdd({
   currentUserDetails,
   fetchForumData,
 }) {
-  console.log(currentUserDetails);
+  console.log({ currentUserDetails });
 
   const [code, setCode] = useState("");
   const [addCode, setAddCode] = useState(false);
@@ -84,6 +84,7 @@ function FormAdd({
   };
 
   const postNewForumData = async (e) => {
+    console.log({ currentForumInput });
     setCurrentForumInput((prev) => {
       return { ...prev, code: "" };
     });

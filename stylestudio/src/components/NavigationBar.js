@@ -8,7 +8,8 @@ import "./NavigationBar.css";
 import Button from "react-bootstrap/Button";
 export function NavigationBar({ currentUserDetails, handleLogOut, loggedIn }) {
   const [signedIn, setSignedIn] = useState(false);
-  console.log(currentUserDetails);
+
+  useEffect(() => {}, [currentUserDetails]);
 
   return (
     <div className="main-nav">
