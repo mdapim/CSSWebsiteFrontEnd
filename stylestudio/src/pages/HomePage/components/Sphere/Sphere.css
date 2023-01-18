@@ -19,6 +19,7 @@
   letter-spacing: 0.0625em;
   font-size: 1em;
   font-family: "Rowdies", cursive;
+  z-index: 1;
 }
 
 .tagcloud--item {

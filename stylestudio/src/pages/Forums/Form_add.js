@@ -19,13 +19,15 @@ function FormAdd({
   currentUserDetails,
   fetchForumData,
 }) {
+  console.log(currentUserDetails);
+
   const [code, setCode] = useState("");
   const [addCode, setAddCode] = useState(false);
 
   const [currentForumInput, setCurrentForumInput] = useState({
     title: "",
     description: "",
-    user_id: currentUserDetails[0]["id"],
+    user_id: currentUserDetails["id"],
     code: code,
     category: "",
   });
@@ -42,7 +44,7 @@ function FormAdd({
     setCurrentForumInput({
       title: "",
       description: "",
-      user_id: currentUserDetails[0]["id"],
+      user_id: currentUserDetails["id"],
       code: "",
       category: "",
     });
