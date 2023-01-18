@@ -67,7 +67,6 @@ export function ForumBox({
 
   const handleDescriptionLength = (des, len) => {
     let description = des.length > len ? des.substring(0, len) + "..." : des;
-    console.log(description)
     return description;
   };
 
