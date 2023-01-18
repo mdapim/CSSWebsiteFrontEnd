@@ -7,6 +7,7 @@ import Carousel from "./components/Carousel/Carousel";
 
 export function HomePage() {
   const [forumData, setForumData] = useState([]);
+  const [resourcesData, setResourcesData] = useState([]);
   const fetchForumData = async () => {
     const res = await fetch(
       "https://csswebsitebackend-production.up.railway.app/forum_post",
@@ -19,25 +20,18 @@ export function HomePage() {
     setForumData(data);
   };
 
-  const retrieveCardData = (forumData, category) => {
-    let mostPopular = forumData.reduce(
-      (prevItem, currentItem) => {
-        if (
-          currentItem["likes"] > prevItem["likes"] &&
-          currentItem["category"] === category
-        ) {
-          return currentItem;
-        } else {
-          return prevItem;
-        }
-      },
-      { likes: 0 }
+  const fetchResources = async () => {
+    const res = await fetch(
+      "https://csswebsitebackend-production.up.railway.app/guides_links"
     );
-    return mostPopular;
+    const responseData = await res.json();
+    setResourcesData(responseData[1]);
+    console.log("getting resources", resourcesData[1]);
   };
 
   useEffect(() => {
     fetchForumData();
+    fetchResources();
   }, []);
   return (
     <div>

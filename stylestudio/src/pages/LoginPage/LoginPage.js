@@ -15,6 +15,7 @@ import {
   MDBIcon,
   MDBSpinner,
 } from "mdb-react-ui-kit";
+
 export function LoginPage({ setCurrentUserDetails, handleLogIn }) {
   const navigate = useNavigate();
   const routeChange = () => {
