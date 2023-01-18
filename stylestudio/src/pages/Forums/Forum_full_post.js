@@ -39,7 +39,6 @@ function ForumFullPost({
 
   const editPostToggle = () => {
     setEditPost(!editPost);
-    console.log(editPost);
   };
 
   const handleDisplayEditButtonPosts = () => {

@@ -35,6 +35,10 @@ function FormAdd({
   });
 
   useEffect(() => {
+    resetInputFields();
+  }, [staticModal]);
+
+  const resetInputFields = () => {
     setCurrentForumInput({
       title: "",
       description: "",
@@ -42,8 +46,7 @@ function FormAdd({
       code: "",
       category: "",
     });
-  }, [staticModal]);
-
+  };
   useEffect(() => {
     console.log("test");
     fetchForumData();
@@ -101,7 +104,12 @@ function FormAdd({
         SUCCESSFUL_INPUT: false,
       }));
     } else {
-      // setStaticModal(false);
+      setStaticModal(false);
+      setTimeout(() => {
+        setHandleValidation((prev) => {
+          return { ...prev, SUCCESSFUL_INPUT: false };
+        }, 2000);
+      });
       e.target.value = "";
       setHandleValidation((prevState) => ({
         ...prevState,
@@ -142,6 +150,7 @@ function FormAdd({
                       type="text"
                       name="title"
                       rows="2"
+                      value={currentForumInput["title"]}
                     />
                   </div>
                   <br />
@@ -153,12 +162,14 @@ function FormAdd({
                       type="text"
                       name="description"
                       rows="8"
+                      value={currentForumInput["description"]}
                     />
 
                     <select
                       name="category"
                       onChange={handleCategory}
                       className="cat-selector"
+                      value={currentForumInput["category"]}
                     >
                       <option>Select a category</option>
                       <option value="Discussions">Discussions</option>
