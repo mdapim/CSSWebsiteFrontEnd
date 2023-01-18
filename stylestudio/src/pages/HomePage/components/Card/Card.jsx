@@ -20,7 +20,7 @@ export function UpdatesCard(props) {
       <div class="card-body">
         <h5 class="card-title">CSS Calculator hot feature fix</h5>
         <p class="card-text">
-          The Css calculator has been updated with a hot new feature, select
+          The CSS calculator has been updated with a hot new feature, select
           your indent space before calculating your score, this feature has been
           added upon popular request from everyone
         </p>
@@ -31,28 +31,37 @@ export function UpdatesCard(props) {
 }
 
 export function TopVotedCard(props) {
+  const {
+    username,
+    date_created,
+    Title,
+    description,
+    likes,
+    dislikes,
+    id,
+    comment,
+    date_updated,
+    profile_picture,
+    user_id,
+    code,
+    category,
+  } = props["cardData"];
   return (
     <div class="card text-center" style={{ margin: "100", height: "400px" }}>
+      {console.log("testing123 ->", date_created)}
       <div class="card-header">TOP RATED POST</div>
       <div class="card-body">
-        <h5 class="card-title">
-          We Punched an Asteroid, and the Science Results are In
-        </h5>
-        <p class="card-text">
-          NASA completed its DART (Double Asteroid Redirection Test) mission, a
-          groundbreaking effort to study the feasibility of deflecting asteroids
-          that could potentially 21323213 trajectory. You can read more about
-          what happened during the mission here.
-        </p>
+        <h5 class="card-title">{Title}</h5>
+        <p class="card-text">{description}</p>
       </div>
       <div class="card-footer text-muted">
-        Posted by: cal123 on the 23rd Janurary
+        Posted by: {username} on the {date_created}
       </div>
     </div>
   );
 }
 
-export function TopSearchCard(props) {
+export function TopResourceCard(props) {
   return (
     <div class="card text-center" style={{ margin: "100", height: "400px" }}>
       <div class="card-header">MOST USED RESOURCE</div>
@@ -79,22 +88,32 @@ export function TopSearchCard(props) {
 }
 
 export function TopQuestionsCard(props) {
+  const {
+    username,
+    date_created,
+    Title,
+    description,
+    likes,
+    dislikes,
+    id,
+    comment,
+    date_updated,
+    profile_picture,
+    user_id,
+    code,
+    category,
+  } = props["cardData"];
   return (
     <div class="card text-center" style={{ margin: "100", height: "400px" }}>
       <div class="card-header">TOP RATED QUESTION</div>
       <div class="card-body">
-        <h5 class="card-title">Is there a CSS parent selector?</h5>
-        <p class="card-text">
-          3265 The Selectors Level 4 Working Draft includes a :has()
-          pseudo-class that will provide this capability. It will be similar to
-          the jQuery implementation, but is currently not supported by Firefox.
-          li:has As of 2022, Firefox is the only browser not supporting it by
-          default. In the meantime, you'll have to resort to JavaScript in
-          Firefox if you need to select a parent element with full cross-browser
-          support.
-        </p>
+        <h5 class="card-title">{Title}</h5>
+        <p class="card-text">{description}</p>
       </div>
-      <div class="card-footer text-muted"> 612 ratings</div>
+      <div class="card-footer text-muted">
+        {" "}
+        {likes} likes | {comment} comments
+      </div>
     </div>
   );
 }

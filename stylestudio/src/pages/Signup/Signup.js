@@ -15,6 +15,7 @@ import {
   MDBSpinner,
 } from "mdb-react-ui-kit";
 export function Signup({ handleSignInChange, signInCredentials }) {
+  const navigate = useNavigate();
   const [successfulSignUp, setSuccessfulSignUp] = useState(false);
   const [signInCredentials, setSignInCredentials] = useState({
     name: "",

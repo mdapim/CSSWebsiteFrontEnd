@@ -6,6 +6,7 @@ import "./Homepage.css";
 import Carousel from "./components/Carousel/Carousel";
 
 export function HomePage() {
+  const [forumData, setForumData] = useState([]);
   const fetchForumData = async () => {
     const res = await fetch(
       "https://csswebsitebackend-production.up.railway.app/forum_post",
@@ -15,15 +16,17 @@ export function HomePage() {
       }
     );
     const data = await res.json();
-    console.log(data);
-    console.log("we got", retrieveCardData(data));
+    setForumData(data);
   };
 
-  const retrieveCardData = (forumData) => {
+  const retrieveCardData = (forumData, category) => {
     let mostPopular = forumData.reduce(
-      (prevItem, nextItem) => {
-        if (nextItem["likes"] > prevItem["likes"]) {
-          return nextItem;
+      (prevItem, currentItem) => {
+        if (
+          currentItem["likes"] > prevItem["likes"] &&
+          currentItem["category"] === category
+        ) {
+          return currentItem;
         } else {
           return prevItem;
         }
@@ -56,7 +59,7 @@ export function HomePage() {
         <br />
         <div className="separator2"></div>
         <div className="carousel">
-          <Carousel />
+          <Carousel forumData={forumData} />
         </div>
       </div>
     </div>
