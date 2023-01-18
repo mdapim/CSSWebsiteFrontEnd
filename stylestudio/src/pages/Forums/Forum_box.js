@@ -67,6 +67,7 @@ export function ForumBox({
 
   const handleDescriptionLength = (des, len) => {
     let description = des.length > len ? des.substring(0, len) + "..." : des;
+    console.log(description)
     return description;
   };
 
@@ -106,8 +107,8 @@ export function ForumBox({
               onClick={setShow}
               className="title-description"
             >
-              <Card.Title style={{ marginBottom: "2rem", color: "white" }}>
-                <div>
+              <Card.Title style={{ marginBottom: "2rem", color: "white"}}>
+                <div className='hello?'>
                 {handleDescriptionLength(Title, 100)}
                 </div>
               </Card.Title>

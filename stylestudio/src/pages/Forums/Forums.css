@@ -153,7 +153,9 @@ div.modal-content {
   background-color: #212529;
   color: white;
 }
-
+h4 {
+  display:block;
+}
 .comments-section {
   max-height: 800px;
   overflow-y: scroll;
@@ -212,6 +214,7 @@ div.modal-content {
   filter: drop-shadow(0 0 0.75rem rgb(19, 36, 120));
 }
 
+
 .add-post {
   display: flex;
   justify-content: center;
@@ -234,3 +237,4 @@ div.modal-content {
   height: 3em;
   width: 50%;
 }
+
