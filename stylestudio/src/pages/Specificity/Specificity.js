@@ -56,7 +56,10 @@ export function Specificity() {
   return (
     <>
       <div className="maincontainer">
-        <h1 className="title-spec">Specificity Leaderboard</h1>
+        <h2 className="title-spec">Specificity Leaderboard</h2>
+        <hr style={{margin:"10px",marginBottom:"20px",opacity:"0.25",color:"white"}}/>
+        <p>Input your CSS on the left hand textbox, and ensure your indent number is correct!</p>
+        <hr style={{margin:"10px",marginBottom:"20px",opacity:"0.5",color:"white", borderWidth:"1px"}}/>
         <div className="main">
           <Form>
             <Form.Group className="mb-3 css-area">
