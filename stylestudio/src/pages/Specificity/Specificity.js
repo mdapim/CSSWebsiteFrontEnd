@@ -55,8 +55,8 @@ export function Specificity() {
   }, [cssSpec]);
   return (
     <>
-      <div className="spec-background">
-        <h1 className="title">Specificity Leaderboard</h1>
+      <div className="maincontainer">
+        <h1 className="title-spec">Specificity Leaderboard</h1>
         <div className="main">
           <Form>
             <Form.Group className="mb-3 css-area">
