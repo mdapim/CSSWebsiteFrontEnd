@@ -30,7 +30,7 @@ function App() {
     );
     if (res.status === 200) {
       const data = await res.json();
-      setCurrentUserDetails(data);
+      setCurrentUserDetails(data[0]);
       handleLogIn();
       console.log({ data });
     }

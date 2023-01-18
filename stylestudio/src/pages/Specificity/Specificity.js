@@ -57,9 +57,27 @@ export function Specificity() {
     <>
       <div className="maincontainer">
         <h2 className="title-spec">Specificity Leaderboard</h2>
-        <hr style={{margin:"10px",marginBottom:"20px",opacity:"0.25",color:"white"}}/>
-        <p>Input your CSS on the left hand textbox, and ensure your indent number is correct!</p>
-        <hr style={{margin:"10px",marginBottom:"20px",opacity:"0.5",color:"white", borderWidth:"1px"}}/>
+        <hr
+          style={{
+            margin: "10px",
+            marginBottom: "20px",
+            opacity: "0.25",
+            color: "white",
+          }}
+        />
+        <p id="spec-descrip">
+          Input your CSS on the left hand textbox, and ensure your indent number
+          is correct!
+        </p>
+        <hr
+          style={{
+            margin: "10px",
+            marginBottom: "20px",
+            opacity: "0.5",
+            color: "white",
+            borderWidth: "1px",
+          }}
+        />
         <div className="main">
           <Form>
             <Form.Group className="mb-3 css-area">
@@ -95,7 +113,7 @@ export function Specificity() {
             {cssSpec.length === 0 ? (
               ""
             ) : (
-              <div style={{border:"100px"}}>
+              <div style={{ border: "100px" }}>
                 <CustomizedTable values={cssSpec} />
               </div>
             )}

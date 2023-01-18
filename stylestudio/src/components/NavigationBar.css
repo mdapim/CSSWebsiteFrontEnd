@@ -24,7 +24,7 @@ a,
 
 .dropdown-item,
 .navbar {
-  color: white !important;
+  color: white;
 }
 
 --bs-navbar-active-color {
@@ -54,6 +54,9 @@ a:hover {
   /* transform: scale(1.2); */
   color: #fbfbfbda;
 }
+nav a.dropdown-item {
+  color: white;
+}
 a:active {
   text-decoration: none;
   color: rgb(255, 255, 255);
@@ -63,13 +66,12 @@ a:active {
   color: rgb(255, 255, 255);
 }
 
-
 a.dropdown-toggle.nav-link:link {
-  color:white
+  color: white;
 }
 a.dropdown-toggle.nav-link:hover {
-  color:grey;
+  color: grey;
 }
-a.nav-child.nav-link>a:hover {
-  color:grey;
+a.nav-child.nav-link > a:hover {
+  color: grey;
 }
