@@ -26,7 +26,6 @@ export function HomePage() {
     );
     const responseData = await res.json();
     setResourcesData(responseData[1]);
-    console.log("getting resources", resourcesData[1]);
   };
 
   useEffect(() => {
@@ -53,7 +52,7 @@ export function HomePage() {
         <br />
         <div className="separator2"></div>
         <div className="carousel">
-          <Carousel forumData={forumData} />
+          <Carousel forumData={forumData} resourceData={resourcesData} />
         </div>
       </div>
     </div>

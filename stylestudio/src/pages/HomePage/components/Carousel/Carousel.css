@@ -10,6 +10,10 @@
   }
 }
 
+#card-p {
+  color: white;
+}
+
 .slick-prev {
   left: 0 !important;
   z-index: 1000;

@@ -21,7 +21,7 @@ const SlickArrowRight = ({ currentSlide, slideCount, ...props }) => (
 );
 
 export default function Carousel(props) {
-  const { forumData } = props;
+  const { forumData, resourceData } = props;
 
   const retrieveCardData = (forumData, category) => {
     let mostPopular = forumData.reduce(
@@ -37,7 +37,20 @@ export default function Carousel(props) {
       },
       { likes: -1 }
     );
-    console.log("ques and top", mostPopular);
+    return mostPopular;
+  };
+
+  const retrieveCardDataForGuide = (resourceData) => {
+    let mostPopular = resourceData.reduce(
+      (prevItem, currentItem) => {
+        if (currentItem["click_count"] > prevItem["click_count"]) {
+          return currentItem;
+        } else {
+          return prevItem;
+        }
+      },
+      { click_count: -1 }
+    );
     return mostPopular;
   };
 
@@ -86,7 +99,6 @@ export default function Carousel(props) {
 
   return (
     <div className="slide-top">
-      {console.log("we are at -> ", forumData)}
       <Slider {...settings}>
         <div>
           <UpdatesCard />
@@ -100,7 +112,7 @@ export default function Carousel(props) {
           />
         </div>
         <div>
-          <TopResourceCard />
+          <TopResourceCard cardData={retrieveCardDataForGuide(resourceData)} />
         </div>
       </Slider>
     </div>

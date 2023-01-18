@@ -1,3 +1,4 @@
+import "../Carousel/Carousel.css";
 export function Card(props) {
   return (
     <div class="card text-center" style={{ margin: "100", height: "400px" }}>
@@ -48,7 +49,6 @@ export function TopVotedCard(props) {
   } = props["cardData"];
   return (
     <div class="card text-center" style={{ margin: "100", height: "400px" }}>
-      {console.log("testing123 ->", date_created)}
       <div class="card-header">TOP RATED POST</div>
       <div class="card-body">
         <h5 class="card-title">{Title}</h5>
@@ -62,18 +62,19 @@ export function TopVotedCard(props) {
 }
 
 export function TopResourceCard(props) {
+  const {
+    click_count,
+    resource_catefory_id,
+    resource_description,
+    resource_id,
+    resource_link,
+  } = props["cardData"];
   return (
     <div class="card text-center" style={{ margin: "100", height: "400px" }}>
       <div class="card-header">MOST USED RESOURCE</div>
       <div class="card-body">
-        <h5 class="card-title"> A Complete Guide to Flexbox</h5>
-        <p class="card-text">
-          Our comprehensive guide to CSS flexbox layout. This complete guide
-          explains everything about flexbox, focusing on all the different
-          possible properties for the parent element (the flex container) and
-          the child elements (the flex items). It also includes history, demos,
-          patterns, and a browser support chart.
-        </p>
+        <h5 class="card-title"> {resource_description}</h5>
+        <p className="card-text">{resource_link}</p>
         <a
           style={{ color: "black" }}
           href="https://css-tricks.com/snippets/css/a-guide-to-flexbox/"
@@ -82,7 +83,9 @@ export function TopResourceCard(props) {
           Go to Website
         </a>
       </div>
-      <div class="card-footer text-muted">456 clicks and counting ....</div>
+      <div class="card-footer text-muted">
+        {click_count} clicks and counting ....
+      </div>
     </div>
   );
 }
@@ -108,7 +111,7 @@ export function TopQuestionsCard(props) {
       <div class="card-header">TOP RATED QUESTION</div>
       <div class="card-body">
         <h5 class="card-title">{Title}</h5>
-        <p class="card-text">{description}</p>
+        <p class="card-text ">{description}</p>
       </div>
       <div class="card-footer text-muted">
         {" "}
