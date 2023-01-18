@@ -95,7 +95,7 @@ export function Specificity() {
             {cssSpec.length === 0 ? (
               ""
             ) : (
-              <div>
+              <div style={{border:"100px"}}>
                 <CustomizedTable values={cssSpec} />
               </div>
             )}
