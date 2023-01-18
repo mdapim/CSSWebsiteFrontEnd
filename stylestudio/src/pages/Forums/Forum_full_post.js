@@ -104,6 +104,7 @@ function ForumFullPost({
   return (
     <>
       <Modal
+        
         data-testid="full-post-modal"
         size="xl"
         show={show}
@@ -112,6 +113,7 @@ function ForumFullPost({
         aria-labelledby="example-custom-modal-styling-title"
       >
         <Modal.Header closeButton>
+
           <Modal.Title
             style={{ whiteSpace: "" }}
             id="example-custom-modal-styling-title"
