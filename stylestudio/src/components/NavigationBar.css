@@ -6,8 +6,8 @@
   display: flex;
   justify-content: center;
   color: rgb(255, 255, 255);
-  height: 5rem;
-  margin-top: -20px;
+  height: 6rem;
+  margin-top: -22px;
 }
 
 .nav-child {
@@ -32,20 +32,20 @@ a:link {
 }
 a:visited {
   text-decoration: none;
-  color: rgb(255, 255, 255);
+  color: rgb(245, 243, 243);
 }
 a:hover {
   text-decoration: none;
   transition: transform 1s ease;
 
   /* transform: scale(1.2); */
-  color: #212529da;
+  color: #fbfbfbda;
 }
 a:active {
   text-decoration: none;
-  color: rgb(248, 0, 0);
+  color: rgb(255, 255, 255);
 }
 
 .nav-link:link {
-  color: white;
+  color: rgb(255, 255, 255);
 }

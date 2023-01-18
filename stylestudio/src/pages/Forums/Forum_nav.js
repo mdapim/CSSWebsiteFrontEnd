@@ -18,7 +18,18 @@ export function ForumNav({
 
   const popover = (
     <Popover id="popover-basic">
-      <Popover.Header as="h3">Pick a category</Popover.Header>
+      <h3
+        style={{
+          backgroundColor: "#212529",
+          border: "none",
+          color: "white",
+          textAlign: "center",
+          marginTop: "20px",
+        }}
+        className="popover"
+      >
+        Pick a category
+      </h3>
       <Popover.Body>
         <Breadcrumb>
           <Breadcrumb.Item className="catergory-select">
@@ -79,7 +90,13 @@ export function ForumNav({
         </Nav.Item>
         <Nav.Item>
           <OverlayTrigger trigger="click" placement="bottom" overlay={popover}>
-            <h4 variant="success">Filter</h4>
+            <h4
+              className="nav-button"
+              style={{ cursor: "pointer" }}
+              variant="success"
+            >
+              Filter
+            </h4>
           </OverlayTrigger>
         </Nav.Item>
         <FormAdd

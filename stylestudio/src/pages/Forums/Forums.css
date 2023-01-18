@@ -282,6 +282,21 @@ div.modal-content {
   border-radius: 10px;
 }
 
-.catergory-select {
+.catergory-select:link {
   color: black;
+}
+
+#popover-basic {
+  filter: drop-shadow(0 0 0.75rem rgb(13, 13, 13));
+  background-color: #212529;
+}
+
+.popover-header {
+  color: white;
+  border-radius: 5px;
+  width: 0%;
+  margin-left: -1px;
+}
+
+.popover {
 }
