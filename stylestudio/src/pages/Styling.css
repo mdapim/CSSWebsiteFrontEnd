@@ -73,10 +73,12 @@
 }
 
 .maincontainer {
-  margin-left: 10%;
-  margin-right: 15%;
+  margin-right: 20%;
+  margin-left: 20%;
   background-color: #212529da;
   border-radius: 10px;
+  width:auto;
+  
 }
 
 .code-format {

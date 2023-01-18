@@ -15,21 +15,8 @@ import "bootstrap/dist/css/bootstrap.css";
 import "./App.css";
 
 function App() {
-  const [signInCredentials, setSignInCredentials] = useState({
-    name: "",
-    password: "",
-  });
   const [currentUserDetails, setCurrentUserDetails] = useState([[]]);
   const [loggedIn, setLoggedIn] = useState(false);
-  const handleSignInChange = (e) => {
-    const name = e.target.name;
-    const value = e.target.value;
-    setSignInCredentials((prev) => {
-      return { ...prev, [name]: value };
-    });
-
-    console.log(signInCredentials);
-  };
   const fetchCookies = async () => {
     const res = await fetch(
       "https://csswebsitebackend-production.up.railway.app/",
@@ -52,10 +39,6 @@ function App() {
     setLoggedIn(true);
   };
   const handleLogOut = () => {
-    setSignInCredentials({
-      name: "",
-      password: "",
-    });
     setCurrentUserDetails([[]]);
     setLoggedIn(false);
   };
@@ -70,70 +53,41 @@ function App() {
   };
   return (
     <div className="App">
-      <div style={{ zIndex: "-10" }}>
-        <Particles
-          id="tsparticles"
-          init={particlesInit}
-          options={particlesConfig}
-        ></Particles>
-      </div>
-      <div style={{ zIndex: "5" }}>
-        <h1 className="brand">Style Studio.</h1>
-        <NavigationBar
-          currentUserDetails={currentUserDetails}
-          loggedIn={loggedIn}
-          handleLogOut={handleLogOut}
+      <h1 className="brand">Style Studio.</h1>
+      <NavigationBar
+        currentUserDetails={currentUserDetails}
+        loggedIn={loggedIn}
+        handleLogOut={handleLogOut}
+      />
+
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route
+          path="/login"
+          element={
+            <LoginPage
+              setCurrentUserDetails={setCurrentUserDetails}
+              handleLogIn={handleLogIn}
+            />
+          }
         />
+        <Route path="/sign-up" element={<Signup />} />
 
-        <Routes style={{ zIndex: "5" }}>
-          <Route path="/" element={<HomePage />} />
-          <Route
-            path="/login"
-            element={
-              <LoginPage
-                style={{ zIndex: "5" }}
-                handleSignInChange={handleSignInChange}
-                signInCredentials={signInCredentials}
-                setCurrentUserDetails={setCurrentUserDetails}
-                handleLogIn={handleLogIn}
-              />
-            }
-          />
-          <Route
-            path="/sign-up"
-            element={
-              <Signup
-                style={{ zIndex: "5" }}
-                handleSignInChange={handleSignInChange}
-                signInCredentials={signInCredentials}
-              />
-            }
-          />
-
-          <Route
-            path="/forums/*"
-            element={
-              <Forums
-                style={{ zIndex: "5" }}
-                currentUserDetails={currentUserDetails}
-              />
-            }
-          ></Route>
-          <Route
-            path="/leaderboard"
-            element={<Specificity style={{ zIndex: "5" }} />}
-          />
-          <Route
-            path="/guides"
-            element={
-              <Guides
-                userType={currentUserDetails.type_id}
-                style={{ zIndex: "5" }}
-              />
-            }
-          />
-        </Routes>
-      </div>
+        <Route
+          path="/forums/*"
+          element={<Forums currentUserDetails={currentUserDetails} />}
+        ></Route>
+        <Route path="/leaderboard" element={<Specificity />} />
+        <Route
+          path="/guides"
+          element={<Guides userType={currentUserDetails.type_id} />}
+        />
+      </Routes>
+      <Particles
+        id="tsparticles"
+        init={particlesInit}
+        options={particlesConfig}
+      ></Particles>
     </div>
   );
 }

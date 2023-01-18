@@ -14,11 +14,22 @@ import {
   MDBInput,
   MDBSpinner,
 } from "mdb-react-ui-kit";
-export function Signup({ handleSignInChange, signInCredentials }) {
+export function Signup() {
   const navigate = useNavigate();
   const [successfulSignUp, setSuccessfulSignUp] = useState(false);
+  const [signInCredentials, setSignInCredentials] = useState({
+    name: "",
+    password: "",
+  });
   const [invalidInput, setInvalidInput] = useState(false);
   const [loading, setLoading] = useState(false);
+  const handleSignInChange = (e) => {
+    const name = e.target.name;
+    const value = e.target.value;
+    setSignInCredentials((prev) => {
+      return { ...prev, [name]: value };
+    });
+  }
   const routeChange = () => {
     navigate("/login");
   };
@@ -115,4 +126,3 @@ export function Signup({ handleSignInChange, signInCredentials }) {
     </MDBContainer>
   );
 }
-export default Signup;
