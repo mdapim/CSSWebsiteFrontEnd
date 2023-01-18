@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import CodeFormat from "../../components/Code_format.js";
+import Alert from "react-bootstrap/Alert";
 import {
   MDBBtn,
   MDBModal,
@@ -8,6 +9,7 @@ import {
   MDBModalTitle,
   MDBModalBody,
   MDBModalFooter,
+  MDBSpinner
 } from "mdb-react-ui-kit";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
@@ -23,6 +25,7 @@ function FormAdd({
 
   const [code, setCode] = useState("");
   const [addCode, setAddCode] = useState(false);
+  const [loading,setLoading] = useState(false)
 
   const [currentForumInput, setCurrentForumInput] = useState({
     title: "",
@@ -66,7 +69,6 @@ function FormAdd({
       return { ...prev, category: catChoice };
     });
   };
-
   const handleNewFormInput = (e) => {
     let name;
     let value;
@@ -82,8 +84,16 @@ function FormAdd({
       return { ...prev, [name]: value };
     });
   };
+  const resetValidation =()=> {
+    setHandleValidation((prevState) => ({
+      ...prevState,
+      EMPTY_INPUT: false,
+      SUCCESSFUL_INPUT: false,
+    }));
+  }
 
   const postNewForumData = async (e) => {
+    setLoading(true)
     console.log({ currentForumInput });
     setCurrentForumInput((prev) => {
       return { ...prev, code: "" };
@@ -97,7 +107,7 @@ function FormAdd({
         body: JSON.stringify([currentForumInput]),
       }
     );
-
+    
     const data = await res.json();
 
     if (data[0]["message"] === "One or more of the input fields are invalid") {
@@ -120,6 +130,7 @@ function FormAdd({
         SUCCESSFUL_INPUT: true,
       }));
     }
+    setLoading(false)
   };
 
   return (
@@ -139,7 +150,10 @@ function FormAdd({
                 <MDBBtn
                   className="btn-close"
                   color="none"
-                  onClick={toggleShow}
+                  onClick={()=> {
+                    toggleShow()
+                    resetValidation()
+                  }}
                 ></MDBBtn>
               </MDBModalHeader>
 
@@ -201,14 +215,21 @@ function FormAdd({
                     )}
                   </div>
                   <br />
+                  {loading && <MDBSpinner role='status'></MDBSpinner>}
                   {handleValidation["EMPTY_INPUT"] && (
-                    <h4>Please fill in required fields..</h4>
+                    <Alert className="m-1 shake-horizontal">
+                    You haven't inputted everyting...Check your title, description, and select a category.
+                  </Alert>
                   )}
-                  {handleValidation["SUCCESSFUL_INPUT"] && <h4>Success..</h4>}
+                  {handleValidation["SUCCESSFUL_INPUT"] && <Alert>Success..</Alert>}
                 </div>
               </MDBModalBody>
               <MDBModalFooter>
-                <Button color="secondary" onClick={toggleShow}>
+                <Button color="secondary" onClick={()=>{
+
+                  toggleShow()
+                  resetValidation();
+                  }}>
                   Exit
                 </Button>
                 <Button onClick={postNewForumData}>Add</Button>
