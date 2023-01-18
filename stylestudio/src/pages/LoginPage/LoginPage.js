@@ -15,10 +15,7 @@ import {
   MDBIcon,
   MDBSpinner,
 } from "mdb-react-ui-kit";
-export function LoginPage({
-  setCurrentUserDetails,
-  handleLogIn,
-}) {
+export function LoginPage({ setCurrentUserDetails, handleLogIn }) {
   const navigate = useNavigate();
   const routeChange = () => {
     navigate("/");
@@ -33,7 +30,7 @@ export function LoginPage({
     setSignInCredentials((prev) => {
       return { ...prev, [name]: value };
     });
-  }
+  };
   const [errorLogin, setErrorLogin] = useState(false);
   const [loading, setLoading] = useState(false);
 
@@ -42,7 +39,7 @@ export function LoginPage({
       "https://csswebsitebackend-production.up.railway.app/find_user",
       {
         method: "POST",
-        credentials:"include",
+        credentials: "include",
         headers: {
           "Content-Type": "application/json",
         },
@@ -113,8 +110,12 @@ export function LoginPage({
                   Login
                 </Button>
               )}
+
               {errorLogin ? (
-                <Alert className={"mt-1 shake-horizontal"}>
+                <Alert
+                  style={{ marginBottom: "-100px", paddingTop: "10px" }}
+                  className={"mt-1 shake-horizontal"}
+                >
                   Your login credentials did not work. Please try again
                 </Alert>
               ) : (

@@ -34,12 +34,12 @@ export function ForumBox({
   const [newComment, setNewComment] = useState({
     description: "",
     post_id: post_id,
-    user_id: currentUserDetails[0]["id"],
+    user_id: currentUserDetails["id"],
   });
 
   useEffect(() => {
     setNewComment((prev) => {
-      return { ...prev, user_id: currentUserDetails[0]["id"] };
+      return { ...prev, user_id: currentUserDetails["id"] };
     });
   }, [currentUserDetails]);
 
@@ -107,7 +107,6 @@ export function ForumBox({
               onClick={setShow}
               className="title-description"
             >
-
               <Card.Title style={{ marginBottom: "2rem", color: "white" }}>
                 <div>{handleDescriptionLength(Title, 100)}</div>
               </Card.Title>

@@ -22,6 +22,19 @@ a,
   padding: 0;
 }
 
+.dropdown-item,
+.navbar {
+  color: white !important;
+}
+
+--bs-navbar-active-color {
+  color: white;
+}
+
+.dropdown-menu {
+  background-color: antiquewhites;
+}
+
 a {
   transition: transform 1.5s;
 }

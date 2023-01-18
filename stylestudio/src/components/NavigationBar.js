@@ -51,7 +51,7 @@ export function NavigationBar({ currentUserDetails, handleLogOut, loggedIn }) {
               menuVariant="dark"
             >
               <p style={{ textAlign: "center", padding: "10px" }}>
-                Signed in as {currentUserDetails[0]["username"]}
+                Signed in as {currentUserDetails["username"]}
               </p>
               <NavDropdown.Item href="#action/3.2">Profile</NavDropdown.Item>
               <NavDropdown.Divider />
