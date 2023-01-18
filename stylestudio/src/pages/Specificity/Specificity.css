@@ -38,3 +38,7 @@
   align-self: flex-start;
   justify-content: flex-start;
 }
+
+a.dropdown-item {
+  color:black;
+}
