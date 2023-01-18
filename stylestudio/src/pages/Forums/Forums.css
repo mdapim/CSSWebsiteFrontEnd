@@ -153,9 +153,7 @@ div.modal-content {
   background-color: #212529;
   color: white;
 }
-h4 {
-  display:block;
-}
+
 .comments-section {
   max-height: 800px;
   overflow-y: scroll;
