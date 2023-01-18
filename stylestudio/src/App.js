@@ -15,21 +15,8 @@ import "bootstrap/dist/css/bootstrap.css";
 import "./App.css";
 
 function App() {
-  const [signInCredentials, setSignInCredentials] = useState({
-    name: "",
-    password: "",
-  });
   const [currentUserDetails, setCurrentUserDetails] = useState([[]]);
   const [loggedIn, setLoggedIn] = useState(false);
-  const handleSignInChange = (e) => {
-    const name = e.target.name;
-    const value = e.target.value;
-    setSignInCredentials((prev) => {
-      return { ...prev, [name]: value };
-    });
-
-    console.log(signInCredentials);
-  };
   const fetchCookies = async () => {
     const res = await fetch(
       "https://csswebsitebackend-production.up.railway.app/",
@@ -52,10 +39,7 @@ function App() {
     setLoggedIn(true);
   };
   const handleLogOut = () => {
-    setSignInCredentials({
-      name: "",
-      password: "",
-    });
+
     setCurrentUserDetails([[]]);
     setLoggedIn(false);
   };
@@ -83,8 +67,6 @@ function App() {
           path="/login"
           element={
             <LoginPage
-              handleSignInChange={handleSignInChange}
-              signInCredentials={signInCredentials}
               setCurrentUserDetails={setCurrentUserDetails}
               handleLogIn={handleLogIn}
             />
@@ -93,10 +75,7 @@ function App() {
         <Route
           path="/sign-up"
           element={
-            <Signup
-              handleSignInChange={handleSignInChange}
-              signInCredentials={signInCredentials}
-            />
+            <Signup/>
           }
         />
 

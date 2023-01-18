@@ -16,8 +16,6 @@ import {
   MDBSpinner,
 } from "mdb-react-ui-kit";
 export function LoginPage({
-  handleSignInChange,
-  signInCredentials,
   setCurrentUserDetails,
   handleLogIn,
 }) {
@@ -25,6 +23,17 @@ export function LoginPage({
   const routeChange = () => {
     navigate("/");
   };
+  const [signInCredentials, setSignInCredentials] = useState({
+    name: "",
+    password: "",
+  });
+  const handleSignInChange = (e) => {
+    const name = e.target.name;
+    const value = e.target.value;
+    setSignInCredentials((prev) => {
+      return { ...prev, [name]: value };
+    });
+  }
   const [errorLogin, setErrorLogin] = useState(false);
   const [loading, setLoading] = useState(false);
 
