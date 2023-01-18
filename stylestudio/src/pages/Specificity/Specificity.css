@@ -46,3 +46,10 @@ a.dropdown-item {
 p {
   color:white;
 }
+
+.table {
+  background-color:white;
+}
+table {
+  border-radius:10px;
+}
