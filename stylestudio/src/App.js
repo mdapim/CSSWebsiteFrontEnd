@@ -39,7 +39,6 @@ function App() {
     setLoggedIn(true);
   };
   const handleLogOut = () => {
-
     setCurrentUserDetails([[]]);
     setLoggedIn(false);
   };
@@ -72,12 +71,7 @@ function App() {
             />
           }
         />
-        <Route
-          path="/sign-up"
-          element={
-            <Signup/>
-          }
-        />
+        <Route path="/sign-up" element={<Signup />} />
 
         <Route
           path="/forums/*"

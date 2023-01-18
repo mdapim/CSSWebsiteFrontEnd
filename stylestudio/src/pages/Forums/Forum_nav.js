@@ -1,8 +1,11 @@
 import "./Forums.css";
-
+import Button from "react-bootstrap/Button";
+import OverlayTrigger from "react-bootstrap/OverlayTrigger";
+import Popover from "react-bootstrap/Popover";
 import Nav from "react-bootstrap/Nav";
 import React, { useState, useEffect } from "react";
 import FormAdd from "./Form_add.js";
+import Breadcrumb from "react-bootstrap/Breadcrumb";
 
 export function ForumNav({
   currentUserDetails,
@@ -12,6 +15,41 @@ export function ForumNav({
   const [staticModal, setStaticModal] = useState(false);
 
   const toggleShow = () => setStaticModal(!staticModal);
+
+  const popover = (
+    <Popover id="popover-basic">
+      <h3
+        style={{
+          backgroundColor: "#212529",
+          border: "none",
+          color: "white",
+          textAlign: "center",
+          marginTop: "20px",
+        }}
+        className="popover"
+      >
+        Pick a category
+      </h3>
+      <Popover.Body>
+        <Breadcrumb>
+          <Breadcrumb.Item className="catergory-select">
+            Discussions
+          </Breadcrumb.Item>
+          <Breadcrumb.Item className="catergory-select">
+            Questions
+          </Breadcrumb.Item>
+          <Breadcrumb.Item className="catergory-select">Ideas</Breadcrumb.Item>
+          <Breadcrumb.Item className="catergory-select">
+            ShowReel
+          </Breadcrumb.Item>
+          <Breadcrumb.Item className="catergory-select">Issues</Breadcrumb.Item>
+          <Breadcrumb.Item className="catergory-select">
+            General
+          </Breadcrumb.Item>
+        </Breadcrumb>
+      </Popover.Body>
+    </Popover>
+  );
 
   return (
     <div>
@@ -50,7 +88,17 @@ export function ForumNav({
             placeholder="Search posts.."
           ></input>
         </Nav.Item>
-        <Nav.Item></Nav.Item>
+        <Nav.Item>
+          <OverlayTrigger trigger="click" placement="bottom" overlay={popover}>
+            <h4
+              className="nav-button"
+              style={{ cursor: "pointer" }}
+              variant="success"
+            >
+              Filter
+            </h4>
+          </OverlayTrigger>
+        </Nav.Item>
         <FormAdd
           currentUserDetails={currentUserDetails}
           staticModal={staticModal}
