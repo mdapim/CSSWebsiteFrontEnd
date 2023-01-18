@@ -4,7 +4,7 @@ import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import RecentComments from "./Forum_full_post_comments";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCheck, faTrash } from "@fortawesome/free-solid-svg-icons";
+import { faCheck, faTrash, faCode } from "@fortawesome/free-solid-svg-icons";
 import ForumVoting from "./Forum_voting.js";
 import ForumCodePost from "./Forum_code_post.js";
 
@@ -150,21 +150,25 @@ function ForumFullPost({
             )}
           </div>
           {displayEditButton && (
-            <div>
-              <p
-                onClick={editPostToggle}
-                style={{ fontSize: "smaller", cursor: "pointer" }}
-              >
-                Edit post
-              </p>
-              <FontAwesomeIcon
-                onClick={() => {
-                  fetchDeletePost();
-                }}
-                className="bin"
-                icon={faTrash}
-                style={{ cursor: "pointer" }}
-              />
+            <div className="editing-post-icon">
+              <div className="editing-post-icon-child">
+                <p
+                  onClick={editPostToggle}
+                  style={{ fontSize: "smaller", cursor: "pointer" }}
+                >
+                  Edit post
+                </p>
+              </div>
+              <div className="editing-post-child">
+                <FontAwesomeIcon
+                  onClick={() => {
+                    fetchDeletePost();
+                  }}
+                  className="bin"
+                  icon={faTrash}
+                  style={{ cursor: "pointer" }}
+                />
+              </div>
             </div>
           )}
           {editPost && (

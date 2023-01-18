@@ -30,23 +30,24 @@ function App() {
 
     console.log(signInCredentials);
   };
-  const fetchCookies = async ()=> {
+  const fetchCookies = async () => {
     const res = await fetch(
-      "https://csswebsitebackend-production.up.railway.app/",{
-        method:"GET",
-        credentials:"include",
-        headers:{
-          "Content-Type":"application/json"
-        }
+      "https://csswebsitebackend-production.up.railway.app/",
+      {
+        method: "GET",
+        credentials: "include",
+        headers: {
+          "Content-Type": "application/json",
+        },
       }
-    )
-    if (res.status===200) {
-      const data = await res.json()
-      setCurrentUserDetails(data)
-      handleLogIn()
-      console.log({data})
+    );
+    if (res.status === 200) {
+      const data = await res.json();
+      setCurrentUserDetails(data);
+      handleLogIn();
+      console.log({ data });
     }
-  }
+  };
   const handleLogIn = () => {
     setLoggedIn(true);
   };
@@ -59,7 +60,9 @@ function App() {
     setLoggedIn(false);
   };
   useEffect(() => {}, [loggedIn]);
-  useEffect(()=> {fetchCookies()},[])
+  useEffect(() => {
+    fetchCookies();
+  }, []);
 
   const particlesInit = async (main) => {
     console.log(main);
@@ -73,11 +76,7 @@ function App() {
         loggedIn={loggedIn}
         handleLogOut={handleLogOut}
       />
-      <Particles
-        id="tsparticles"
-        init={particlesInit}
-        options={particlesConfig}
-      ></Particles>
+
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route
@@ -111,6 +110,11 @@ function App() {
           element={<Guides userType={currentUserDetails.type_id} />}
         />
       </Routes>
+      <Particles
+        id="tsparticles"
+        init={particlesInit}
+        options={particlesConfig}
+      ></Particles>
     </div>
   );
 }

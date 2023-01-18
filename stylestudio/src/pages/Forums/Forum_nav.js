@@ -1,7 +1,7 @@
 import "./Forums.css";
 
 import Nav from "react-bootstrap/Nav";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import FormAdd from "./Form_add.js";
 
 export function ForumNav({
@@ -12,6 +12,7 @@ export function ForumNav({
   const [staticModal, setStaticModal] = useState(false);
 
   const toggleShow = () => setStaticModal(!staticModal);
+
   return (
     <div>
       <br />
@@ -20,6 +21,7 @@ export function ForumNav({
         <strong>Style Studio</strong>Forum and Community, a place to discuss the
         latest technologies, design tools and anything else!
       </p>
+      <hr style={{ marginBottom: "20px" }} />
       <Nav className="forum_nav" fill variant="tabs" defaultActiveKey="">
         <Nav.Item>
           <h4
@@ -29,6 +31,7 @@ export function ForumNav({
           >
             Posts
           </h4>
+          <br />
         </Nav.Item>
         <Nav.Item>
           <h4
@@ -53,6 +56,7 @@ export function ForumNav({
           staticModal={staticModal}
           setStaticModal={setStaticModal}
           toggleShow={toggleShow}
+          fetchForumData={fetchForumData}
         />
       </Nav>
     </div>

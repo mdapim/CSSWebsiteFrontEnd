@@ -66,7 +66,7 @@ const particlesConfig = {
         speed: 2,
       },
       bounce: {
-        distance: 200,
+        distance: 100,
       },
       bubble: {
         distance: 200,
@@ -80,9 +80,9 @@ const particlesConfig = {
         },
       },
       connect: {
-        distance: 80,
+        distance: 10,
         links: {
-          opacity: 0.5,
+          opacity: 0.2,
         },
         radius: 60,
       },
@@ -91,7 +91,7 @@ const particlesConfig = {
         links: {
           blink: false,
           consent: false,
-          opacity: 1,
+          opacity: 0.5,
         },
       },
       push: {
@@ -149,7 +149,7 @@ const particlesConfig = {
             speed: 2,
           },
           size: {
-            value: 5,
+            value: 10,
             animation: {
               enable: true,
               speed: 5,
