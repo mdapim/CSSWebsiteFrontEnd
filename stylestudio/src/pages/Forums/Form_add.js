@@ -156,6 +156,7 @@ function FormAdd({
                   <div>
                     <h3>Title:</h3>
                     <textarea
+                      maxLength="200"
                       onChange={handleNewFormInput}
                       className="forum-new-input-title"
                       type="text"
@@ -167,6 +168,7 @@ function FormAdd({
                   <div>
                     <h3>Description: </h3>
                     <textarea
+                      maxLength="1000"
                       onChange={handleNewFormInput}
                       className="forum-new-input-description"
                       type="text"

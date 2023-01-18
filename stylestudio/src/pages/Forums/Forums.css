@@ -212,6 +212,7 @@ div.modal-content {
   filter: drop-shadow(0 0 0.75rem rgb(19, 36, 120));
 }
 
+
 .add-post {
   display: flex;
   justify-content: center;
@@ -239,6 +240,7 @@ div.modal-content {
   height: 3em;
   width: 50%;
 }
+
 
 .nav-button:hover {
   transition: 0.5s;
