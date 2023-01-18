@@ -29,12 +29,12 @@ export function Signup() {
     setSignInCredentials((prev) => {
       return { ...prev, [name]: value };
     });
-  }
+  };
   const routeChange = () => {
     navigate("/login");
   };
   const fetchSignUp = async () => {
-    setLoading(true);
+    console.log([signInCredentials]);
     const res = await fetch(
       "https://csswebsitebackend-production.up.railway.app/create_user",
       {

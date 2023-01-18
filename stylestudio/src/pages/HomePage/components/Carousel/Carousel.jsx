@@ -1,6 +1,6 @@
 import {
   UpdatesCard,
-  TopSearchCard,
+  TopResourceCard,
   TopQuestionsCard,
   TopVotedCard,
 } from "../Card/Card";
@@ -20,7 +20,40 @@ const SlickArrowRight = ({ currentSlide, slideCount, ...props }) => (
   <img src={RightArrow} alt="nextArrow" {...props} />
 );
 
-export default function Carousel() {
+export default function Carousel(props) {
+  const { forumData, resourceData } = props;
+
+  const retrieveCardData = (forumData, category) => {
+    let mostPopular = forumData.reduce(
+      (prevItem, currentItem) => {
+        if (
+          currentItem["likes"] > prevItem["likes"] &&
+          currentItem["category"] === category
+        ) {
+          return currentItem;
+        } else {
+          return prevItem;
+        }
+      },
+      { likes: -1 }
+    );
+    return mostPopular;
+  };
+
+  const retrieveCardDataForGuide = (resourceData) => {
+    let mostPopular = resourceData.reduce(
+      (prevItem, currentItem) => {
+        if (currentItem["click_count"] > prevItem["click_count"]) {
+          return currentItem;
+        } else {
+          return prevItem;
+        }
+      },
+      { click_count: -1 }
+    );
+    return mostPopular;
+  };
+
   const settings = {
     className: "center",
     centerMode: true,
@@ -71,13 +104,15 @@ export default function Carousel() {
           <UpdatesCard />
         </div>
         <div>
-          <TopVotedCard />
+          <TopVotedCard cardData={retrieveCardData(forumData, "general")} />
         </div>
         <div>
-          <TopQuestionsCard />
+          <TopQuestionsCard
+            cardData={retrieveCardData(forumData, "Questions")}
+          />
         </div>
         <div>
-          <TopSearchCard />
+          <TopResourceCard cardData={retrieveCardDataForGuide(resourceData)} />
         </div>
       </Slider>
     </div>

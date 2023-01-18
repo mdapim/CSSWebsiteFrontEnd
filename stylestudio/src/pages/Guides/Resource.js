@@ -1,6 +1,6 @@
 import "./Resources.css";
 import Card from "react-bootstrap/Card";
-export function Resource({ title, links }) {
+export function Resource({ title, links, sendClick }) {
   const mapLinks = (resources) => {
     const resourceJSX = resources.map((resource) => {
       return (
@@ -9,6 +9,7 @@ export function Resource({ title, links }) {
             id="resource-link"
             target="_blank"
             href={resource.resource_link}
+            onClick={() => sendClick(resource.resource_id)}
           >
             {resource.resource_description}
           </Card.Link>

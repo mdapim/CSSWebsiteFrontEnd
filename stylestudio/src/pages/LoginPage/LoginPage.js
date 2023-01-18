@@ -15,10 +15,11 @@ import {
   MDBIcon,
   MDBSpinner,
 } from "mdb-react-ui-kit";
+
 export function LoginPage({ setCurrentUserDetails, handleLogIn }) {
   const navigate = useNavigate();
   const routeChange = () => {
-    navigate("/");
+    navigate("/home");
   };
   const [signInCredentials, setSignInCredentials] = useState({
     name: "",
@@ -46,6 +47,11 @@ export function LoginPage({ setCurrentUserDetails, handleLogIn }) {
         body: JSON.stringify([signInCredentials]),
       }
     );
+    const data = await res.json();
+
+    console.log(data);
+    setCurrentUserDetails(data[0]);
+    handleLogIn();
     if (res.status === 200) {
       const data = await res.json();
       setCurrentUserDetails(data[0]);
@@ -121,6 +127,7 @@ export function LoginPage({ setCurrentUserDetails, handleLogIn }) {
               ) : (
                 ""
               )}
+
               <div className="d-flex flex-row mt-3 mb-5">
                 <MDBBtn
                   tag="a"
