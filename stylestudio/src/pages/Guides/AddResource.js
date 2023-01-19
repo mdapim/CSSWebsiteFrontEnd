@@ -1,15 +1,15 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Modal from 'react-bootstrap/Modal';
 import Dropdown from 'react-bootstrap/Dropdown';
+import Alert from 'react-bootstrap/Alert'
+import "../Styling.css"
+import { MDBSpinner } from "mdb-react-ui-kit";
 import DropdownButton from 'react-bootstrap/DropdownButton';
-export function AddResource({handleAddedResource,addedResource,confirmAddedResource, categoriesList}) {
-    const [show, setShow] = useState(false);
+export function AddResource({handleAddedResource,addedResource,confirmAddedResource, categoriesList,loadingAddResource,handleClose,handleShow,show,errorAddResource}) {
     const [showAddCategory,setShowAddCategory] = useState(false)
     const [newCategory,setNewCategory] = useState('')
-    const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true);
     const handleCategoryInput = (e)=> {
       console.log(newCategory)
       setNewCategory(e.target.value)
@@ -28,12 +28,15 @@ export function AddResource({handleAddedResource,addedResource,confirmAddedResou
       Object.keys(presets).forEach(key=> handleAddedResource(presets[key],key))
     }
     
-  
+    // useEffect(()=> {
+
+    // },[errorAddResource])
     return (
-      <>
+      <div className='add-resource'>
         <Button variant="primary" onClick={()=> {
           handleShow()
-          refreshAddResource()}}>
+          refreshAddResource()
+          }}>
           Upload a new resource!
         </Button>
         <Modal show={show} onHide={handleClose}>
@@ -74,12 +77,13 @@ export function AddResource({handleAddedResource,addedResource,confirmAddedResou
               </Form.Group>
             </Form>
           </Modal.Body>
+          {loadingAddResource && <MDBSpinner id="guide-spinner" role='status'></MDBSpinner>}
+          {errorAddResource && <Alert className = "shake-horizontal m-4 text-center">Please ensure you've inputted a category, a title, and a resource link</Alert>}
           <Modal.Footer>
             <Button variant="secondary" onClick={handleClose}>
               Close
             </Button>
             <Button variant="primary" onClick={()=>{
-              handleClose()
               confirmAddedResource()
               handleAddCategory()
               }}>
@@ -87,6 +91,6 @@ export function AddResource({handleAddedResource,addedResource,confirmAddedResou
             </Button>
           </Modal.Footer>
         </Modal>
-      </>
+      </div>
     );
   }
