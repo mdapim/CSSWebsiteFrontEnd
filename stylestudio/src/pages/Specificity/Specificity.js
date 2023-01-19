@@ -10,6 +10,8 @@ import "./components/Table/Table";
 import { CustomizedTable } from "./components/Table/Table";
 import "../Styling.css";
 import { default as CodeFormat } from "../../components/Code_format";
+import "../Guides/Guides.css";
+import "../../App.css";
 export function Specificity() {
   const [cssInput, setCSSInput] = useState("");
   const [cssSpec, setCSSSpec] = useState([]);
@@ -57,7 +59,7 @@ export function Specificity() {
   return (
     <>
       <div className="main-container">
-        <h2 className="title-spec">Specificity Leaderboard</h2>
+        <h2 className="title-spec title-change">Specificity Leaderboard</h2>
         <hr
           style={{
             margin: "10px",
