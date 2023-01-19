@@ -4,7 +4,7 @@ export function Resource({ title, links, sendClick }) {
   const mapLinks = (resources) => {
     const resourceJSX = resources.map((resource) => {
       return (
-        <div>
+        <div style={{ marginLeft: "90px" }}>
           <Card.Link
             id="resource-link"
             target="_blank"
@@ -13,6 +13,15 @@ export function Resource({ title, links, sendClick }) {
           >
             {resource.resource_description}
           </Card.Link>
+          <hr
+            style={{
+              borderColor: "white",
+              borderWidth: "1px",
+              opacity: "0.6",
+              borderRadius: "25px",
+              width: "900px",
+            }}
+          />
         </div>
       );
     });
@@ -20,9 +29,17 @@ export function Resource({ title, links, sendClick }) {
   };
   return (
     <div className="content">
-      <Card bg="dark" border="info" className="m-2">
+      <Card bg="dark" border="" className="m-2">
         <Card.Body>
-          <Card.Title className="title">{title}</Card.Title>
+          <Card.Title className="title, guides-font">{title}</Card.Title>
+          <hr
+            style={{
+              borderColor: "white",
+              borderWidth: "2px",
+              opacity: "0.7",
+              borderRadius: "25px",
+            }}
+          />
           {mapLinks(links)}
         </Card.Body>
       </Card>

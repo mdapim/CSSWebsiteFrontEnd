@@ -14,6 +14,10 @@
   min-width: 1230px;
 }
 
+.title-change {
+  font-size: 60px;
+}
+
 body {
   /* font-family: 'Dosis', sans-serif; */
   font-family: "Exo 2", sans-serif;

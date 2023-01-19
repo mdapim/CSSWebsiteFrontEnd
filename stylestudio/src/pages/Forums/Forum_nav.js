@@ -6,6 +6,7 @@ import Nav from "react-bootstrap/Nav";
 import React, { useState, useEffect } from "react";
 import FormAdd from "./Form_add.js";
 import Breadcrumb from "react-bootstrap/Breadcrumb";
+import "../../App.css";
 
 export function ForumNav({
   currentUserDetails,
@@ -63,7 +64,7 @@ export function ForumNav({
   return (
     <div>
       <br />
-      <h2 className="forum-title">Forums</h2>
+      <h2 className="forum-title title-change">Forums</h2>
       <p className="forum-title">
         <strong>Style Studio</strong>Forum and Community, a place to discuss the
         latest technologies, design tools and anything else!

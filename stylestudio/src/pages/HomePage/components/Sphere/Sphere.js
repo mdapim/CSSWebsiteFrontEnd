@@ -145,8 +145,8 @@ export const WorkingTextSphere = () => {
 
     const options = {
       radius: radiusValue(),
-      maxSpeed: "normal",
-      initSpeed: "normal",
+      maxSpeed: "slow",
+      initSpeed: "slow",
       keep: true,
     };
 
