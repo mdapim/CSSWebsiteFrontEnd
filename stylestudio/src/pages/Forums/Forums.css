@@ -118,18 +118,22 @@
   border: solid 1px;
   border-radius: 10px;
   width: 50%;
-  border-color: rgb(240, 240, 240);
   margin-top: 5px;
   width: 300px;
   margin-left: 5rem;
   height: 2rem;
 }
+
+.search:focus {
+  border-color: cyan;
+  outline: none;
+}
 .ok-button,
 .btn,
 .btn-primary {
-  border-radius: 100%;
   margin-left: 10px;
   height: min-content;
+  border-color: cyan;
 }
 
 .header {
@@ -246,7 +250,7 @@ div.modal-content {
 .nav-button:hover {
   transition: 0.5s;
   transform: scale(1.2);
-  color: #6e6e6e;
+  color: cyan;
 }
 
 .forum-code-post {
@@ -320,4 +324,9 @@ div.modal-content {
 .cat-filter-button:hover {
   transition: 0.3s;
   background-color: #6e6e6e;
+}
+.input-field-comments {
+  display: flex;
+  align-items: center;
+  flex-grow: 0;
 }

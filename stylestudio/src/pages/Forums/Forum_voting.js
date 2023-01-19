@@ -1,7 +1,12 @@
 import "./Forums.css";
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faFaceGrin, faFaceFrown } from "@fortawesome/free-solid-svg-icons";
+import {
+  faFaceGrin,
+  faFaceFrown,
+  faArrowUp,
+  faArrowDown,
+} from "@fortawesome/free-solid-svg-icons";
 
 export function ForumVoting({ handleVote, post_id }) {
   return (
@@ -17,7 +22,7 @@ export function ForumVoting({ handleVote, post_id }) {
       >
         <FontAwesomeIcon
           style={{ color: "green", height: "25px" }}
-          icon={faFaceGrin}
+          icon={faArrowUp}
         />
       </p>
       <br />
@@ -29,7 +34,7 @@ export function ForumVoting({ handleVote, post_id }) {
         data-testid="downvote"
       >
         <FontAwesomeIcon
-          icon={faFaceFrown}
+          icon={faArrowDown}
           style={{ color: "red", height: "25px" }}
         />
       </p>

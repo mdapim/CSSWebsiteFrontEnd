@@ -67,6 +67,8 @@
   flex: 1;
   align-self: flex-start;
   justify-self: center;
+  margin-top: -59px;
+  margin-right: 50px;
 }
 
 .carousel {
