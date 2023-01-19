@@ -9,8 +9,9 @@ import {
   MDBIcon,
   MDBRow,
   MDBTypography,
+  MDBSpinner
 } from "mdb-react-ui-kit";
-import { MDBSpinner } from "mdb-react-ui-kit";
+
 
 import Button from "react-bootstrap/Button";
 import { faCheck, faTrash } from "@fortawesome/free-solid-svg-icons";
@@ -26,9 +27,11 @@ export default function RecentComments({
   const [updatedComment, setUpdatedComment] = useState("");
   const [editComment, setEditComment] = useState(false);
   const [commentTarget, setCommentTarget] = useState("");
-
+  const [loadingComments,setLoadingComments] = useState(false)
   useEffect(() => {
+    setLoadingComments(true)
     fetchComments();
+    setLoadingComments(false)
   }, [editComment]);
 
   const handleEditButtonClick = (e) => {
@@ -44,6 +47,7 @@ export default function RecentComments({
   };
 
   const fetchEditComment = async (id) => {
+    setLoadingComments(true)
     const res = await fetch(
       "https://csswebsitebackend-production.up.railway.app/forum_comment",
       {
@@ -60,8 +64,6 @@ export default function RecentComments({
     );
     const data = await res.json();
 
-    setEditComment(false);
-
     if (
       data[0]["message"] ===
       "item has already been deleted or user does not have required access"
@@ -70,9 +72,11 @@ export default function RecentComments({
     } else {
       setEditComment(false);
     }
+    setLoadingComments(false)
   };
 
   const fetchDeleteComment = async (id) => {
+    setLoadingComments(true)
     console.log(id, currentUserDetails["id"]);
     const res = await fetch(
       "https://csswebsitebackend-production.up.railway.app/forum_comment",
@@ -93,6 +97,7 @@ export default function RecentComments({
     if (data[0]["?column?"] === "successfully deleted comment") {
       fetchComments();
     }
+    setLoadingComments(false)
   };
 
   return (
@@ -104,6 +109,7 @@ export default function RecentComments({
           marginLeft: "-70px",
         }}
       >
+        
         <MDBRow className="justify-content-center">
           <MDBCol md="10" lg="10">
             <MDBTypography tag="h4" className="mb-0">
@@ -112,11 +118,11 @@ export default function RecentComments({
             <p className="fw-light mb-4 pb-2">
               Latest Comments section by users
             </p>
+            <div className='input-field-comments'>
             <input
               onChange={handleNewComment}
               style={{
-                marginBottom: "15px",
-                width: "82%",
+                width: "300px",
                 height: "40px",
                 borderRadius: "8px",
                 border: "solid 1px grey",
@@ -128,22 +134,31 @@ export default function RecentComments({
             <Button
               style={{
                 backgroundColor: "black",
-                marginTop: "-5px",
                 height: "2.5rem",
                 border: "none",
               }}
-              onClick={addComments}
+              onClick={async ()=> {
+                setLoadingComments(true)
+                await addComments()
+                setLoadingComments(false)
+                }}
             >
               OK
             </Button>
-
+            {loadingComments && <MDBSpinner style={{alignSelf:"center",marginLeft:"20px"}} role='status'></MDBSpinner>}
+            </div>
             <div
               style={{
                 maxHeight: "400px",
                 overflowY: "scroll",
+                display:"flex",
+                flexDirection:"column"
               }}
             >
+
+              
               {commentsForIndivPost.map((comment, i) => {
+                
                 return (
                   <MDBCard className="text-dark">
                     <MDBCardBody className="p-2">
