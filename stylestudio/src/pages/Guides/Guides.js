@@ -5,6 +5,7 @@ import { useState, useEffect } from "react";
 import { AddResource } from "./AddResource.js";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
+import { MDBSpinner } from "mdb-react-ui-kit";
 import {
   ProSidebarProvider,
   Sidebar,
@@ -25,16 +26,27 @@ export function Guides({ userType }) {
   });
   const [confirmedResource, setConfirmedResource] = useState(addedResource);
   const [categoriesList, setCategoriesList] = useState([]);
-
+  const [loading,setLoading] = useState(false)
+  const [loadingAddResource,setLoadingAddResource] = useState(false)
+  const [show, setShow] = useState(false);
+  const [errorAddResource,setErrorAddResource] = useState(false)
+  const handleClose = () => setShow(false);
+  const handleShow = () => {
+    setShow(true)
+    setErrorAddResource(false)};
   const fetchResources = async () => {
+    setLoading(true)
     const res = await fetch(
       "https://csswebsitebackend-production.up.railway.app/guides_links"
     );
     const responseData = await res.json();
     setResources(responseData);
     setCategoriesList(responseData[0]);
+    setLoading(false)
+    setLoadingAddResource(false)
   };
   const sendNewResource = async () => {
+    setLoadingAddResource(true)
     console.log(JSON.stringify([confirmedResource]));
     console.log("now sending");
     const res = await fetch(
@@ -49,6 +61,9 @@ export function Guides({ userType }) {
     );
     const responseData = await res.json();
     setResourceSent(resourceSent + 1);
+    setShow(false)
+    console.log('sent')
+    console.log(responseData)
   };
 
   const sendClickToCount = async (id) => {
@@ -65,14 +80,7 @@ export function Guides({ userType }) {
   };
 
   useEffect(() => {
-    if (
-      Object.keys(confirmedResource).some(
-        (key) => confirmedResource[key] === ""
-      )
-    ) {
-    } else {
       sendNewResource();
-    }
   }, [confirmedResource]);
 
   useEffect(() => {
@@ -85,8 +93,13 @@ export function Guides({ userType }) {
     });
   };
   const confirmAddedResource = () => {
+    if (Object.keys(addedResource).every(key=>addedResource[key]!=="")) {
     setConfirmedResource({ ...addedResource });
-  };
+  } else {
+    setErrorAddResource(true)
+  }
+}
+
   const addResource = () => {
     return (
       <AddResource
@@ -95,6 +108,11 @@ export function Guides({ userType }) {
         confirmAddedResource={confirmAddedResource}
         categoriesList={categoriesList}
         userType={userType}
+        loadingAddResource={loadingAddResource}
+        handleClose={handleClose}
+        handleShow={handleShow}
+        show={show}
+        errorAddResource={errorAddResource}
       />
     );
   };
@@ -135,6 +153,7 @@ export function Guides({ userType }) {
         </header>
         <hr />
         <div id="main">
+          
           <Sidebar>
             <Menu>
               {Object.keys(categoriesList).map((key) => {
@@ -150,6 +169,8 @@ export function Guides({ userType }) {
           </Sidebar>
           ;
           <div className="resources container">
+            {loading &&
+<MDBSpinner id="guide-spinner"role='status'></MDBSpinner>}  
             {resources.length === 0 ? "" : generateResources()}
           </div>
         </div>
