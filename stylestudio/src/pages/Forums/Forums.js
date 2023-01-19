@@ -5,9 +5,11 @@ import { ForumNav } from "./Forum_nav.js";
 
 export function Forums({ currentUserDetails }) {
   const [forumData, setForumData] = useState([]);
+  const [filteredCategoryData, setFilteredCategoryData] = useState([]);
   const [allComments, setAllComments] = useState([]);
   const [votes, setVotes] = useState([]);
   const [searchedString, setSearchedString] = useState("");
+  const [categorySelected, setCategorySelected] = useState("");
 
   //Managing votes & re-rendering
   const manageVotes = (vote, id) => {
@@ -87,41 +89,89 @@ export function Forums({ currentUserDetails }) {
     }
   };
 
+  const handleCategorySearch = (e) => {
+    const categoryFilterSearch = e.target.value;
+    setCategorySelected(categoryFilterSearch);
+  };
+
+  const filterCategorySearch = () => {
+    if (categorySelected !== "All") {
+      setFilteredCategoryData(
+        forumData.filter((el) => {
+          return el["category"] === categorySelected;
+        })
+      );
+    } else {
+      setFilteredCategoryData(forumData);
+    }
+  };
+
   return (
     <div className="forum-container">
       <ForumNav
         currentUserDetails={currentUserDetails}
         filterDataSearch={filterDataSearch}
         fetchForumData={fetchForumData}
+        handleCategorySearch={handleCategorySearch}
+        filterCategorySearch={filterCategorySearch}
       />
       <div className="forum-post-container">
         <div className="forum-post-content">
-          {forumData.map((item, i) => {
-            return (
-              <ForumBox
-                key={item["id"]}
-                username={item["username"]}
-                user_id={item["user_id"]}
-                currentUserDetails={currentUserDetails}
-                date={item["date_created"]}
-                Title={item["title"]}
-                description={item["description"]}
-                upvotes={votes[i]["likes"]}
-                downvotes={votes[i]["dislikes"]}
-                post_id={item["id"]}
-                votes={votes}
-                setVotes={setVotes}
-                handleVote={handleVote}
-                commentCount={item["comment"]}
-                commentsForIndivPost={allComments.filter(
-                  (el) => el.post_id === item["id"]
-                )}
-                fetchComments={fetchComments}
-                fetchForumData={fetchForumData}
-                inputtedCode={item["code"]}
-              />
-            );
-          })}
+          {filteredCategoryData.length === 0
+            ? forumData.map((item, i) => {
+                return (
+                  <ForumBox
+                    key={item["id"]}
+                    username={item["username"]}
+                    user_id={item["user_id"]}
+                    currentUserDetails={currentUserDetails}
+                    date={item["date_created"]}
+                    Title={item["title"]}
+                    description={item["description"]}
+                    upvotes={votes[i]["likes"]}
+                    downvotes={votes[i]["dislikes"]}
+                    post_id={item["id"]}
+                    votes={votes}
+                    setVotes={setVotes}
+                    handleVote={handleVote}
+                    commentCount={item["comment"]}
+                    commentsForIndivPost={allComments.filter(
+                      (el) => el.post_id === item["id"]
+                    )}
+                    fetchComments={fetchComments}
+                    fetchForumData={fetchForumData}
+                    inputtedCode={item["code"]}
+                    category={item["category"]}
+                  />
+                );
+              })
+            : filteredCategoryData.map((item, i) => {
+                return (
+                  <ForumBox
+                    key={item["id"]}
+                    username={item["username"]}
+                    user_id={item["user_id"]}
+                    currentUserDetails={currentUserDetails}
+                    date={item["date_created"]}
+                    Title={item["title"]}
+                    description={item["description"]}
+                    upvotes={votes[i]["likes"]}
+                    downvotes={votes[i]["dislikes"]}
+                    post_id={item["id"]}
+                    votes={votes}
+                    setVotes={setVotes}
+                    handleVote={handleVote}
+                    commentCount={item["comment"]}
+                    commentsForIndivPost={allComments.filter(
+                      (el) => el.post_id === item["id"]
+                    )}
+                    fetchComments={fetchComments}
+                    fetchForumData={fetchForumData}
+                    inputtedCode={item["code"]}
+                    category={item["category"]}
+                  />
+                );
+              })}
         </div>
       </div>
     </div>

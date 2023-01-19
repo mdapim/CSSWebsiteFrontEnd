@@ -19,8 +19,6 @@ function FormAdd({
   currentUserDetails,
   fetchForumData,
 }) {
-  console.log({ currentUserDetails });
-
   const [code, setCode] = useState("");
   const [addCode, setAddCode] = useState(false);
 
@@ -50,12 +48,10 @@ function FormAdd({
     });
   };
   useEffect(() => {
-    console.log("test");
     fetchForumData();
   }, [currentUserDetails, handleValidation]);
 
   const handleAddCodeButton = () => {
-    console.log("test");
     setAddCode(!addCode);
   };
 
