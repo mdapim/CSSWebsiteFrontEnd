@@ -9,11 +9,7 @@ import { MDBSpinner } from "mdb-react-ui-kit";
 import DropdownButton from 'react-bootstrap/DropdownButton';
 export function AddResource({handleAddedResource,addedResource,confirmAddedResource, categoriesList,loadingAddResource,handleClose,handleShow,show,errorAddResource}) {
     const [showAddCategory,setShowAddCategory] = useState(false)
-    const [newCategory,setNewCategory] = useState('')
-    const handleCategoryInput = (e)=> {
-      console.log(newCategory)
-      setNewCategory(e.target.value)
-    }
+
     const categoriesNames = () => {
       return Object.keys(categoriesList).map(key=>categoriesList[key])
     }
@@ -27,10 +23,7 @@ export function AddResource({handleAddedResource,addedResource,confirmAddedResou
       user_type:"1"}
       Object.keys(presets).forEach(key=> handleAddedResource(presets[key],key))
     }
-    
-    // useEffect(()=> {
 
-    // },[errorAddResource])
     return (
       <div className='add-resource'>
         <Button variant="primary" onClick={()=> {
@@ -85,7 +78,6 @@ export function AddResource({handleAddedResource,addedResource,confirmAddedResou
             </Button>
             <Button variant="primary" onClick={()=>{
               confirmAddedResource()
-              handleAddCategory()
               }}>
               Save Changes
             </Button>

@@ -63,6 +63,7 @@ export function Guides({ userType }) {
     setResourceSent(resourceSent + 1);
     setShow(false)
     console.log('sent')
+    console.log(responseData)
   };
 
   const sendClickToCount = async (id) => {
