@@ -48,6 +48,7 @@
   margin: 40px;
   background-color: #212529da;
   border-radius: 25px;
+  min-width: 1160px;
 }
 
 .home-page-container {

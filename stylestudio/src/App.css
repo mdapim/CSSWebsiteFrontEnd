@@ -11,6 +11,7 @@
 .brand {
   font-family: "Dancing Script", cursive;
   color: white;
+  min-width: 1230px;
 }
 
 body {
