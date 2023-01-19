@@ -1,19 +1,24 @@
 import React, { useState } from "react";
 import AceEditor from "react-ace";
 import "ace-builds/src-noconflict/mode-css";
-import "ace-builds/src-noconflict/theme-xcode";
+import "ace-builds/src-noconflict/theme-twilight";
+import "ace-builds/src-noconflict/ext-language_tools";
 import "../pages/Forums/Forums.css";
 import "../pages/Styling.css";
 
 const CodeFormat = ({ handleNewFormInput }) => {
+
   return (
     <div className="code-format">
       <AceEditor
         mode="css"
-        theme="xcode"
+        theme="twilight"
         onChange={handleNewFormInput}
         name="code"
-        editorProps={{ $blockScrolling: true }}
+        showPrintMargin={true}
+        setOptions={{
+          useSoftTabs:false
+        }}
       />
     </div>
   );
