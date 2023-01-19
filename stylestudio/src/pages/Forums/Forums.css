@@ -321,3 +321,8 @@ div.modal-content {
   transition: 0.3s;
   background-color: #6e6e6e;
 }
+.input-field-comments {
+  display:flex;
+  align-items:center;
+  flex-grow:0;
+}
