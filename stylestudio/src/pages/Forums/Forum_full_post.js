@@ -27,6 +27,7 @@ function ForumFullPost({
   currentUserDetails,
   fetchComments,
   inputtedCode,
+  category,
 }) {
   const [editPost, setEditPost] = useState(false);
   const [displayEditButton, setDisplayEditButton] = useState(false);
@@ -118,6 +119,7 @@ function ForumFullPost({
           >
             {Title}
           </Modal.Title>
+
           <ForumVoting handleVote={handleVote} post_id={post_id} />
         </Modal.Header>
         <div className="header">
@@ -132,6 +134,15 @@ function ForumFullPost({
             <p>|</p>
             <p>Downvotes: {downvotes}</p>
             <p>|</p>
+            {category !== "Select a category" ? (
+              <p style={{ color: "cyan", textDecoration: "underline" }}>
+                {category}
+              </p>
+            ) : (
+              <p style={{ color: "cyan", textDecoration: "underline" }}>
+                General
+              </p>
+            )}
           </div>
         </div>
 

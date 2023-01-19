@@ -23,6 +23,7 @@ export function ForumBox({
   fetchForumData,
   user_id,
   inputtedCode,
+  category,
 }) {
   const [staticModal, setStaticModal] = useState(false);
   const toggleShow = () => setStaticModal(!staticModal);
@@ -151,6 +152,7 @@ export function ForumBox({
           handleVote={handleVote}
           post_id={post_id}
           user_id={user_id}
+          category={category}
           fetchComments={fetchComments}
           fetchForumData={fetchForumData}
           currentUserDetails={currentUserDetails}

@@ -11,6 +11,8 @@ export function ForumNav({
   currentUserDetails,
   filterDataSearch,
   fetchForumData,
+  handleCategorySearch,
+  filterCategorySearch,
 }) {
   const [staticModal, setStaticModal] = useState(false);
 
@@ -30,24 +32,31 @@ export function ForumNav({
       >
         Pick a category
       </h3>
-      <Popover.Body>
-        <Breadcrumb>
-          <Breadcrumb.Item className="catergory-select">
-            Discussions
-          </Breadcrumb.Item>
-          <Breadcrumb.Item className="catergory-select">
-            Questions
-          </Breadcrumb.Item>
-          <Breadcrumb.Item className="catergory-select">Ideas</Breadcrumb.Item>
-          <Breadcrumb.Item className="catergory-select">
-            ShowReel
-          </Breadcrumb.Item>
-          <Breadcrumb.Item className="catergory-select">Issues</Breadcrumb.Item>
-          <Breadcrumb.Item className="catergory-select">
-            General
-          </Breadcrumb.Item>
-        </Breadcrumb>
-      </Popover.Body>
+      <div className="cat-choice-flex">
+        <div>
+          <Popover.Body>
+            <select
+              name="category"
+              onChange={handleCategorySearch}
+              className="cat-filter"
+            >
+              <option value="">Select a category</option>
+              <option value="Discussions">Discussions</option>
+              <option value="Questions">Questions</option>
+              <option value="Ideas">Ideas</option>
+              <option value="ShowReel">ShowReel</option>
+              <option value="Issues">Issues</option>
+              <option value="General">General</option>
+              <option value="All">All</option>
+            </select>
+          </Popover.Body>
+        </div>
+        <div className="cat-choice-flex-child">
+          <button onClick={filterCategorySearch} className="cat-filter-button">
+            ok
+          </button>
+        </div>
+      </div>
     </Popover>
   );
 
@@ -89,7 +98,12 @@ export function ForumNav({
           ></input>
         </Nav.Item>
         <Nav.Item>
-          <OverlayTrigger trigger="click" placement="bottom" overlay={popover}>
+          <OverlayTrigger
+            rootClose="true"
+            trigger="click"
+            placement="bottom"
+            overlay={popover}
+          >
             <h4
               className="nav-button"
               style={{ cursor: "pointer" }}

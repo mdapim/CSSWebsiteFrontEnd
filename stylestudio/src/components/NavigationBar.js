@@ -7,8 +7,6 @@ import { Link } from "react-router-dom";
 import "./NavigationBar.css";
 import Button from "react-bootstrap/Button";
 export function NavigationBar({ currentUserDetails, handleLogOut, loggedIn }) {
-  const [signedIn, setSignedIn] = useState(false);
-
   useEffect(() => {}, [currentUserDetails]);
 
   return (

@@ -298,5 +298,26 @@ div.modal-content {
   margin-left: -1px;
 }
 
-.popover {
+.cat-filter {
+  width: 100%;
+  border-radius: 10px;
+}
+
+.cat-choice-flex {
+  display: flex;
+}
+
+.cat-choice-flex-child {
+  margin-top: 1.4rem;
+  margin-left: -20px;
+}
+
+.cat-filter-button {
+  border-radius: 10px;
+  height: 30px;
+}
+
+.cat-filter-button:hover {
+  transition: 0.3s;
+  background-color: #6e6e6e;
 }
