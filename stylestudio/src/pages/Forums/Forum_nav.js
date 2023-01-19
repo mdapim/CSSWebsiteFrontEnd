@@ -47,6 +47,7 @@ export function ForumNav({
               <option value="ShowReel">ShowReel</option>
               <option value="Issues">Issues</option>
               <option value="General">General</option>
+              <option value="All">All</option>
             </select>
           </Popover.Body>
         </div>
