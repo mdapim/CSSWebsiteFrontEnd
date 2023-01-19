@@ -7,3 +7,35 @@
   display: flex;
   width: 100%;
 }
+
+.sign-up-container {
+  background-color: #212529;
+  border-radius: 30px;
+}
+
+.form-label {
+  color: white;
+}
+
+.brand-title {
+  /* font-family: "Dancing Script", cursive; */
+  font-size: 100px;
+  color: white;
+  transition: 3s;
+  margin-right: 130px;
+}
+
+h1.brand-title:hover {
+  transition: 3s;
+  color: rgba(30, 129, 129, 0.787);
+}
+
+.brand-selling {
+  color: white;
+  text-align: left;
+  margin-left: 55px;
+}
+
+.sign-up-text-container {
+  margin-left: -10px;
+}

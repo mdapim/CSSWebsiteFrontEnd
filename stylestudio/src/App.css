@@ -54,3 +54,12 @@ body {
 .modal-content {
   height: 600px;
 }
+
+button.go-button {
+  color: white;
+}
+
+.go-button.btn.btn-primary {
+  background-color: black;
+  border-color: cyan;
+}

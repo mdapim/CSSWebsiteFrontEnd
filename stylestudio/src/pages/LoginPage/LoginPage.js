@@ -79,7 +79,7 @@ export function LoginPage({ setCurrentUserDetails, handleLogIn }) {
                 onChange={handleSignInChange}
                 wrapperClass="mb-4 mx-5 w-100"
                 labelClass="text-white"
-                label="Email address"
+                label="Username"
                 id="formControlLg"
                 type="email"
                 size="lg"

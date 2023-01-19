@@ -319,6 +319,9 @@ div.modal-content {
 .cat-filter-button {
   border-radius: 10px;
   height: 30px;
+  border-color: cyan;
+  background-color: black;
+  color: white;
 }
 
 .cat-filter-button:hover {
@@ -329,4 +332,29 @@ div.modal-content {
   display: flex;
   align-items: center;
   flex-grow: 0;
+}
+
+.btn.btn-primary {
+  background-color: black;
+  border-color: cyan;
+}
+
+textarea:focus {
+  border-color: cyan;
+  outline: none;
+}
+
+select:focus {
+  outline: none;
+  border-color: cyan;
+}
+
+.pop-up-comment {
+  max-height: 500px;
+  overflow-y: scroll;
+}
+.pop-up-comments-input {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px;
 }
