@@ -9,6 +9,7 @@ import { specificityCalculator } from "../../Utilities/SpecificityCalculator";
 import "./components/Table/Table";
 import { CustomizedTable } from "./components/Table/Table";
 import "../Styling.css";
+import { default as CodeFormat } from "../../components/Code_format";
 export function Specificity() {
   const [cssInput, setCSSInput] = useState("");
   const [cssSpec, setCSSSpec] = useState([]);
@@ -19,7 +20,7 @@ export function Specificity() {
     setIndents(e);
   };
   const handleCSSChange = (e) => {
-    setCSSInput(e.target.value);
+    setCSSInput(e);
   };
   const handleButtonPress = () => {
     if (cssInput !== "") {
@@ -55,7 +56,7 @@ export function Specificity() {
   }, [cssSpec]);
   return (
     <>
-      <div className="maincontainer">
+      <div className="main-container">
         <h2 className="title-spec">Specificity Leaderboard</h2>
         <hr
           style={{
@@ -79,17 +80,15 @@ export function Specificity() {
           }}
         />
         <div className="main">
-          <Form>
-            <Form.Group className="mb-3 css-area">
-              <Form.Label>Your CSS code</Form.Label>
-              <Form.Control
-                as="textarea"
-                onChange={(e) => handleCSSChange(e)}
-                rows={20}
-              ></Form.Control>
-            </Form.Group>
-          </Form>
           <div>
+            {" "}
+            <h4 style={{ color: "white" }}> Your CSS code here</h4>
+            <h4 style={{ color: "white" }}>&#8681;</h4>
+            <div className="code-container">
+              <CodeFormat handleNewFormInput={handleCSSChange} />
+            </div>
+          </div>
+          <div className="button-container">
             <Button
               variant="primary"
               className="go-button"
@@ -99,7 +98,7 @@ export function Specificity() {
             </Button>
             <DropdownButton title={"indents: " + indents}>
               <Dropdown.Item title="2" onClick={() => handleIndentChange(2)}>
-                2
+                2{console.log("spec is ", cssInput)}
               </Dropdown.Item>
               <Dropdown.Item title="3" onClick={() => handleIndentChange(3)}>
                 3
@@ -109,7 +108,7 @@ export function Specificity() {
               </Dropdown.Item>
             </DropdownButton>
           </div>
-          <div>
+          <div className="leaderboard-container">
             {cssSpec.length === 0 ? (
               ""
             ) : (

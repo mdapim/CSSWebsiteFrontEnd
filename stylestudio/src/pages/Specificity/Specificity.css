@@ -1,3 +1,11 @@
+.leaderboard-container {
+  width: 500px;
+  margin-top: 70px;
+}
+
+.button-container {
+  margin-top: 200px;
+}
 .main {
   display: flex;
   width: 100%;

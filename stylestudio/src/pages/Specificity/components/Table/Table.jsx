@@ -36,7 +36,7 @@ export const CustomizedTable = (props) => {
           return (
             <OverlayTrigger
               key={index.toString()}
-              placement={"right"}
+              placement={"top"}
               overlay={
                 <Tooltip id={`tooltip-${index.toString()}`}>
                   <div>
@@ -64,6 +64,10 @@ export const CustomizedTable = (props) => {
                     : {}
                 }
               >
+                {console.log(
+                  "checking colour ",
+                  getColorFromStyling(values[2][item])
+                )}
                 <th scope="row">{index + 1}</th>
                 <td>{values[0][index]}</td>
                 <td>{values[1][index]}</td>
