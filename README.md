@@ -67,5 +67,5 @@ Testing has been made extra simple through the use of RTL & Jest.
 ## Authors
 
 - **CALLUM HALL** - [Callum3574](https://github.com/Callum3574)
-- **ADAM LAKER ILLOUL** [mdapim](https://github.com/mdapim)
-- **MICHAEL APIM** - [Ademsk1](https://github.com/Ademsk1)
+- **MICHAEL APIM** [mdapim](https://github.com/mdapim)
+- **ADAM LAKER ILLOU** - [Ademsk1](https://github.com/Ademsk1)
