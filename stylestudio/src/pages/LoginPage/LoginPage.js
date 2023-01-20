@@ -19,7 +19,7 @@ import {
 export function LoginPage({ setCurrentUserDetails, handleLogIn }) {
   const navigate = useNavigate();
   const routeChange = () => {
-    navigate("/");
+    navigate("/home");
   };
   const [signInCredentials, setSignInCredentials] = useState({
     name: "",
@@ -61,7 +61,7 @@ export function LoginPage({ setCurrentUserDetails, handleLogIn }) {
     setLoading(false);
   };
   return (
-    <MDBContainer fluid>
+    <MDBContainer fluid data-testid="login_tag">
       <MDBRow className="d-flex justify-content-center align-items-center h-100">
         <MDBCol col="12">
           <MDBCard
@@ -92,6 +92,7 @@ export function LoginPage({ setCurrentUserDetails, handleLogIn }) {
                 type="password"
                 size="lg"
                 name="password"
+                title="login-password-input"
               />
               <p className="small mb-3 pb-lg-2">
                 <a class="text-white-50" href="#!">
@@ -110,6 +111,7 @@ export function LoginPage({ setCurrentUserDetails, handleLogIn }) {
                   className="mx-2 px-5"
                   color="black"
                   size="lg"
+                  data-testid="login-button"
                 >
                   Login
                 </Button>
@@ -119,6 +121,7 @@ export function LoginPage({ setCurrentUserDetails, handleLogIn }) {
                 <Alert
                   style={{ marginBottom: "-100px", paddingTop: "10px" }}
                   className={"mt-1 shake-horizontal"}
+                  data-testid="login-alertbox"
                 >
                   Your login credentials did not work. Please try again
                 </Alert>
