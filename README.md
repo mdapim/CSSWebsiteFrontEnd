@@ -1,4 +1,4 @@
-##STYLE STUDIO.
+## STYLE STUDIO.
 
 Welcome to Style Studio. A one stop destination for software developers.
 
