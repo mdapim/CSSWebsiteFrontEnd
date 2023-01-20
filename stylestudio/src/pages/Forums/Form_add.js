@@ -9,7 +9,7 @@ import {
   MDBModalTitle,
   MDBModalBody,
   MDBModalFooter,
-  MDBSpinner
+  MDBSpinner,
 } from "mdb-react-ui-kit";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
@@ -23,7 +23,7 @@ function FormAdd({
 }) {
   const [code, setCode] = useState("");
   const [addCode, setAddCode] = useState(false);
-  const [loading,setLoading] = useState(false)
+  const [loading, setLoading] = useState(false);
 
   const [currentForumInput, setCurrentForumInput] = useState({
     title: "",
@@ -80,16 +80,16 @@ function FormAdd({
       return { ...prev, [name]: value };
     });
   };
-  const resetValidation =()=> {
+  const resetValidation = () => {
     setHandleValidation((prevState) => ({
       ...prevState,
       EMPTY_INPUT: false,
       SUCCESSFUL_INPUT: false,
     }));
-  }
+  };
 
   const postNewForumData = async (e) => {
-    setLoading(true)
+    setLoading(true);
     console.log({ currentForumInput });
     setCurrentForumInput((prev) => {
       return { ...prev, code: "" };
@@ -103,7 +103,7 @@ function FormAdd({
         body: JSON.stringify([currentForumInput]),
       }
     );
-    
+
     const data = await res.json();
 
     if (data[0]["message"] === "One or more of the input fields are invalid") {
@@ -126,7 +126,7 @@ function FormAdd({
         SUCCESSFUL_INPUT: true,
       }));
     }
-    setLoading(false)
+    setLoading(false);
   };
 
   return (
@@ -146,9 +146,9 @@ function FormAdd({
                 <MDBBtn
                   className="btn-close"
                   color="none"
-                  onClick={()=> {
-                    toggleShow()
-                    resetValidation()
+                  onClick={() => {
+                    toggleShow();
+                    resetValidation();
                   }}
                 ></MDBBtn>
               </MDBModalHeader>
@@ -211,21 +211,26 @@ function FormAdd({
                     )}
                   </div>
                   <br />
-                  {loading && <MDBSpinner role='status'></MDBSpinner>}
+                  {loading && <MDBSpinner role="status"></MDBSpinner>}
                   {handleValidation["EMPTY_INPUT"] && (
                     <Alert className="m-1 shake-horizontal">
-                    You haven't inputted everyting...Check your title, description, and select a category.
-                  </Alert>
+                      You haven't inputted everyting...Check your title,
+                      description, and select a category.
+                    </Alert>
                   )}
-                  {handleValidation["SUCCESSFUL_INPUT"] && <Alert>Success..</Alert>}
+                  {handleValidation["SUCCESSFUL_INPUT"] && (
+                    <Alert>Success..</Alert>
+                  )}
                 </div>
               </MDBModalBody>
               <MDBModalFooter>
-                <Button color="secondary" onClick={()=>{
-
-                  toggleShow()
-                  resetValidation();
-                  }}>
+                <Button
+                  color="secondary"
+                  onClick={() => {
+                    toggleShow();
+                    resetValidation();
+                  }}
+                >
                   Exit
                 </Button>
                 <Button onClick={postNewForumData}>Add</Button>

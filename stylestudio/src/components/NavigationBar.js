@@ -7,6 +7,9 @@ import { Link } from "react-router-dom";
 import "./NavigationBar.css";
 import Button from "react-bootstrap/Button";
 export function NavigationBar({ currentUserDetails, handleLogOut, loggedIn }) {
+  const [signedIn, setSignedIn] = useState(false);
+  console.log(currentUserDetails[0]);
+
   useEffect(() => {}, [currentUserDetails]);
 
   return (
@@ -30,7 +33,7 @@ export function NavigationBar({ currentUserDetails, handleLogOut, loggedIn }) {
               <NavDropdown
                 title="Login"
                 menuVariant="dark"
-                style={{ zIndex: "2", marginTop: "-9px" }}
+                style={{ zIndex: "2", marginTop: "-1px" }}
                 className="nav-link"
               >
                 <NavDropdown.Item>
@@ -44,7 +47,7 @@ export function NavigationBar({ currentUserDetails, handleLogOut, loggedIn }) {
             </Nav.Link>
           ) : (
             <NavDropdown
-              style={{ zIndex: "2" }}
+              style={{ zIndex: "2", marginTop: "8px" }}
               className="nav-link"
               title="Profile"
               menuVariant="dark"

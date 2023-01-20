@@ -1,10 +1,9 @@
 import "./Forums.css";
 import React, { useState, useEffect } from "react";
-import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import RecentComments from "./Forum_full_post_comments";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCheck, faTrash, faCode } from "@fortawesome/free-solid-svg-icons";
+import { faCheck, faTrash } from "@fortawesome/free-solid-svg-icons";
 import ForumVoting from "./Forum_voting.js";
 import ForumCodePost from "./Forum_code_post.js";
 
@@ -111,6 +110,7 @@ function ForumFullPost({
         onHide={() => setShow(false)}
         dialogClassName="modal-100w"
         aria-labelledby="example-custom-modal-styling-title"
+        className="full-post-modal"
       >
         <Modal.Header closeButton>
           <Modal.Title
@@ -122,7 +122,7 @@ function ForumFullPost({
 
           <ForumVoting handleVote={handleVote} post_id={post_id} />
         </Modal.Header>
-        <div className="header">
+        <div className="header full-card">
           <span style={{ fontWeight: "bold", textDecoration: "underline" }}>
             {username}
           </span>{" "}

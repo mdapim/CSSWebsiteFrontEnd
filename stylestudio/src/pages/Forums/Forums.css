@@ -3,6 +3,10 @@
   min-width: 990px;
 }
 
+.forum-container * {
+  margin: 5px;
+}
+
 .forum_nav {
   min-width: 600px;
 }
@@ -17,6 +21,18 @@
 
 .header {
   margin-left: 15px;
+  display: flex;
+  align-items: center;
+}
+.header.full-card {
+  margin-left: 32px;
+  display: flex;
+  align-items: center;
+}
+
+input.new-comment-full-post {
+  margin-left: -20px;
+  width: 1000px;
 }
 
 .comment-section {
@@ -45,7 +61,7 @@
 .voting {
   display: flex;
   cursor: pointer;
-  margin-bottom: -20px;
+  margin-bottom: -10px;
 }
 
 .card-header,
@@ -118,18 +134,22 @@
   border: solid 1px;
   border-radius: 10px;
   width: 50%;
-  border-color: rgb(240, 240, 240);
   margin-top: 5px;
   width: 300px;
   margin-left: 5rem;
   height: 2rem;
 }
+
+.search:focus {
+  border-color: cyan;
+  outline: none;
+}
 .ok-button,
 .btn,
 .btn-primary {
-  border-radius: 100%;
   margin-left: 10px;
   height: min-content;
+  border-color: cyan;
 }
 
 .header {
@@ -246,7 +266,7 @@ div.modal-content {
 .nav-button:hover {
   transition: 0.5s;
   transform: scale(1.2);
-  color: #6e6e6e;
+  color: cyan;
 }
 
 .forum-code-post {
@@ -261,13 +281,13 @@ div.modal-content {
 .editing-post-icon {
   display: flex;
   justify-content: row;
-  height: 20px;
-  margin-left: -10px;
-  margin-top: 30px;
+  height: 40px;
+  margin-bottom: 10px;
 }
 
 .editing-post-icon-child {
   margin-top: 7px;
+  margin: 20px;
 }
 
 .cat-selector {
@@ -310,11 +330,17 @@ div.modal-content {
 .cat-choice-flex-child {
   margin-top: 1.4rem;
   margin-left: -20px;
+  display: flex;
+  margin-left: 1px;
 }
 
 .cat-filter-button {
   border-radius: 10px;
   height: 30px;
+  border-color: cyan;
+  background-color: black;
+  color: white;
+  margin-top: -10px;
 }
 
 .cat-filter-button:hover {
@@ -322,7 +348,40 @@ div.modal-content {
   background-color: #6e6e6e;
 }
 .input-field-comments {
-  display:flex;
-  align-items:center;
-  flex-grow:0;
+  display: flex;
+  align-items: center;
+  flex-grow: 0;
+}
+
+.btn.btn-primary {
+  background-color: black;
+  border-color: cyan;
+}
+
+textarea:focus {
+  border-color: cyan;
+  outline: none;
+}
+
+select:focus {
+  outline: none;
+  border-color: cyan;
+}
+
+.pop-up-comment {
+  max-height: 500px;
+  overflow-y: scroll;
+}
+.pop-up-comments-input {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+
+.full-post-modal * {
+  margin: 6px;
+}
+
+.description-full-post {
+  margin-left: 11px;
 }

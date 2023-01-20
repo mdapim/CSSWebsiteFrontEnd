@@ -9,9 +9,8 @@ import {
   MDBIcon,
   MDBRow,
   MDBTypography,
-  MDBSpinner
+  MDBSpinner,
 } from "mdb-react-ui-kit";
-
 
 import Button from "react-bootstrap/Button";
 import { faCheck, faTrash } from "@fortawesome/free-solid-svg-icons";
@@ -27,11 +26,11 @@ export default function RecentComments({
   const [updatedComment, setUpdatedComment] = useState("");
   const [editComment, setEditComment] = useState(false);
   const [commentTarget, setCommentTarget] = useState("");
-  const [loadingComments,setLoadingComments] = useState(false)
+  const [loadingComments, setLoadingComments] = useState(false);
   useEffect(() => {
-    setLoadingComments(true)
+    setLoadingComments(true);
     fetchComments();
-    setLoadingComments(false)
+    setLoadingComments(false);
   }, [editComment]);
 
   const handleEditButtonClick = (e) => {
@@ -42,12 +41,11 @@ export default function RecentComments({
 
   const handleEditPost = (e) => {
     const value = e.target.value;
-    const currentComment = e.target.key;
     setUpdatedComment(value);
   };
 
   const fetchEditComment = async (id) => {
-    setLoadingComments(true)
+    setLoadingComments(true);
     const res = await fetch(
       "https://csswebsitebackend-production.up.railway.app/forum_comment",
       {
@@ -72,11 +70,11 @@ export default function RecentComments({
     } else {
       setEditComment(false);
     }
-    setLoadingComments(false)
+    setLoadingComments(false);
   };
 
   const fetchDeleteComment = async (id) => {
-    setLoadingComments(true)
+    setLoadingComments(true);
     console.log(id, currentUserDetails["id"]);
     const res = await fetch(
       "https://csswebsitebackend-production.up.railway.app/forum_comment",
@@ -97,7 +95,7 @@ export default function RecentComments({
     if (data[0]["?column?"] === "successfully deleted comment") {
       fetchComments();
     }
-    setLoadingComments(false)
+    setLoadingComments(false);
   };
 
   return (
@@ -109,7 +107,6 @@ export default function RecentComments({
           marginLeft: "-70px",
         }}
       >
-        
         <MDBRow className="justify-content-center">
           <MDBCol md="10" lg="10">
             <MDBTypography tag="h4" className="mb-0">
@@ -118,47 +115,49 @@ export default function RecentComments({
             <p className="fw-light mb-4 pb-2">
               Latest Comments section by users
             </p>
-            <div className='input-field-comments'>
-            <input
-              onChange={handleNewComment}
-              style={{
-                width: "300px",
-                height: "40px",
-                borderRadius: "8px",
-                border: "solid 1px grey",
-                marginLeft: "3%",
-              }}
-              placeholder="New comment..."
-              name="description"
-            />
-            <Button
-              style={{
-                backgroundColor: "black",
-                height: "2.5rem",
-                border: "none",
-              }}
-              onClick={async ()=> {
-                setLoadingComments(true)
-                await addComments()
-                setLoadingComments(false)
+            <div className="input-field-comments">
+              <input
+                onChange={handleNewComment}
+                style={{
+                  width: "300px",
+                  height: "40px",
+                  borderRadius: "8px",
+                  border: "solid 1px grey",
+                  marginLeft: "1.4%",
                 }}
-            >
-              OK
-            </Button>
-            {loadingComments && <MDBSpinner style={{alignSelf:"center",marginLeft:"20px"}} role='status'></MDBSpinner>}
+                placeholder="New comment..."
+                name="description"
+              />
+              <Button
+                style={{
+                  backgroundColor: "black",
+                  height: "2.5rem",
+                  borderColor: "cyan",
+                }}
+                onClick={async () => {
+                  setLoadingComments(true);
+                  await addComments();
+                  setLoadingComments(false);
+                }}
+              >
+                OK
+              </Button>
+              {loadingComments && (
+                <MDBSpinner
+                  style={{ alignSelf: "center", marginLeft: "20px" }}
+                  role="status"
+                ></MDBSpinner>
+              )}
             </div>
             <div
               style={{
                 maxHeight: "400px",
                 overflowY: "scroll",
-                display:"flex",
-                flexDirection:"column"
+                display: "flex",
+                flexDirection: "column",
               }}
             >
-
-              
               {commentsForIndivPost.map((comment, i) => {
-                
                 return (
                   <MDBCard className="text-dark">
                     <MDBCardBody className="p-2">

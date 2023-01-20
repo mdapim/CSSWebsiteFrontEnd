@@ -65,6 +65,7 @@ export function ForumNav({
     <div>
       <br />
       <h2 className="forum-title title-change">Forums</h2>
+      <hr style={{ marginTop: "-20px" }} />
       <p className="forum-title">
         <strong>Style Studio</strong>Forum and Community, a place to discuss the
         latest technologies, design tools and anything else!

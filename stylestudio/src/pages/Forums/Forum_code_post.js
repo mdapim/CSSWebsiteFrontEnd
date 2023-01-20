@@ -39,7 +39,12 @@ const ForumCodePost = ({ inputtedCode }) => {
       </div>
       <div className="forum-code-post-child">
         <FontAwesomeIcon
-          style={{ marginLeft: "3px", height: "20px", cursor: "pointer" }}
+          style={{
+            marginLeft: "3px",
+            height: "20px",
+            cursor: "pointer",
+            color: "cyan",
+          }}
           ref={target}
           onClick={() => {
             handleCopy();

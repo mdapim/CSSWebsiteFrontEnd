@@ -8,6 +8,7 @@
   color: rgb(255, 255, 255);
   height: 6rem;
   margin-top: -22px;
+  min-width: 1230px;
 }
 
 .nav-child {

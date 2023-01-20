@@ -66,12 +66,17 @@ export function Signup() {
           md="7"
           className="text-center text-md-start d-flex flex-column justify-content-center"
         >
-          <h1
-            className="my-5 display-2 fw-bold ls-tight px-5"
-            style={{ color: "hsl(218, 81%, 95%)" }}
-          >
-            StyleStudio <br />
-          </h1>
+          <div className="sign-up-text-container">
+            <h1 className="brand-title my-5 display-2 fw-bold ls-tight px-5">
+              Style Studio. <br />
+            </h1>
+            <p className="brand-selling">
+              Welcome to Style Studio. your one-stop destination for all things
+              web development! Whether you're a beginner or an expert, we've got
+              you covered with our CSS specificity calculator, interactive forum
+              page, and comprehensive guides.
+            </p>
+          </div>
           <p className="px-1" style={{ color: "hsl(218, 81%, 85%)" }}></p>
         </MDBCol>
         <MDBCol md="4" className="position-relative">
@@ -83,13 +88,13 @@ export function Signup() {
             id="radius-shape-2"
             className="position-absolute shadow-5-strong"
           ></div>
-          <MDBCard className="my-5 bg-glass">
+          <div className="sign-up-container">
             <MDBCardBody className="p-5">
               <MDBInput
                 wrapperClass="mb-4"
-                label="Email"
+                label="Username"
                 id="form3"
-                type="email"
+                type="Username"
                 name="name"
                 onChange={handleSignInChange}
               />
@@ -120,7 +125,7 @@ export function Signup() {
                 )}
               </div>
             </MDBCardBody>
-          </MDBCard>
+          </div>
         </MDBCol>
       </div>
     </MDBContainer>

@@ -7,7 +7,6 @@ import "../pages/Forums/Forums.css";
 import "../pages/Styling.css";
 
 const CodeFormat = ({ handleNewFormInput }) => {
-
   return (
     <div className="code-format">
       <AceEditor
@@ -17,7 +16,10 @@ const CodeFormat = ({ handleNewFormInput }) => {
         name="code"
         showPrintMargin={true}
         setOptions={{
-          useSoftTabs:false
+          useSoftTabs: false,
+          autoScrollEditorIntoView: true,
+          behavioursEnabled: true,
+          wrapBehavioursEnabled: true,
         }}
       />
     </div>

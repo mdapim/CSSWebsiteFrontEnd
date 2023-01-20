@@ -61,7 +61,9 @@ export const CustomizedTable = (props) => {
                           values[2][item]
                         )}`,
                       }
-                    : {}
+                    : {
+                        border: "none",
+                      }
                 }
               >
                 {console.log(
