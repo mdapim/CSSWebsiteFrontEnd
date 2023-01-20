@@ -1,5 +1,4 @@
 import "./Forums.css";
-
 import React, { useState, useEffect } from "react";
 import Card from "react-bootstrap/Card";
 import ForumFullPost from "./Forum_full_post";
@@ -50,7 +49,6 @@ export function ForumBox({
     setNewComment((prev) => {
       return { ...prev, [name]: value };
     });
-    console.log(newComment);
   };
 
   const addComments = async () => {

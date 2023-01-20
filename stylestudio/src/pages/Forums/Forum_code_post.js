@@ -2,7 +2,6 @@ import React, { useState, useRef } from "react";
 import AceEditor from "react-ace";
 import "ace-builds/src-noconflict/mode-css";
 import "ace-builds/src-noconflict/theme-xcode";
-import Button from "react-bootstrap/Button";
 import Overlay from "react-bootstrap/Overlay";
 import Tooltip from "react-bootstrap/Tooltip";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -13,6 +12,7 @@ const ForumCodePost = ({ inputtedCode }) => {
   const [show, setShow] = useState(false);
   const target = useRef(null);
 
+  // Allows user to copy code to clipboard from forum post
   const handleCopy = async () => {
     try {
       await navigator.clipboard.writeText(inputtedCode);

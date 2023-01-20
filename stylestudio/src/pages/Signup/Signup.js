@@ -1,15 +1,12 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import Spinner from "react-bootstrap/Spinner";
 import Button from "react-bootstrap/Button";
 import Alert from "react-bootstrap/Alert";
 import "./Signup.css";
 import "../Styling.css";
 import {
   MDBContainer,
-  MDBRow,
   MDBCol,
-  MDBCard,
   MDBCardBody,
   MDBInput,
   MDBSpinner,

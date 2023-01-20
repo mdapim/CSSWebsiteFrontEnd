@@ -32,7 +32,10 @@ function ForumFullPost({
   const [displayEditButton, setDisplayEditButton] = useState(false);
   const [updatedPost, setUpdatedPost] = useState({ description });
 
+  // useEffect triggering re-render when new post is added
   useEffect(() => {}, [updatedPost]);
+
+  // Handling IF edit button is rendered
   useEffect(() => {
     handleDisplayEditButtonPosts();
   }, []);
@@ -52,6 +55,7 @@ function ForumFullPost({
     setUpdatedPost(value);
   };
 
+  // PATCH request to edit post
   const fetchUpdatePost = async () => {
     const res = await fetch(
       "https://csswebsitebackend-production.up.railway.app/forum_post",
@@ -69,19 +73,18 @@ function ForumFullPost({
       }
     );
     const data = await res.json();
-    console.log(data);
 
     if (
       data[0]["message"] ===
       "item could not be found in database, or user has no access to item"
     ) {
-      console.log("not correct user");
     } else {
       setEditPost(false);
       fetchForumData();
     }
   };
 
+  // DELETE post
   const fetchDeletePost = async () => {
     const res = await fetch(
       "https://csswebsitebackend-production.up.railway.app/forum_post",
@@ -94,7 +97,6 @@ function ForumFullPost({
       }
     );
     const data = await res.json();
-    console.log(data);
 
     if (data[0]["?column?"] === "post has been deleted successfully") {
       fetchForumData();

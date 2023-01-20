@@ -1,13 +1,9 @@
 import "./Forums.css";
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faFaceGrin,
-  faFaceFrown,
-  faArrowUp,
-  faArrowDown,
-} from "@fortawesome/free-solid-svg-icons";
+import { faArrowUp, faArrowDown } from "@fortawesome/free-solid-svg-icons";
 
+//handles voting for forums
 export function ForumVoting({ handleVote, post_id }) {
   return (
     <div className="voting">

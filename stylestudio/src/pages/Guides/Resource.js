@@ -1,5 +1,7 @@
 import "./Resources.css";
 import Card from "react-bootstrap/Card";
+
+//Adding new resources to guides section
 export function Resource({ title, links, sendClick }) {
   const mapLinks = (resources) => {
     const resourceJSX = resources.map((resource) => {

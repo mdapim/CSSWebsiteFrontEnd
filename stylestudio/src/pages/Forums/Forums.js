@@ -74,7 +74,6 @@ export function Forums({ currentUserDetails }) {
 
   const filterDataSearch = (e) => {
     const searchString = e.target.value;
-    console.log(searchString);
     setSearchedString(searchString);
     const searchedStringLowerCase = searchedString.toLowerCase();
     let filtering = forumData.filter((el) => {
@@ -84,7 +83,6 @@ export function Forums({ currentUserDetails }) {
     if (searchString.length > 0) {
       setForumData(filtering);
     } else {
-      console.log("No matches found");
       fetchForumData();
     }
   };

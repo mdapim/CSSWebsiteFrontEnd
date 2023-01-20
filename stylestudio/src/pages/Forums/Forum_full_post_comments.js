@@ -6,7 +6,6 @@ import {
   MDBCardImage,
   MDBCol,
   MDBContainer,
-  MDBIcon,
   MDBRow,
   MDBTypography,
   MDBSpinner,
@@ -27,6 +26,8 @@ export default function RecentComments({
   const [editComment, setEditComment] = useState(false);
   const [commentTarget, setCommentTarget] = useState("");
   const [loadingComments, setLoadingComments] = useState(false);
+
+  //When comment is edited, spinner is rendered and comments will be re-rendered
   useEffect(() => {
     setLoadingComments(true);
     fetchComments();
@@ -44,6 +45,7 @@ export default function RecentComments({
     setUpdatedComment(value);
   };
 
+  // UPDATING COMMENTS
   const fetchEditComment = async (id) => {
     setLoadingComments(true);
     const res = await fetch(
@@ -66,16 +68,15 @@ export default function RecentComments({
       data[0]["message"] ===
       "item has already been deleted or user does not have required access"
     ) {
-      console.log("not correct user");
     } else {
       setEditComment(false);
     }
     setLoadingComments(false);
   };
 
+  // DELETING COMMENTS
   const fetchDeleteComment = async (id) => {
     setLoadingComments(true);
-    console.log(id, currentUserDetails["id"]);
     const res = await fetch(
       "https://csswebsitebackend-production.up.railway.app/forum_comment",
       {
