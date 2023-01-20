@@ -60,6 +60,7 @@ export function Signup() {
     <MDBContainer
       fluid
       className="p-4 background-radial-gradient overflow-hidden"
+      data-testid="sign_up_tag"
     >
       <div className="sign-up-card">
         <MDBCol
@@ -105,6 +106,7 @@ export function Signup() {
                 type="password"
                 name="password"
                 onChange={handleSignInChange}
+                title="password_input"
               />
               <div className="options">
                 <div className="center">
@@ -119,7 +121,10 @@ export function Signup() {
                 </div>
 
                 {invalidInput && (
-                  <Alert className="m-1 shake-horizontal">
+                  <Alert
+                    className="m-1 shake-horizontal"
+                    data-testid="alertbox"
+                  >
                     That username is already taken
                   </Alert>
                 )}
