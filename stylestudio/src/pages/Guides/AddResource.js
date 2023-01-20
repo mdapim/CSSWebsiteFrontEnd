@@ -19,7 +19,9 @@ export function AddResource({
   errorAddResource,
 }) {
   const [showAddCategory, setShowAddCategory] = useState(false);
-
+  /*
+This component enables administrators to add content to guide section -> only admins can access this. 
+*/
   const categoriesNames = () => {
     return Object.keys(categoriesList).map((key) => categoriesList[key]);
   };

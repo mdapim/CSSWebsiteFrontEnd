@@ -1,18 +1,15 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import {
   MDBCard,
   MDBCardBody,
   MDBCol,
   MDBContainer,
-  MDBIcon,
-  MDBInput,
-  MDBRow,
   MDBModal,
   MDBCardImage,
 } from "mdb-react-ui-kit";
 import Button from "react-bootstrap/Button";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCheck, faTrash, faClose } from "@fortawesome/free-solid-svg-icons";
+import { faClose } from "@fortawesome/free-solid-svg-icons";
 
 export default function Comments({
   staticModal,
@@ -26,6 +23,7 @@ export default function Comments({
 
   displayEditButton,
 }) {
+  // When new the comments state updates, re-fetch comments to keep list up-to-date
   useEffect(() => {
     fetchComments();
   }, [commentsCopy]);

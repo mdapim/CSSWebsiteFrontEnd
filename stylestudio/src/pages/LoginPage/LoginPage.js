@@ -51,7 +51,6 @@ export function LoginPage({ setCurrentUserDetails, handleLogIn }) {
     handleLogIn();
     if (res.status === 200) {
       const data = await res.json();
-      console.log(data, res);
 
       setCurrentUserDetails(data[0]);
       handleLogIn();

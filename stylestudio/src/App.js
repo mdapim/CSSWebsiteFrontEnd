@@ -32,7 +32,6 @@ function App() {
       const data = await res.json();
       setCurrentUserDetails(data[0]);
       handleLogIn();
-      console.log({ data });
     }
   };
   const handleLogIn = () => {
@@ -48,7 +47,6 @@ function App() {
   }, []);
 
   const particlesInit = async (main) => {
-    console.log(main);
     await loadFull(main);
   };
   return (

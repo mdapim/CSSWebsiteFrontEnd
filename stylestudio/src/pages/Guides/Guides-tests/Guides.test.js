@@ -18,10 +18,12 @@ test("Guides title loads on screen", () => {
   expect(subheading).toBeInTheDocument();
 });
 
-test("Add new resource button loads on screen", () => {
+test("Add new resource button loads on screen if admin logged in", () => {
   render(<Guides />);
 
   const button = screen.getByRole("button", {
     name: /upload a new resource!/i,
   });
+
+  expect(button).toBeInTheDocument();
 });

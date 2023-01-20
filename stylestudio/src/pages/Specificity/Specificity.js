@@ -1,6 +1,5 @@
 import Button from "react-bootstrap/Button";
-import Form from "react-bootstrap/Form";
-import Alert from "react-bootstrap/Alert";
+
 import Dropdown from "react-bootstrap/Dropdown";
 import DropdownButton from "react-bootstrap/DropdownButton";
 import { useState, useEffect } from "react";
@@ -103,7 +102,7 @@ export function Specificity() {
               title={"indents: " + indents}
             >
               <Dropdown.Item title="2" onClick={() => handleIndentChange(2)}>
-                2{console.log("spec is ", cssInput)}
+                2
               </Dropdown.Item>
               <Dropdown.Item title="3" onClick={() => handleIndentChange(3)}>
                 3

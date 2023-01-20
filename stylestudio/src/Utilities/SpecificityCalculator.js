@@ -1,20 +1,22 @@
 const { calculate } = require("specificity");
 
-const cssInput = `ul#nav li.active a {
-    background-color:green;
-}
+//For testing!!
 
-body {
-    width:auto;
-}
+// const cssInput = `ul#nav li.active a {
+//     background-color:green;
+// }
 
-div p {
-    color:green;
-}
+// body {
+//     width:auto;
+// }
 
-#mylist:first-child {
-    background-color:white;
-}`;
+// div p {
+//     color:green;
+// }
+
+// #mylist:first-child {
+//     background-color:white;
+// }`;
 
 function filterCSSCommands(cssInput, indents) {
   const seperatedCSS = cssInput.split(/[{}\n]/g);

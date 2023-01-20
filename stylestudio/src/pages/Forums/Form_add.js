@@ -12,7 +12,6 @@ import {
   MDBSpinner,
 } from "mdb-react-ui-kit";
 import Button from "react-bootstrap/Button";
-import Form from "react-bootstrap/Form";
 
 function FormAdd({
   staticModal,
@@ -37,6 +36,7 @@ function FormAdd({
     SUCCESSFUL_INPUT: false,
   });
 
+  // re-renders when pop up is closed / open to reset input fields
   useEffect(() => {
     resetInputFields();
   }, [staticModal]);
@@ -50,6 +50,8 @@ function FormAdd({
       category: "",
     });
   };
+
+  // re-fetches forum data when login is successful / when user is changed
   useEffect(() => {
     fetchForumData();
   }, [currentUserDetails, handleValidation]);
@@ -58,6 +60,7 @@ function FormAdd({
     setAddCode(!addCode);
   };
 
+  // Handles the selected category for filtering forums
   const handleCategory = (e) => {
     const catChoice = e.target.value;
 
@@ -65,6 +68,9 @@ function FormAdd({
       return { ...prev, category: catChoice };
     });
   };
+
+  // Handles forum input -> type of e = string handles the code editor input
+
   const handleNewFormInput = (e) => {
     let name;
     let value;
@@ -90,7 +96,6 @@ function FormAdd({
 
   const postNewForumData = async (e) => {
     setLoading(true);
-    console.log({ currentForumInput });
     setCurrentForumInput((prev) => {
       return { ...prev, code: "" };
     });

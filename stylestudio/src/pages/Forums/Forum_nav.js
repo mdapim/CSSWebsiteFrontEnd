@@ -1,11 +1,9 @@
 import "./Forums.css";
-import Button from "react-bootstrap/Button";
 import OverlayTrigger from "react-bootstrap/OverlayTrigger";
 import Popover from "react-bootstrap/Popover";
 import Nav from "react-bootstrap/Nav";
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import FormAdd from "./Form_add.js";
-import Breadcrumb from "react-bootstrap/Breadcrumb";
 import "../../App.css";
 
 export function ForumNav({
@@ -15,6 +13,7 @@ export function ForumNav({
   handleCategorySearch,
   filterCategorySearch,
 }) {
+  //To toggle category
   const [staticModal, setStaticModal] = useState(false);
 
   const toggleShow = () => setStaticModal(!staticModal);
