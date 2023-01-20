@@ -1,6 +1,4 @@
-Front-End Deployment for CSS website
-
-# Project Title
+## STYLE STUDIO.
 
 Welcome to Style Studio. A one stop destination for software developers.
 
@@ -65,7 +63,8 @@ Testing has been made extra simple through the use of RTL & Jest.
 - [Jest](https://jestjs.io/) - A testing framework with a focus on simplicity
 
 ## Authors
-
+  
 - **CALLUM HALL** - [Callum3574](https://github.com/Callum3574)
 - **MICHAEL APIM** [mdapim](https://github.com/mdapim)
 - **ADAM LAKER ILLOU** - [Ademsk1](https://github.com/Ademsk1)
+
