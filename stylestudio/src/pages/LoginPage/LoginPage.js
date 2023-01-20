@@ -19,7 +19,7 @@ import {
 export function LoginPage({ setCurrentUserDetails, handleLogIn }) {
   const navigate = useNavigate();
   const routeChange = () => {
-    navigate("/home");
+    navigate("/");
   };
   const [signInCredentials, setSignInCredentials] = useState({
     name: "",
@@ -47,13 +47,12 @@ export function LoginPage({ setCurrentUserDetails, handleLogIn }) {
         body: JSON.stringify([signInCredentials]),
       }
     );
-    const data = await res.json();
 
-    console.log(data);
-    setCurrentUserDetails(data[0]);
     handleLogIn();
     if (res.status === 200) {
       const data = await res.json();
+      console.log(data, res);
+
       setCurrentUserDetails(data[0]);
       handleLogIn();
       routeChange();

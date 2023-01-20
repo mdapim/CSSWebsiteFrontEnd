@@ -3,6 +3,10 @@
   min-width: 990px;
 }
 
+.forum-container * {
+  margin: 5px;
+}
+
 .forum_nav {
   min-width: 600px;
 }
@@ -17,6 +21,18 @@
 
 .header {
   margin-left: 15px;
+  display: flex;
+  align-items: center;
+}
+.header.full-card {
+  margin-left: 32px;
+  display: flex;
+  align-items: center;
+}
+
+input.new-comment-full-post {
+  margin-left: -20px;
+  width: 1000px;
 }
 
 .comment-section {
@@ -45,7 +61,7 @@
 .voting {
   display: flex;
   cursor: pointer;
-  margin-bottom: -20px;
+  margin-bottom: -10px;
 }
 
 .card-header,
@@ -265,13 +281,13 @@ div.modal-content {
 .editing-post-icon {
   display: flex;
   justify-content: row;
-  height: 20px;
-  margin-left: -10px;
-  margin-top: 30px;
+  height: 40px;
+  margin-bottom: 10px;
 }
 
 .editing-post-icon-child {
   margin-top: 7px;
+  margin: 20px;
 }
 
 .cat-selector {
@@ -314,6 +330,8 @@ div.modal-content {
 .cat-choice-flex-child {
   margin-top: 1.4rem;
   margin-left: -20px;
+  display: flex;
+  margin-left: 1px;
 }
 
 .cat-filter-button {
@@ -322,6 +340,7 @@ div.modal-content {
   border-color: cyan;
   background-color: black;
   color: white;
+  margin-top: -10px;
 }
 
 .cat-filter-button:hover {
@@ -357,4 +376,12 @@ select:focus {
   display: flex;
   justify-content: center;
   margin-bottom: 10px;
+}
+
+.full-post-modal * {
+  margin: 6px;
+}
+
+.description-full-post {
+  margin-left: 11px;
 }

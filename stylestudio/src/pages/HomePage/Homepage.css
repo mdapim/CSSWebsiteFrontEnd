@@ -56,6 +56,10 @@
   height: 45vh;
 }
 
+.home-page-container * {
+  margin-left: 10px;
+}
+
 .item1 {
   width: 100;
   height: 100;

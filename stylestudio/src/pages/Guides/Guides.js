@@ -158,6 +158,7 @@ export function Guides({ userType }) {
         <hr />
         <div id="main">
           <Sidebar
+            className="sidebar-menu"
             backgroundColor="transparent"
             style={{
               borderTopLeftRadius: "50px",

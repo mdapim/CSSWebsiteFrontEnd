@@ -41,7 +41,6 @@ export default function RecentComments({
 
   const handleEditPost = (e) => {
     const value = e.target.value;
-    const currentComment = e.target.key;
     setUpdatedComment(value);
   };
 
@@ -124,7 +123,7 @@ export default function RecentComments({
                   height: "40px",
                   borderRadius: "8px",
                   border: "solid 1px grey",
-                  marginLeft: "3%",
+                  marginLeft: "1.4%",
                 }}
                 placeholder="New comment..."
                 name="description"

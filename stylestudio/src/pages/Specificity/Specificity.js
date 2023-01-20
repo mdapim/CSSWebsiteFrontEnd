@@ -98,7 +98,10 @@ export function Specificity() {
             >
               Go!
             </Button>
-            <DropdownButton title={"indents: " + indents}>
+            <DropdownButton
+              style={{ marginRight: "10px" }}
+              title={"indents: " + indents}
+            >
               <Dropdown.Item title="2" onClick={() => handleIndentChange(2)}>
                 2{console.log("spec is ", cssInput)}
               </Dropdown.Item>
