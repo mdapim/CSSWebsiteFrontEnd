@@ -1,3 +1,5 @@
+##STYLE STUDIO.
+
 Welcome to Style Studio. A one stop destination for software developers.
 
 The core features of Style Studio includes:
