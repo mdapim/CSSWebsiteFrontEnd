@@ -4,12 +4,15 @@ Front-End Deployment for CSS website
 ## Description
 Here we’ve developed a website for a project in order to utilise the skills we've gained during Sigma Labs Fullstack engineering course.
 The initial idea was to create a website that provided a tool a CSS specificity tool which developers could use to calculate the weight of the CSS stylings written, this can in turn help debug or shape the way they use their stylings. 
+<br />
+<br />
+<hr />
 This idea later developed into a website aimed at developing a community that is able to contribute to the website directly and learn not only providing a tool but a hub to communicate. We’ve done the following to achieve this:
-A forum page, categorized by questions, demonstration of work, discussions and ideas for the website
-A guides section where selected content from an admin is available and accessible. 
-Introduce a new tool that allows further insight into the styling and design content of a website, the CSS specificity tool
+- A forum page, categorized by questions, demonstration of work, discussions and ideas for the website
+- A guides section where selected content from an admin is available and accessible. 
+- Introduce a new tool that allows further insight into the styling and design content of a website, the CSS specificity tool
 
-## Technologies Used
+## Technologies Used
 - React
 - Flask
 - Railway
