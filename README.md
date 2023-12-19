@@ -1,6 +1,10 @@
 # CSSWebsiteFrontEnd (Style5Studio)
 Front-End Deployment for CSS website
 
+Checkout the live site: https://idyllic-rabanadas-35e31a.netlify.app/guides
+
+Checkout the Backend Repo: https://github.com/mdapim/CSSWebsiteBackEnd
+
 ## Description
 Here we’ve developed a website for a project in order to utilise the skills we've gained during Sigma Labs Fullstack engineering course.
 The initial idea was to create a website that provided a tool a CSS specificity tool which developers could use to calculate the weight of the CSS stylings written, this can in turn help debug or shape the way they use their stylings. 
